@@ -4,5 +4,5 @@
 
 void main(char* str) 
 {
-    printf(str);
+    printf(%s, str);
 }
