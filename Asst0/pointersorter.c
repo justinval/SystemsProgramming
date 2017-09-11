@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 
-void main(char* str) 
+int main (int argc, char *argv[]) 
 {
-    printf("%s", str);
+    printf("%s", argv[1]);
 }
