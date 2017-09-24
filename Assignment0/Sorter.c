@@ -18,7 +18,7 @@ int main (int argc, char *argv[])
 		//Read next line of CSV file into str[100]
 		char str[100];
 		gets(str);
-		printf("%s", str);
+		printf("%s \n", str);
 
 		return 0;
     }
