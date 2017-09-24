@@ -20,7 +20,7 @@ int main (int argc, char *argv[])
 		scanf("%s", str);
 
 		//Loops until scanf is unsuccessful/reaches EOF
-		while (scanf("%s", str) < 0)
+		while (scanf("%s", str) > 0)
 		{
 			printf("%s \n", str);
 		}
