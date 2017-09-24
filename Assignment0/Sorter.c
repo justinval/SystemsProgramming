@@ -15,11 +15,15 @@ int main (int argc, char *argv[])
 			return 0;
 		}
 
-		//Read next line of CSV file into str[100]
+		//Read format line of CSV file into str[100]
 		char str[2000];
-		gets(str);
-		gets(str);
-		printf("%s \n", str);
+		scanf("%s", str);
+
+		//Loops until scanf is unsuccessful/reaches EOF
+		while (scanf("%s", str) < 0)
+		{
+			printf("%s \n", str);
+		}
 
 		return 0;
     }
