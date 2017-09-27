@@ -59,7 +59,7 @@ void parseMovie (char str[], Movie *ptr)
 	//ptr->director_name = token;
 	strcpy(ptr->director_name, token);
 	token = strtok(NULL, s);
-	ptr->num_critic_for_reviews = (int)token;
+	ptr->num_critic_for_reviews = atoi(token);
 	token = strtok(NULL, s);
 	ptr->duration;
 	token = strtok(NULL, s);
