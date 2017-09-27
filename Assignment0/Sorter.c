@@ -46,7 +46,9 @@ int main (int argc, char *argv[])
 }
 
 void parseMovie (char str[], Movie *ptr)
-{
+{	
+	printf("%s \n", str);
+
 	const char s[2] = ",";
 	char *token;
 
@@ -58,10 +60,9 @@ void parseMovie (char str[], Movie *ptr)
 	//ptr->director_name = token;
 	strcpy(ptr->director_name, token);
 	token = strtok(NULL, s);
+	printf("test \n");	
 	ptr->num_critic_for_reviews = atoi(token);
 	token = strtok(NULL, s);
-
-	printf("test \n");	
 	ptr->duration;
 	token = strtok(NULL, s);
 	ptr->director_facebook_likes;
