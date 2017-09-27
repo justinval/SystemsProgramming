@@ -33,12 +33,11 @@ int main (int argc, char *argv[])
 				&ptr->facenumber_in_poster, &ptr->plot_keywords, &ptr->movie_imbd_link, &ptr->num_user_for_reviews,
 				&ptr->language, &ptr->country, &ptr->content_rating, &ptr->budget, &ptr->title_year, &ptr->actor_2_facebook_likes,
 				&ptr->imbd_score, &ptr->aspect_ratio, &ptr->movie_facebook_likes) > 0)
-		{		
-			printf("test: %i \n", numOfMovies);			
+		{					
 			movieList[numOfMovies] = ptr;
 			numOfMovies++;
+			printMovie(movieList[numOfMovies]);
 		}
-
 		return 0;
     }
 
@@ -48,4 +47,8 @@ int main (int argc, char *argv[])
     	printf("Invalid number of inputs. Please try again. \n");
     	return 0;
     }
+}
+
+void printMovie (Movie *ptr) {
+	printf("Movie title: %s | Direcotr Name: %s", ptr->movie_title, ptr->director_name);
 }
