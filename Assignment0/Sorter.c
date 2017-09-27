@@ -34,7 +34,7 @@ int main (int argc, char *argv[])
 				&ptr->language, &ptr->country, &ptr->content_rating, &ptr->budget, &ptr->title_year, &ptr->actor_2_facebook_likes,
 				&ptr->imbd_score, &ptr->aspect_ratio, &ptr->movie_facebook_likes) > 0)
 		{		
-			printf("test\n");			
+			printf("test: %i \n", numOfMovies);			
 			movieList[numOfMovies] = ptr;
 			numOfMovies++;
 		}
