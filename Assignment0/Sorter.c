@@ -21,21 +21,17 @@ int main (int argc, char *argv[])
 		scanf("%s", str);				
 		
 		//Initializes ptr and movieList
-		Movie *ptr = (Movie *)malloc(sizeof(Movie));
+		Movie *ptr;
 		Movie **movieList = (Movie **)malloc(MAX * sizeof(Movie *));
 		int numOfMovies = 0;
 
 		//Loops until scanf is unsuccessful/reaches EOF
-		while (scanf("%s,%s,%i,%i,%i,%i,%s,%i,%i,%s,%s,%s,%i,%i,%s,%i,%s,%s,%i,%s,%s,%s,%i,%i,%i,%f,%f,%i",
-				&ptr->color, &ptr->director_name, &ptr->num_critic_for_reviews, &ptr->duration, &ptr->director_facebook_likes,
-				&ptr->actor_3_facebook_likes, &ptr->actor_2_name, &ptr->actor_1_facecbook_likes, &ptr->gross, &ptr->genres,
-				&ptr->actor_1_name, &ptr->movie_title, &ptr->num_voted_users, &ptr->cast_total_facebook_likes, &ptr->actor_3_name,
-				&ptr->facenumber_in_poster, &ptr->plot_keywords, &ptr->movie_imbd_link, &ptr->num_user_for_reviews,
-				&ptr->language, &ptr->country, &ptr->content_rating, &ptr->budget, &ptr->title_year, &ptr->actor_2_facebook_likes,
-				&ptr->imbd_score, &ptr->aspect_ratio, &ptr->movie_facebook_likes) > 0)
-		{					
+		while (scanf("%s", str) > 0)
+		{			
+			ptr = (Movie *)malloc(sizeof(Movie));
+			parseMovie(ptr);		
 			movieList[numOfMovies] = ptr;
-			printf("test %i %s %s %i \n", ptr, ptr->color, ptr->director_name, ptr->num_critic_for_reviews);				
+			//printf("test %i %s %s %i \n", ptr, ptr->color, ptr->director_name, ptr->num_critic_for_reviews);				
 			printMovie(movieList[numOfMovies]);
 			numOfMovies++;
 		}
@@ -50,13 +46,75 @@ int main (int argc, char *argv[])
     }
 }
 
-void parseMovie (char str[], Movie **movieList)
+void parseMovie (char str[], Movie *ptr)
 {
+	const char s[2] = ",";
+	char *token;
+
+	//Initializes all fields
+	token = strtok(str, s);
+	ptr->color = token;
+	token = strtok(NULL, s);
+	ptr->director_name = token;
+	token = strtok(NULL, s);
+	ptr->num_critic_for_reviews = token;
+	token = strtok(NULL, s);
+	ptr->duration;
+	token = strtok(NULL, s);
+	ptr->director_facebook_likes;
+	token = strtok(NULL, s);
+	ptr->actor_3_facebook_likes;
+	token = strtok(NULL, s);
+	ptr->actor_2_name;
+	token = strtok(NULL, s);
+	ptr->actor_1_facecbook_likes;
+	token = strtok(NULL, s);
+	ptr->gross;
+	token = strtok(NULL, s);
+	ptr->genres;
+	token = strtok(NULL, s);
+	ptr->actor_1_name;
+	token = strtok(NULL, s);
+	ptr->movie_title;
+	token = strtok(NULL, s);
+	ptr->num_voted_users;
+	token = strtok(NULL, s);
+	ptr->cast_total_facebook_likes;
+	token = strtok(NULL, s);
+	ptr->actor_3_name;
+	token = strtok(NULL, s);
+	ptr->facenumber_in_poster;
+	token = strtok(NULL, s);
+	ptr->plot_keywords;
+	token = strtok(NULL, s);
+	ptr->movie_imbd_link;
+	token = strtok(NULL, s);
+	ptr->num_user_for_reviews;
+	token = strtok(NULL, s);
+	ptr->language;
+	token = strtok(NULL, s);
+	ptr->country;
+	token = strtok(NULL, s);
+	ptr->content_rating;
+	token = strtok(NULL, s);
+	ptr->budget;
+	token = strtok(NULL, s);
+	ptr->title_year;
+	token = strtok(NULL, s);
+	ptr->actor_2_facebook_likes;
+	token = strtok(NULL, s);
+	ptr->imbd_score;
+	token = strtok(NULL, s);
+	ptr->aspect_ratio;
+	token = strtok(NULL, s);
+	ptr->movie_facebook_likes;
+
 	return;
 }
 
 void printMovie (Movie *ptr)
 {	
 	printf("Movie title: %s | Direcotr Name: %s \n", ptr->movie_title, ptr->director_name);
+	printf("____________________________________\n")
 	return;
 }
