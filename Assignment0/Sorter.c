@@ -10,7 +10,7 @@ int main (int argc, char *argv[])
 	//Check to see if there is the proper number of params
 	if (argc == 3) 
 	{	 
-		printf("test");		
+		printf("test\n");		
 		//Check to see if 1st param is "-c"
 		if (strcmp(argv[1], "-c") != 0) {
 			printf("Can only sort by column. Please try again. \n");
