@@ -36,6 +36,7 @@ int main (int argc, char *argv[])
 		{					
 			movieList[numOfMovies] = ptr;
 			numOfMovies++;
+			printf("test");
 			printMovie(movieList[numOfMovies]);
 		}
 		return 0;
@@ -49,7 +50,6 @@ int main (int argc, char *argv[])
     }
 }
 
-void printMovie (Movie *ptr) {
-	printf("test");
+void printMovie (Movie *ptr) {	
 	printf("Movie title: %s | Direcotr Name: %s", ptr->movie_title, ptr->director_name);
 }
