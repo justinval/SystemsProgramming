@@ -133,8 +133,8 @@ char *strtokPlus (char *str, const char *delim)
 
 	else 
 	{		
-		token = strtok(str, delim);
-		printf("%s \n", str);		
+		printf("%s \n", str);
+		token = strtok(str, delim);				
 		strcpy(str, strstr(str, delim));
 	}
 
