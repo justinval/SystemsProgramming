@@ -36,7 +36,7 @@ int main (int argc, char *argv[])
 		{					
 			movieList[numOfMovies] = ptr;
 			numOfMovies++;
-			printf("test %i %s %s\n", ptr, ptr->color, ptr->director_name);				
+			printf("test %i %s %s %i \n", ptr, ptr->color, ptr->director_name, ptr->num_critic_for_reviews);				
 			printMovie(movieList[numOfMovies]);
 		}
 		return 0;
