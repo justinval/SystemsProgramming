@@ -120,7 +120,7 @@ void printMovie (Movie *ptr)
 	return;
 }
 
-char *strtokPlus (char *str, char *delim) 
+char *strtokPlus (char *str, const char *delim) 
 {
 	char *token;
 
