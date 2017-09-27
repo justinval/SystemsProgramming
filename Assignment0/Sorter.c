@@ -26,7 +26,7 @@ int main (int argc, char *argv[])
 		int numOfMovies = 0;
 
 		//Loops until scanf is unsuccessful/reaches EOF
-		while (scanf("%s\n", str) > 0)
+		while (fgets(str, 2000, stdin))
 		{			
 			ptr = (Movie *)malloc(sizeof(Movie));
 			parseMovie(str, ptr);					
@@ -47,8 +47,6 @@ int main (int argc, char *argv[])
 
 void parseMovie (char str[], Movie *ptr)
 {	
-	printf("%s \n", str);
-
 	const char s[2] = ",";
 	char *token;
 
