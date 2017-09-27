@@ -3,7 +3,7 @@
 #include <string.h>
 #include <ctype.h>
 #include "Sorter.h"
-#define MAX = 10000
+#define MAX 10000
 
 int main (int argc, char *argv[]) 
 {
