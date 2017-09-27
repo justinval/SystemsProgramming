@@ -134,7 +134,7 @@ char *strtokPlus (char *str, const char *delim)
 	else 
 	{		
 		token = " ";			
-		strcpy(str, strstr(str, delim));
+		strcpy(str, (strstr(str, delim)+1));
 		printf("%s \n", str);
 	}
 
