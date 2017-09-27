@@ -7,7 +7,7 @@
 
 int main (int argc, char *argv[]) 
 {
-	printf("test");	
+	printf("test\n");	
 	//Check to see if there is the proper number of params
 	if (argc == 3) 
 	{	 		
