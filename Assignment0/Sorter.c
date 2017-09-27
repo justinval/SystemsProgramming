@@ -19,13 +19,12 @@ int main (int argc, char *argv[])
 		//Read format line of CSV file into str[100]
 		char str[2000];
 		scanf("%s", str);				
-
-		printf("test\n");		
+		
 		//Initializes ptr and movieList
 		Movie *ptr = (Movie *)malloc(sizeof(Movie));
 		Movie **movieList = (Movie **)malloc(MAX * sizeof(Movie *));
 		int numOfMovies = 0;
-
+		printf("test\n");
 		//Loops until scanf is unsuccessful/reaches EOF
 		while (scanf("%s,%s,%i,%i,%i,%i,%s,%i,%i,%s,%s,%s,%i,%i,%s,%i,%s,%s,%i,%s,%s,%s,%i,%i,%i,%f,%f,%i",
 				&ptr->color, &ptr->director_name, &ptr->num_critic_for_reviews, &ptr->duration, &ptr->director_facebook_likes,
