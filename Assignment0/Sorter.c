@@ -24,7 +24,7 @@ int main (int argc, char *argv[])
 		Movie *ptr = (Movie *)malloc(sizeof(Movie));
 		Movie **movieList = (Movie **)malloc(MAX * sizeof(Movie *));
 		int numOfMovies = 0;
-		printf("test\n");
+
 		//Loops until scanf is unsuccessful/reaches EOF
 		while (scanf("%s,%s,%i,%i,%i,%i,%s,%i,%i,%s,%s,%s,%i,%i,%s,%i,%s,%s,%i,%s,%s,%s,%i,%i,%i,%f,%f,%i",
 				&ptr->color, &ptr->director_name, &ptr->num_critic_for_reviews, &ptr->duration, &ptr->director_facebook_likes,
@@ -34,7 +34,7 @@ int main (int argc, char *argv[])
 				&ptr->language, &ptr->country, &ptr->content_rating, &ptr->budget, &ptr->title_year, &ptr->actor_2_facebook_likes,
 				&ptr->imbd_score, &ptr->aspect_ratio, &ptr->movie_facebook_likes) > 0)
 		{		
-
+			printf("test\n");			
 			movieList[numOfMovies] = ptr;
 			numOfMovies++;
 		}
