@@ -11,3 +11,38 @@
 
 //Suggestion: prototype a mergesort function
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct Movies {
+	char color[10];
+	char director_name[30];
+	int	num_critic_for_reviews;
+	int duration;
+	int director_facebook_likes;
+	int actor_3_facebook_likes;
+	char actor_2_name[30];
+	int actor_1_facecbook_likes;
+	int gross;
+	char genres[20];
+	char actor_1_name[30];
+	char movie_title[30];
+	int num_voted_users;
+	int cast_total_facebook_likes;
+	char actor_3_name[30];
+	int facenumber_in_poster;
+	char plot_keywords[50];
+	char movie_imbd_link[150];
+	int num_user_for_reviews;
+	char language[20];
+	char country[20];
+	char content_rating[20];
+	int budget;
+	int title_year;
+	int actor_2_facebook_likes;
+	float imbd_score;
+	float aspect_ratio;
+	int movie_facebook_likes;
+} Movie;
+
