@@ -119,8 +119,8 @@ void printMovie (Movie *ptr)
 	return;
 }
 
-char *strtokPlus (char *str, char *delim) {
-	
+char *strtokPlus (char *str, char *delim) 
+{
 	char *token;
 
 	//Check to see if NULL token
