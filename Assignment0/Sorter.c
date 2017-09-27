@@ -50,5 +50,6 @@ int main (int argc, char *argv[])
 }
 
 void printMovie (Movie *ptr) {
+	printf("test");
 	printf("Movie title: %s | Direcotr Name: %s", ptr->movie_title, ptr->director_name);
 }
