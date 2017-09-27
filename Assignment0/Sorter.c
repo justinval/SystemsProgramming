@@ -11,7 +11,8 @@ int main (int argc, char *argv[])
 	if (argc == 3) 
 	{	 		
 		//Check to see if 1st param is "-c"
-		if (strcmp(argv[1], "-c") != 0) {
+		if (strcmp(argv[1], "-c") != 0) 
+		{
 			printf("Can only sort by column. Please try again. \n");
 			return 0;
 		}
