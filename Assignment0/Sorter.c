@@ -120,21 +120,3 @@ void printMovie (Movie *ptr)
 	return;
 }
 
-char *strtokPlus (char *str, char *delim) 
-{
-	char *token;
-
-	//Check to see if NULL token
-	if (str[0] == ',') 
-	{
-		token = " ";
-	}
-
-	else 
-	{		
-		token = strtok(str, delim);
-		str = strstr(str, delim);
-	}
-
-	return token;
-}
