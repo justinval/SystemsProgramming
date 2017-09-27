@@ -32,7 +32,7 @@ typedef struct Movies {
 	int cast_total_facebook_likes;
 	char actor_3_name[30];
 	int facenumber_in_poster;
-	char plot_keywords[50];
+	char plot_keywords[100];
 	char movie_imbd_link[150];
 	int num_user_for_reviews;
 	char language[20];
