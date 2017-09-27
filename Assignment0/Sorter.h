@@ -46,3 +46,4 @@ typedef struct Movies {
 	int movie_facebook_likes;
 } Movie;
 
+void printMovie(Movie *ptr); 
