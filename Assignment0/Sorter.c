@@ -29,7 +29,6 @@ int main (int argc, char *argv[])
 		//Loops until scanf is unsuccessful/reaches EOF
 		while (fgets(str, 2000, stdin))
 		{			
-			printf("%s \n", str);
 			ptr = (Movie *)malloc(sizeof(Movie));
 			parseMovie(str, ptr);					
 			movieList[numOfMovies] = ptr;		
@@ -146,6 +145,7 @@ char *strtokPlus (char *str, const char *delim)
 		} 			
 		
 		printf("%s \n", str);
+		printf("TOKEN: %s", token);
 	}
 
 	return token;
