@@ -48,64 +48,65 @@ int main (int argc, char *argv[])
 void parseMovie (char str[], Movie *ptr)
 {	
 	const char s[2] = ",";
+	char *temp = str;
 	char *token;
 
 	//Initializes all fields
-	token = strtok(str, s);
+	token = strtokPlus(temp, s);
 	strcpy(ptr->color, token);
-	token = strtok(NULL, s);
+	token = strtokPlus(temp, s);
 	strcpy(ptr->director_name, token);
-	token = strtok(NULL, s);
+	token = strtokPlus(temp, s);
 	ptr->num_critic_for_reviews = atoi(token);
-	token = strtok(NULL, s);
+	token = strtokPlus(temp, s);
 	ptr->duration = atoi(token);
-	token = strtok(NULL, s);
+	token = strtokPlus(temp, s);
 	ptr->director_facebook_likes = atoi(token);
-	token = strtok(NULL, s);
+	token = strtokPlus(temp, s);
 	ptr->actor_3_facebook_likes = atoi(token);
-	token = strtok(NULL, s);
+	token = strtokPlus(temp, s);
 	strcpy(ptr->actor_2_name, token);
-	token = strtok(NULL, s);
+	token = strtokPlus(temp, s);
 	ptr->actor_1_facecbook_likes = atoi(token);
-	token = strtok(NULL, s);
+	token = strtokPlus(temp, s);
 	ptr->gross = atoi(token);
-	token = strtok(NULL, s);
+	token = strtokPlus(temp, s);
 	strcpy(ptr->genres, token);
-	token = strtok(NULL, s);
+	token = strtokPlus(temp, s);
 	strcpy(ptr->actor_1_name, token);
-	token = strtok(NULL, s);
+	token = strtokPlus(temp, s);
 	strcpy(ptr->movie_title, token);
-	token = strtok(NULL, s);
+	token = strtokPlus(temp, s);
 	ptr->num_voted_users = atoi(token);
-	token = strtok(NULL, s);
+	token = strtokPlus(temp, s);
 	ptr->cast_total_facebook_likes = atoi(token);
-	token = strtok(NULL, s);
+	token = strtokPlus(temp, s);
 	strcpy(ptr->actor_3_name, token);
-	token = strtok(NULL, s);
+	token = strtokPlus(temp, s);
 	ptr->facenumber_in_poster = atoi(token);
-	token = strtok(NULL, s);
+	token = strtokPlus(temp, s);
 	strcpy(ptr->plot_keywords, token);
-	token = strtok(NULL, s);
+	token = strtokPlus(temp, s);
 	strcpy(ptr->movie_imbd_link, token);
-	token = strtok(NULL, s);
+	token = strtokPlus(temp, s);
 	ptr->num_user_for_reviews = atoi(token);
-	token = strtok(NULL, s);
+	token = strtokPlus(temp, s);
 	strcpy(ptr->language, token);
-	token = strtok(NULL, s);
+	token = strtokPlus(temp, s);
 	strcpy(ptr->country, token);
-	token = strtok(NULL, s);
+	token = strtokPlus(temp, s);
 	strcpy(ptr->content_rating, token);
-	token = strtok(NULL, s);
+	token = strtokPlus(temp, s);
 	ptr->budget = atoi(token);
-	token = strtok(NULL, s);
+	token = strtokPlus(temp, s);
 	ptr->title_year = atoi(token);
-	token = strtok(NULL, s);
+	token = strtokPlus(temp, s);
 	ptr->actor_2_facebook_likes = atoi(token);
-	token = strtok(NULL, s);
+	token = strtokPlus(temp, s);
 	ptr->imbd_score = atof(token);
-	token = strtok(NULL, s);
+	token = strtokPlus(temp, s);
 	ptr->aspect_ratio = atof(token);
-	token = strtok(NULL, s);
+	token = strtokPlus(temp, s);
 	ptr->movie_facebook_likes = atoi(token);
 
 	return;
@@ -113,7 +114,24 @@ void parseMovie (char str[], Movie *ptr)
 
 void printMovie (Movie *ptr)
 {	
-	printf("Movie title: %s | Direcotr Name: %s | # of Critics: %i\n", ptr->movie_title, ptr->director_name, ptr->num_critic_for_reviews);
+	printf("Movie title: %s | Director Name: %s | # of Critics: %i\n", ptr->movie_title, ptr->director_name, ptr->num_critic_for_reviews);
 	printf("____________________________________\n");
 	return;
+}
+
+char *strtokPlus (char *str, char *delim) {
+	
+	char *token;
+
+	//Check to see if NULL token
+	if (str[0] == ',') 
+	{
+		token = " ";
+	}
+
+	else 
+	{		
+		token = strtok(str, delim);
+		str = strstr(str, delim);
+	}
 }
