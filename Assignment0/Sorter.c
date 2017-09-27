@@ -7,6 +7,7 @@
 
 int main (int argc, char *argv[]) 
 {
+	printf("test");	
 	//Check to see if there is the proper number of params
 	if (argc == 3) 
 	{	 		
@@ -36,7 +37,6 @@ int main (int argc, char *argv[])
 		{					
 			movieList[numOfMovies] = ptr;
 			numOfMovies++;
-			printf("test");
 			printMovie(movieList[numOfMovies]);
 		}
 		return 0;
@@ -50,6 +50,8 @@ int main (int argc, char *argv[])
     }
 }
 
-void printMovie (Movie *ptr) {	
+void printMovie (Movie *ptr)
+{	
 	printf("Movie title: %s | Direcotr Name: %s", ptr->movie_title, ptr->director_name);
+	return;
 }
