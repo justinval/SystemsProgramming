@@ -10,6 +10,7 @@ int main (int argc, char *argv[])
 	//Check to see if there is the proper number of params
 	if (argc == 3) 
 	{	 
+		printf("test");		
 		//Check to see if 1st param is "-c"
 		if (strcmp(argv[1], "-c") != 0) {
 			printf("Can only sort by column. Please try again. \n");
@@ -18,7 +19,6 @@ int main (int argc, char *argv[])
 
 		//Read format line of CSV file into str[100]
 		char str[2000];
-		printf("test");
 		scanf("%s", str);				
 
 		//Initializes ptr and movieList
