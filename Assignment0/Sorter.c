@@ -29,8 +29,7 @@ int main (int argc, char *argv[])
 		while (scanf("%s", str) > 0)
 		{			
 			ptr = (Movie *)malloc(sizeof(Movie));
-			parseMovie(str, ptr);
-			printf("test \n");					
+			parseMovie(str, ptr);					
 			movieList[numOfMovies] = ptr;		
 			printMovie(movieList[numOfMovies]);
 			numOfMovies++;
@@ -58,6 +57,7 @@ void parseMovie (char str[], Movie *ptr)
 	token = strtok(NULL, s);
 	//ptr->director_name = token;
 	strcpy(ptr->director_name, token);
+	printf("test \n");
 	token = strtok(NULL, s);
 	ptr->num_critic_for_reviews = atoi(token);
 	token = strtok(NULL, s);
