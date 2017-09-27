@@ -28,9 +28,9 @@ int main (int argc, char *argv[])
 		//Loops until scanf is unsuccessful/reaches EOF
 		while (scanf("%s", str) > 0)
 		{			
-			printf("test \n");
 			ptr = (Movie *)malloc(sizeof(Movie));
-			parseMovie(str, ptr);		
+			parseMovie(str, ptr);
+			printf("test \n");					
 			movieList[numOfMovies] = ptr;		
 			printMovie(movieList[numOfMovies]);
 			numOfMovies++;
