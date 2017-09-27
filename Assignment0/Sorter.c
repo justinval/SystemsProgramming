@@ -50,7 +50,10 @@ int main (int argc, char *argv[])
     }
 }
 
-void parseMovie ()
+void parseMovie (char str[], Movie **movieList)
+{
+	return;
+}
 
 void printMovie (Movie *ptr)
 {	

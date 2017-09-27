@@ -46,4 +46,5 @@ typedef struct Movies {
 	int movie_facebook_likes;
 } Movie;
 
-void printMovie(Movie *ptr); 
+void parseMovie (char str[], Movie **movieList);
+void printMovie (Movie *ptr); 
