@@ -60,8 +60,9 @@ void parseMovie (char str[], Movie *ptr)
 	token = strtok(NULL, s);
 	ptr->num_critic_for_reviews = atoi(token);
 	token = strtok(NULL, s);
+
+	printf("test \n");	
 	ptr->duration;
-	printf("test \n");
 	token = strtok(NULL, s);
 	ptr->director_facebook_likes;
 	token = strtok(NULL, s);
