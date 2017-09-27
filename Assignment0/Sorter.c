@@ -18,7 +18,7 @@ int main (int argc, char *argv[])
 
 		//Read format line of CSV file into str[100]
 		char str[2000];
-		scanf("%s", str);				
+		scanf("%s\n", str);				
 		
 		//Initializes ptr and movieList
 		Movie *ptr;
@@ -26,7 +26,7 @@ int main (int argc, char *argv[])
 		int numOfMovies = 0;
 
 		//Loops until scanf is unsuccessful/reaches EOF
-		while (scanf("%s", str) > 0)
+		while (scanf("%s\n", str) > 0)
 		{			
 			ptr = (Movie *)malloc(sizeof(Movie));
 			parseMovie(str, ptr);					
