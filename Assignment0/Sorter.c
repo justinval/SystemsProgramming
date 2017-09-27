@@ -116,7 +116,7 @@ void parseMovie (char str[], Movie *ptr)
 
 void printMovie (Movie *ptr)
 {	
-	printf("Movie title: %s | Direcotr Name: %s \n", ptr->movie_title, ptr->director_name);
+	printf("Movie title: %s | Direcotr Name: %s | # of Critics: %i\n", ptr->movie_title, ptr->director_name, ptr->num_critic_for_reviews);
 	printf("____________________________________\n");
 	return;
 }
