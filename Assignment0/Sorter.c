@@ -123,7 +123,9 @@ void printMovie (Movie *ptr)
 
 char *strtokPlus (char *str, const char *delim) 
 {
+	int index;
 	char *token;
+	char *temp;
 
 	//Check to see if NULL token
 	if (str[0] == ',') 
@@ -133,8 +135,16 @@ char *strtokPlus (char *str, const char *delim)
 
 	else 
 	{		
-		token = " ";			
-		strcpy(str, (strstr(str, delim)+1));
+		temp = (strstr(str, delim));
+		index = strlen(str) - temp; 
+		memcpy(token, str, index);
+
+		//If str still has commas
+		if (temp != NULL)
+		{
+			strcpy(str, temp + 1);	
+		} 			
+		
 		printf("%s \n", str);
 	}
 
