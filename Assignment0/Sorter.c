@@ -136,7 +136,7 @@ char *strtokPlus (char *str, const char *delim)
 	else 
 	{		
 		temp = (strstr(str, delim));
-		index = (int)strlen(str) - temp; 
+		index = (int)strlen(str) - (int)temp; 
 		memcpy(token, str, index);
 
 		//If str still has commas
