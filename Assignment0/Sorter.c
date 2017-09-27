@@ -18,8 +18,8 @@ int main (int argc, char *argv[])
 
 		//Read format line of CSV file into str[100]
 		char str[2000];
-		scanf("%s", str);
-		printf("test");		
+		printf("test");
+		scanf("%s", str);				
 
 		//Initializes ptr and movieList
 		Movie *ptr = (Movie *)malloc(sizeof(Movie));
