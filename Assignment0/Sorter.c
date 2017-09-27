@@ -35,9 +35,9 @@ int main (int argc, char *argv[])
 				&ptr->imbd_score, &ptr->aspect_ratio, &ptr->movie_facebook_likes) > 0)
 		{					
 			movieList[numOfMovies] = ptr;
-			numOfMovies++;
 			printf("test %i %s %s %i \n", ptr, ptr->color, ptr->director_name, ptr->num_critic_for_reviews);				
 			printMovie(movieList[numOfMovies]);
+			numOfMovies++;
 		}
 		return 0;
     }
@@ -50,8 +50,10 @@ int main (int argc, char *argv[])
     }
 }
 
+void parseMovie ()
+
 void printMovie (Movie *ptr)
 {	
-	printf("Movie title: %s | Direcotr Name: %s", ptr->movie_title, ptr->director_name);
+	printf("Movie title: %s | Direcotr Name: %s \n", ptr->movie_title, ptr->director_name);
 	return;
 }
