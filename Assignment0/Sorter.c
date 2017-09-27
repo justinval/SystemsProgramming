@@ -28,10 +28,10 @@ int main (int argc, char *argv[])
 		//Loops until scanf is unsuccessful/reaches EOF
 		while (scanf("%s", str) > 0)
 		{			
+			printf("test \n");
 			ptr = (Movie *)malloc(sizeof(Movie));
 			parseMovie(str, ptr);		
-			movieList[numOfMovies] = ptr;
-			//printf("test %i %s %s %i \n", ptr, ptr->color, ptr->director_name, ptr->num_critic_for_reviews);				
+			movieList[numOfMovies] = ptr;		
 			printMovie(movieList[numOfMovies]);
 			numOfMovies++;
 		}
