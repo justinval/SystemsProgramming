@@ -134,4 +134,6 @@ char *strtokPlus (char *str, char *delim) {
 		token = strtok(str, delim);
 		str = strstr(str, delim);
 	}
+
+	return token;
 }
