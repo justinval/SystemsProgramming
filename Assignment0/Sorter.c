@@ -53,11 +53,13 @@ void parseMovie (char str[], Movie *ptr)
 
 	//Initializes all fields
 	token = strtok(str, s);
-	ptr->color = token;
+	//ptr->color = token;
+	strcpy(ptr->color, token);
 	token = strtok(NULL, s);
-	ptr->director_name = token;
+	//ptr->director_name = token;
+	strcpy(ptr->director_name, token);
 	token = strtok(NULL, s);
-	ptr->num_critic_for_reviews = token;
+	ptr->num_critic_for_reviews = (int)token;
 	token = strtok(NULL, s);
 	ptr->duration;
 	token = strtok(NULL, s);
@@ -115,6 +117,6 @@ void parseMovie (char str[], Movie *ptr)
 void printMovie (Movie *ptr)
 {	
 	printf("Movie title: %s | Direcotr Name: %s \n", ptr->movie_title, ptr->director_name);
-	printf("____________________________________\n")
+	printf("____________________________________\n");
 	return;
 }
