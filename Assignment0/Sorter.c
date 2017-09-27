@@ -134,6 +134,7 @@ char *strtokPlus (char *str, const char *delim)
 	{		
 		token = strtok(str, delim);
 		*str = strstr(str, delim);
+		printf("%s \n", str);
 	}
 
 	return token;
