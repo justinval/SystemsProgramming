@@ -124,6 +124,7 @@ char *strtokPlus (char *str, const char *delim)
 {
 	int index;
 	char *token;
+	free(token);
 	char *temp;
 
 	//Check to see if NULL token
