@@ -143,10 +143,10 @@ char *strtokPlus (char *str, const char *delim)
 		if (temp != NULL)
 		{
 			strcpy(str, temp + 1);	
-		} 			
-		
-		printf("%s \n", str);
+		}
+
 		printf("TOKEN: %s \n", token);
+		printf("%s \n", str);		
 	}
 
 	return token;
