@@ -135,14 +135,22 @@ char *strtokPlus (char *str, const char *delim)
 	else 
 	{		
 		temp = (strstr(str, delim));
-		index = temp - str;
-		token = (char *)malloc(index * sizeof(char)); 
-		memcpy(token, str, index);
 
 		//If str still has commas
 		if (temp != NULL)
 		{
+			index = temp - str;
+			token = (char *)malloc(index * sizeof(char)); 
+			memcpy(token, str, index);			
 			strcpy(str, temp + 1);	
+		}
+
+		//Else, tokenize the remaining string
+		else 
+		{
+			index = strlen(str);
+			token = (char *)malloc(index* sizeof(char));
+			memcpy(token, str, index);
 		}
 
 		printf("TOKEN: %s \n", token);
