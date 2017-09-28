@@ -148,5 +148,6 @@ char *strtokPlus (char *str, const char *delim)
 		printf("TOKEN: %s \n", token);
 	}
 
+	free(token);
 	return token;
 }
