@@ -132,7 +132,7 @@ char *strtokPlus (char *str, const char *delim)
 	{
 		token = (char *)malloc(sizeof(char));
 		token = " ";
-		
+
 		strcpy(str, str + 1);
 	}
 
@@ -157,8 +157,8 @@ char *strtokPlus (char *str, const char *delim)
 			memcpy(token, str, index);
 		}
 
-		//printf("TOKEN: %s \n", token);
-		//printf("%s \n", str);		
+		printf("TOKEN: %s \n", token);
+		printf("%s \n", str);		
 	}
 
 	return token;
