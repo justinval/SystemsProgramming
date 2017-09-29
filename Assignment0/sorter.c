@@ -138,7 +138,7 @@ char *strtokPlus (char *str, const char *delim)
 
 	else 
 	{		
-		strcpy(temp, (strstr(str, delim));
+		strcpy(temp, (strstr(str, delim)));
 
 		//If str still has commas
 		if (temp != NULL)
