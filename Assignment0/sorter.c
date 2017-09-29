@@ -29,11 +29,11 @@ int main (int argc, char *argv[])
 		//Loops until scanf is unsuccessful/reaches EOF
 		while (fgets(str, 2000, stdin))
 		{	
-			printf("%s", str);		
+			printf("%s \n", str);		
 			ptr = (Movie *)malloc(sizeof(Movie));
 			parseMovie(str, ptr);					
 			movieList[numOfMovies] = ptr;		
-			//printMovie(movieList[numOfMovies]);
+			printMovie(movieList[numOfMovies]);
 			numOfMovies++;
 		}
 		return 0;
