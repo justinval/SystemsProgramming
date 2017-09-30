@@ -17,7 +17,6 @@
 
 int main (int argc, char *argv[]) 
 {
-	printf("TEST! \n");
 	//Check to see if there is the proper number of params
 	if (argc == 3) 
 	{	 		
@@ -29,10 +28,8 @@ int main (int argc, char *argv[])
 		}
 
 		//Read format line of CSV file into str[100]
-		printf("TEST! \n");
 		char str[2000];
 		scanf("%s\n", str);				
-		printf("TEST! \n");
 
 		//Initializes ptr and movieList
 		Movie *ptr;
@@ -65,11 +62,13 @@ int main (int argc, char *argv[])
 
 void parseMovie (char str[], Movie *ptr)
 {	
+	printf("TEST 1! \n");
 	const char s[2] = ",";
 	char *temp;
 	char *token;
+	printf("TEST 2! \n");
 	strcpy(temp, str);
-
+	printf("TEST 3! \n");
 	//Initializes all fields within the Movie struct
 	//token = strtokPlus(temp, s);
 	// strcpy(ptr->color, token);
