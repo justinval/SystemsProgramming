@@ -155,13 +155,12 @@ consecutive delims (',')*/
 char *strtokPlus (char *str, const char *delim) 
 {
 	int index;
-	char *token;
 	char *temp = (char *)malloc(strlen(str) * sizeof(char));
 
 	//Check to see if NULL token
 	if (str[0] == ',') 
 	{
-		token = (char *)malloc(2 * sizeof(char));
+		char *token = (char *)malloc(2 * sizeof(char));
 		token = " ";
 
 		strcpy(str, str + 1);
@@ -176,7 +175,7 @@ char *strtokPlus (char *str, const char *delim)
 		if (temp != NULL)
 		{
 			index = temp - str;
-			token = (char *)malloc(index * sizeof(char)); 
+			char *token = (char *)malloc(index * sizeof(char)); 
 			memcpy(token, str, index);			
 			strcpy(str, temp + 1);	
 		}
@@ -185,7 +184,7 @@ char *strtokPlus (char *str, const char *delim)
 		else 
 		{
 			index = strlen(str);
-			token = (char *)malloc(index* sizeof(char));
+			char *token = (char *)malloc(index * sizeof(char));
 			memcpy(token, str, index);
 		}
 
