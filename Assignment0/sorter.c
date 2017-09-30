@@ -30,7 +30,8 @@ int main (int argc, char *argv[])
 		//Read format line of CSV file into str[100]
 		char *str = (char *)malloc(2000 * sizeof(char));
 		scanf("%s\n", str);				
-		
+		printf("TEST! \n");
+
 		//Initializes ptr and movieList
 		Movie *ptr;
 		Movie **movieList = (Movie **)malloc(MAX * sizeof(Movie *));
