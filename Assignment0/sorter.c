@@ -134,20 +134,20 @@ void printMovie (Movie *ptr)
 	return;
 }
 
-void printMovieFull (Movie *ptr)
-{
-	printf("Color: %s | Director Name: %s | /# of Critics for Reviews: %i | Duration: %i | Director/'s Facebook Likes: %i |
-			Actor 3/'s Facebook Likes: %i | Actor 2/'s Name: %s | Actor 1/'s Facebook Likes: %i | Gross: %i | Genres: %s |
-			Actor 1/'s Name: %s | Movie Title: %s | /# of Voted Users: %i | Cast Total Facebook Likes: %i | Actor 3/'s Name: %s |
-			Face /# in Poster: %i | Plot Keywords: %s | Movie IMBD Link: %s | /# of Users for Reviews: %i | Language: %s | 
-			Country: %s | Content Rating: %s | Budget: %i | Title Year: %i | Actor 2/'s Facebook Likes: %i | IMBD Score: %f |
-			Aspect Ratio: %f | Movie/'s Facebook Likes: %i", ptr->color, ptr->director_name, ptr->num_critic_for_reviews, 
-			ptr->duration, ptr->director_facebook_likes, ptr->actor_3_facebook_likes, ptr->actor_2_name, ptr->actor_1_facecbook_likes, 
-			ptr->gross, ptr->genres, ptr->actor_1_name, ptr->movie_title, ptr->num_voted_users, ptr->cast_total_facebook_likes, 
-			ptr->actor_3_name, ptr->facenumber_in_poster, ptr->plot_keywords, ptr->movie_imbd_link, ptr->num_user_for_reviews, 
-			ptr->language, ptr->country, ptr->content_rating, ptr->budget, ptr->title_year, ptr->actor_2_facebook_likes, ptr->imbd_score, 
-			ptr->aspect_ratio, ptr->movie_facebook_likes);	
-}
+// void printMovieFull (Movie *ptr)
+// {
+// 	printf("Color: %s | Director Name: %s | /# of Critics for Reviews: %i | Duration: %i | Director/'s Facebook Likes: %i |
+// 			Actor 3/'s Facebook Likes: %i | Actor 2/'s Name: %s | Actor 1/'s Facebook Likes: %i | Gross: %i | Genres: %s |
+// 			Actor 1/'s Name: %s | Movie Title: %s | /# of Voted Users: %i | Cast Total Facebook Likes: %i | Actor 3/'s Name: %s |
+// 			Face /# in Poster: %i | Plot Keywords: %s | Movie IMBD Link: %s | /# of Users for Reviews: %i | Language: %s | 
+// 			Country: %s | Content Rating: %s | Budget: %i | Title Year: %i | Actor 2/'s Facebook Likes: %i | IMBD Score: %f |
+// 			Aspect Ratio: %f | Movie/'s Facebook Likes: %i", ptr->color, ptr->director_name, ptr->num_critic_for_reviews, 
+// 			ptr->duration, ptr->director_facebook_likes, ptr->actor_3_facebook_likes, ptr->actor_2_name, ptr->actor_1_facecbook_likes, 
+// 			ptr->gross, ptr->genres, ptr->actor_1_name, ptr->movie_title, ptr->num_voted_users, ptr->cast_total_facebook_likes, 
+// 			ptr->actor_3_name, ptr->facenumber_in_poster, ptr->plot_keywords, ptr->movie_imbd_link, ptr->num_user_for_reviews, 
+// 			ptr->language, ptr->country, ptr->content_rating, ptr->budget, ptr->title_year, ptr->actor_2_facebook_likes, ptr->imbd_score, 
+// 			ptr->aspect_ratio, ptr->movie_facebook_likes);	
+// }
 
 /*Created b/c regular strtok wouldn't take in to consideration 
 consecutive delims (',')*/
