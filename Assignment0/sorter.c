@@ -164,7 +164,7 @@ char *strtokPlus (char *str, const char *delim)
 	//Check to see if NULL token
 	if (str[0] == ',') 
 	{
-		token = (char *)malloc(sizeof(char));
+		token = (char *)malloc(2 * sizeof(char));
 		token = " ";
 
 		strcpy(str, str + 1);
