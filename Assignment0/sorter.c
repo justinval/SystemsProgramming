@@ -186,7 +186,8 @@ char *strtokPlus (char *str, const char *delim)
 		else 
 		{
 			index = strlen(str);
-			token = (char *)malloc(index* sizeof(char));
+			printf("%i \n", index);
+			token = (char *)malloc(index * sizeof(char));
 			memcpy(token, str, index);
 		}
 
