@@ -12,7 +12,7 @@
 #include <string.h>
 #include <ctype.h>
 #include "sorter.h"
-#include "mergesort.c"
+//#include "mergesort.c"
 #define MAX 10000
 
 int main (int argc, char *argv[]) 
@@ -48,7 +48,7 @@ int main (int argc, char *argv[])
 		}
 
 		//Mergesort list based off of field
-		mergeSort(movieList, 0, numOfMovies, argv[2]);
+		//mergeSort(movieList, 0, numOfMovies, argv[2]);
 		return 0;
     }
 
