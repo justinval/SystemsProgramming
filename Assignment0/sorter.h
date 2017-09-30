@@ -48,4 +48,5 @@ typedef struct Movies {
 
 void parseMovie (char str[], Movie *ptr);
 void printMovie (Movie *ptr); 
+void printMovieFull (Movie *ptr);
 char *strtokPlus (char *str, const char *delim);

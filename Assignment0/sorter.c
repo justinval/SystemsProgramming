@@ -1,8 +1,18 @@
+/*******
+*
+*
+*	A beautiful list sorter program written by
+*	Justin Valeroso & Tim Song
+*
+*
+*******/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
 #include "sorter.h"
+#include "sorter.c"
 #define MAX 10000
 
 int main (int argc, char *argv[]) 
@@ -36,6 +46,9 @@ int main (int argc, char *argv[])
 			printMovie(movieList[numOfMovies]);
 			numOfMovies++;
 		}
+
+		//Mergesort list based off of field
+		mergeSort(movieList, 0, numOfMovies, argv[2]);
 		return 0;
     }
 
@@ -50,10 +63,11 @@ int main (int argc, char *argv[])
 void parseMovie (char str[], Movie *ptr)
 {	
 	const char s[2] = ",";
-	char *temp = str;
+	char *temp;
 	char *token;
+	strcpy(temp, str);
 
-	//Initializes all fields
+	//Initializes all fields within the Movie struct
 	token = strtokPlus(temp, s);
 	strcpy(ptr->color, token);
 	token = strtokPlus(temp, s);
@@ -121,6 +135,23 @@ void printMovie (Movie *ptr)
 	return;
 }
 
+void printMovieFull (Movie *ptr)
+{
+	printf("Color: %s | Director Name: %s | # of Critifs for Reviews: %i | Duration: %i | Director's Facebook Likes: %i |
+			Actor 3's Facebook Likes: %i | Actor 2's Name: %s | Actor 1's Facebook Likes: %i | Gross: %i | Genres: %s |
+			Actor 1's Name: %s | Movie Title: %s | # of Voted Users: %i | Cast Total Facebook Likes: %i | Actor 3's Name: %s |
+			Face # in Poster: %i | Plot Keywords: %s | Movie IMBD Link: %s | # of Users for Reviews: %i | Language: %s | 
+			Country: %s | Content Rating: %s | Budget: %i | Title Year: %i | Actor 2's Facebook Likes: %i | IMBD Score: %f |
+			Aspect Ratio: %f | Movie's Facebook Likes: %i", ptr->color, ptr->director_name, ptr->num_critic_for_reviews, 
+			ptr->duration, ptr->director_facebook_likes, ptr->actor_3_facebook_likes, ptr->actor_2_name, ptr->actor_1_facecbook_likes, 
+			ptr->gross, ptr->genres, ptr->actor_1_name, ptr->movie_title, ptr->num_voted_users, ptr->cast_total_facebook_likes, 
+			ptr->actor_3_name, ptr->facenumber_in_poster, ptr->plot_keywords, ptr->movie_imbd_link, ptr->num_user_for_reviews, 
+			ptr->language, ptr->country, ptr->content_rating, ptr->budget, ptr->title_year, ptr->actor_2_facebook_likes, ptr->imbd_score, 
+			ptr->aspect_ratio, ptr->movie_facebook_likes);	
+}
+
+/*Created b/c regular strtok wouldn't take in to consideration 
+consecutive delims (',')*/
 char *strtokPlus (char *str, const char *delim) 
 {
 	int index;
@@ -136,11 +167,12 @@ char *strtokPlus (char *str, const char *delim)
 		strcpy(str, str + 1);
 	}
 
+	//If not NULL, tokenize the string until the next ','
 	else 
 	{		
 		strcpy(temp, (strstr(str, delim)));
 
-		//If str still has commas
+		//If str still has more values
 		if (temp != NULL)
 		{
 			index = temp - str;
@@ -149,7 +181,7 @@ char *strtokPlus (char *str, const char *delim)
 			strcpy(str, temp + 1);	
 		}
 
-		//Else, tokenize the remaining string
+		//If str doesn't have more values, tokenize the remaining string
 		else 
 		{
 			index = strlen(str);
@@ -159,6 +191,8 @@ char *strtokPlus (char *str, const char *delim)
 
 		printf("TOKEN: %s \n", token);
 		printf("%s \n", str);		
+
+		free(temp);
 	}
 
 	return token;
