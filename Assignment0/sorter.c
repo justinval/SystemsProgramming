@@ -12,7 +12,6 @@
 #include <string.h>
 #include <ctype.h>
 #include "sorter.h"
-#include "sorter.c"
 #define MAX 10000
 
 int main (int argc, char *argv[]) 
