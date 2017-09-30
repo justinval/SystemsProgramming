@@ -12,7 +12,7 @@
 #include <string.h>
 #include <ctype.h>
 #include "sorter.h"
-#include "mergeSort.c"
+#include "mergesort.c"
 #define MAX 10000
 
 int main (int argc, char *argv[]) 
