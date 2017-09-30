@@ -62,13 +62,10 @@ int main (int argc, char *argv[])
 
 void parseMovie (char str[], Movie *ptr)
 {	
-	printf("TEST 1! \n");
 	const char s[2] = ",";
 	char *temp = (char *)malloc(2000 * sizeof(char));
 	char *token;
-	printf("TEST 2! \n");
 	strcpy(temp, str);
-	printf("TEST 3! \n");
 	//Initializes all fields within the Movie struct
 	//token = strtokPlus(temp, s);
 	// strcpy(ptr->color, token);
@@ -159,7 +156,7 @@ char *strtokPlus (char *str, const char *delim)
 {
 	int index;
 	char *token;
-	char *temp;
+	char *temp = (char *)malloc(strlen(str) * sizeof(char));
 
 	//Check to see if NULL token
 	if (str[0] == ',') 
