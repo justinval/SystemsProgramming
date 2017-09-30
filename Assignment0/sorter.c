@@ -71,8 +71,9 @@ void parseMovie (char str[], Movie *ptr)
 	strcpy(temp, str);
 
 	//Initializes all fields within the Movie struct
-	token = strtokPlus(temp, s);
-	strcpy(ptr->color, token);
+	//token = strtokPlus(temp, s);
+	// strcpy(ptr->color, token);
+	strcpy(ptr->color, strtokPlus(temp, s));
 	token = strtokPlus(temp, s);
 	strcpy(ptr->director_name, token);
 	token = strtokPlus(temp, s);
