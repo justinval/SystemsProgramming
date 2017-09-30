@@ -48,7 +48,7 @@ int main (int argc, char *argv[])
 		}
 
 		//Mergesort list based off of field
-		//mergeSort(movieList, 0, numOfMovies, argv[2]);
+		mergeSort(movieList, 0, numOfMovies, argv[2]);
 		return 0;
     }
 
