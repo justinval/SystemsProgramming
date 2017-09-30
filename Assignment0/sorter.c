@@ -155,23 +155,16 @@ consecutive delims (',')*/
 char *strtokPlus (char *str, const char *delim) 
 {
 	int index;
-	
+	char *token;
 	char *temp = (char *)malloc(strlen(str) * sizeof(char));
 
 	//Check to see if NULL token
 	if (str[0] == ',') 
 	{
-		char *token = (char *)malloc(2 * sizeof(char));
+		token = (char *)malloc(2 * sizeof(char));
 		token = " ";
 
 		strcpy(str, str + 1);
-
-
-		printf("TOKEN: %s \n", token);
-		printf("%s \n", str);		
-
-		free(temp);
-		return token;
 	}
 
 	//If not NULL, tokenize the string until the next ','
@@ -183,32 +176,25 @@ char *strtokPlus (char *str, const char *delim)
 		if (temp != NULL)
 		{
 			index = temp - str;
-			char *token = (char *)malloc(index * sizeof(char)); 
+			printf("%i \n", index);
+			token = (char *)malloc(index * sizeof(char)); 
 			memcpy(token, str, index);			
-			strcpy(str, temp + 1);
-
-
-			printf("TOKEN: %s \n", token);
-			printf("%s \n", str);		
-
-			free(temp);
-
-			return token;	
+			strcpy(str, temp + 1);	
 		}
 
 		//If str doesn't have more values, tokenize the remaining string
 		else 
 		{
 			index = strlen(str);
-			char *token = (char *)malloc(index* sizeof(char));
+			token = (char *)malloc(index* sizeof(char));
 			memcpy(token, str, index);
-
-			printf("TOKEN: %s \n", token);
-			printf("%s \n", str);		
-
-			free(temp);				
-
-			return token;
 		}
+
+		printf("TOKEN: %s \n", token);
+		printf("%s \n", str);		
+
+		free(temp);
 	}
+
+	return token;
 }
