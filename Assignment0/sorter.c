@@ -64,7 +64,7 @@ void parseMovie (char str[], Movie *ptr)
 {	
 	printf("TEST 1! \n");
 	const char s[2] = ",";
-	char *temp;
+	char *temp = (char *)malloc(2000 * sizeof(char));
 	char *token;
 	printf("TEST 2! \n");
 	strcpy(temp, str);
