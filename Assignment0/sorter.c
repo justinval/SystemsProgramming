@@ -155,6 +155,7 @@ consecutive delims (',')*/
 char *strtokPlus (char *str, const char *delim) 
 {
 	int index;
+	
 	char *temp = (char *)malloc(strlen(str) * sizeof(char));
 
 	//Check to see if NULL token
@@ -164,6 +165,13 @@ char *strtokPlus (char *str, const char *delim)
 		token = " ";
 
 		strcpy(str, str + 1);
+
+
+		printf("TOKEN: %s \n", token);
+		printf("%s \n", str);		
+
+		free(temp);
+		return token;
 	}
 
 	//If not NULL, tokenize the string until the next ','
@@ -177,22 +185,30 @@ char *strtokPlus (char *str, const char *delim)
 			index = temp - str;
 			char *token = (char *)malloc(index * sizeof(char)); 
 			memcpy(token, str, index);			
-			strcpy(str, temp + 1);	
+			strcpy(str, temp + 1);
+
+
+			printf("TOKEN: %s \n", token);
+			printf("%s \n", str);		
+
+			free(temp);
+
+			return token;	
 		}
 
 		//If str doesn't have more values, tokenize the remaining string
 		else 
 		{
 			index = strlen(str);
-			char *token = (char *)malloc(index * sizeof(char));
+			char *token = (char *)malloc(index* sizeof(char));
 			memcpy(token, str, index);
+
+			printf("TOKEN: %s \n", token);
+			printf("%s \n", str);		
+
+			free(temp);				
+
+			return token;
 		}
-
-		printf("TOKEN: %s \n", token);
-		printf("%s \n", str);		
-
-		free(temp);
 	}
-
-	return token;
 }
