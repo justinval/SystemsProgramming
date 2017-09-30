@@ -17,6 +17,7 @@
 
 int main (int argc, char *argv[]) 
 {
+	printf("TEST! \n");
 	//Check to see if there is the proper number of params
 	if (argc == 3) 
 	{	 		
