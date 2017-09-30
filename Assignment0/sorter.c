@@ -182,7 +182,7 @@ char *strtokPlus (char *str, const char *delim)
 			//+1 for the '/0'
 			token = (char *)malloc((index * sizeof(char)) + 1);  
 			memcpy(token, str, index);			
-			strcpy(str, temp + 1);	
+			strcpy(str, temp);	
 		}
 
 		//If str doesn't have more values, tokenize the remaining string
