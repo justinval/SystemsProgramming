@@ -173,7 +173,7 @@ char *strtokPlus (char *str, const char *delim)
 		char *temp2 = (strstr(str, delim));
 
 		//If str still has more values
-		if (temp != NULL)
+		if (temp2 != NULL)
 		{
 			strcpy(temp, (strstr(str, delim)));
 			index = (strstr(str, delim)) - str;
