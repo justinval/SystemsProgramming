@@ -156,6 +156,7 @@ char *strtokPlus (char *str, const char *delim)
 {
 	int index;
 	char *token;
+	char *temp = (char *)malloc(strlen(str) * sizeof(char));
 
 	//Check to see if NULL token
 	if (str[0] == ',') 
@@ -169,11 +170,12 @@ char *strtokPlus (char *str, const char *delim)
 	//If not NULL, tokenize the string until the next ','
 	else 
 	{		
-		char *temp = (strstr(str, delim));
+		char *temp2 = (strstr(str, delim));
 
 		//If str still has more values
 		if (temp != NULL)
 		{
+			strcpy(temp, (strstr(str, delim)));
 			index = (strstr(str, delim)) - str;
 			printf("%i \n", index);
 			token = (char *)malloc(index * sizeof(char)); 
@@ -193,6 +195,7 @@ char *strtokPlus (char *str, const char *delim)
 		printf("TOKEN: %s \n", token);
 		printf("%s \n", str);		
 
+		free(temp);
 	}
 
 	return token;
