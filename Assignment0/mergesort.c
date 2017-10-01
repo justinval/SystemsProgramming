@@ -23,8 +23,8 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
     j = 0; // Initial index of second subarray
     k = l; // Initial index of merged subarray
 
-    switch(field) {
-    	case "color" :
+    	if (strcmp ("color", field) == 0) 
+        {
         	while (i < n1 && j < n2){
         		if(L[i]->color == NULL){
         			arr[k] = L[i];
@@ -45,8 +45,10 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
        		 	k++;
 			}
       	  	break;
+        }
 
-    	case "director_name" :
+    	else if (strcmp ("director_name", field) == 0) 
+        {
         	while (i < n1 && j < n2){
         		if(L[i]->director_name == NULL){
         			arr[k] = L[i];
@@ -67,8 +69,10 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
        	 		k++;
 			}
         	break;
+        }
 
-    	case "num_critic_for_reviews" :
+    	else if (strcmp ("num_critic_for_reviews", field) == 0)
+        {
         	while (i < n1 && j < n2){
         		if (L[i]->num_critic_for_reviews <= R[j]->num_critic_for_reviews){
            			arr[k] = L[i];
@@ -81,8 +85,10 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
        		 	k++;
 			}
       	  	break;
+        }
 
-    	case "duration" :
+    	else if (strcmp("duration", field) == 0)
+        {
         	while (i < n1 && j < n2){
         		if (L[i]->duration <= R[j]->duration){
            			arr[k] = L[i];
@@ -95,8 +101,10 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
        	 		k++;
 			}
         	break;
+        }
 
-    	case "director_facebook_likes" :
+    	else if (strcmp("director_facebook_likes", field) == 0)
+        {
         	while (i < n1 && j < n2){
         		if (L[i]->director_facebook_likes <= R[j]->director_facebook_likes){
            			arr[k] = L[i];
@@ -109,8 +117,10 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
        		 	k++;
 			}
       	  	break;
+        }
 
-    	case "actor_3_facebook_likes" :
+    	else if (strcmp("actor_3_facebook_likes", field) == 0)
+        {
         	while (i < n1 && j < n2){
         		if (L[i]->actor_3_facebook_likes <= R[j]->actor_3_facebook_likes){
            			arr[k] = L[i];
@@ -123,8 +133,10 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
        	 		k++;
 			}
         	break;
+        }
 
-    	case "actor_2_name" :
+    	else if (strcmp("actor_2_name", field) == 0)
+        {
         	while (i < n1 && j < n2){
         		if(L[i]->actor_2_name == NULL){
         			arr[k] = L[i];
@@ -145,8 +157,10 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
        		 	k++;
 			}
       	  	break;
+        }
 
-    	case "actor_1_facecbook_likes" :
+    	else if (strcmp("actor_1_facecbook_likes", field) == 0) 
+        {
         	while (i < n1 && j < n2){
         		if (L[i]->actor_1_facecbook_likes <= R[j]->actor_1_facecbook_likes){
            			arr[k] = L[i];
@@ -159,8 +173,10 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
        	 		k++;
 			}
         	break;
+        }
 
-    	case "gross" :
+    	else if (strcmp("gross", field) == 0)
+        {
         	while (i < n1 && j < n2){
         		if (L[i]->gross <= R[j]->gross){
            			arr[k] = L[i];
@@ -173,8 +189,10 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
        		 	k++;
 			}
       	  	break;
-      	  	
-    	case "genres" :
+      	}
+
+    	else if (strcmp("genres",field) == 0)
+        {
         	while (i < n1 && j < n2){
         		if(L[i]->genres == NULL){
         			arr[k] = L[i];
@@ -195,8 +213,10 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
        	 		k++;
 			}
         	break;
+        }
 
-    	case "actor_1_name" :
+    	else if (strcmp("actor_1_name", field) == 0)
+        {
         	while (i < n1 && j < n2){
         		if(L[i]->actor_1_name == NULL){
         			arr[k] = L[i];
@@ -217,8 +237,10 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
        		 	k++;
 			}
       	  	break;
-      	  	
-    	case "movie_title" :
+      	}
+
+    	else if (strcmp("movie_title", field) == 0)
+        {
         	while (i < n1 && j < n2){
         		if(L[i]->movie_title == NULL){
         			arr[k] = L[i];
@@ -239,8 +261,10 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
        	 		k++;
 			}
         	break;
+        }
 
-    	case "num_voted_users" :
+    	else if (strcmp("num_voted_users", field) == 0)
+        {
         	while (i < n1 && j < n2){
         		if (L[i]->num_voted_users <= R[j]->num_voted_users){
            			arr[k] = L[i];
@@ -253,8 +277,10 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
        		 	k++;
 			}
       	  	break;
-      	  	
-    	case "cast_total_facebook_likes" :
+      	}
+
+    	else if (strcmp("cast_total_facebook_likes", field) == 0)
+        {
         	while (i < n1 && j < n2){
         		if (L[i]->cast_total_facebook_likes <= R[j]->cast_total_facebook_likes){
            			arr[k] = L[i];
@@ -267,8 +293,10 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
        	 		k++;
 			}
         	break;
+        }
 
-    	case "actor_3_name" :
+    	else if (strcmp("actor_3_name", field) == 0)
+        {
         	while (i < n1 && j < n2){
         		if(L[i]->actor_3_name == NULL){
         			arr[k] = L[i];
@@ -289,8 +317,10 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
        		 	k++;
 			}
       	  	break;
-      	  	
-    	case "facenumber_in_poster" :
+      	}
+
+    	else if (strcmp("facenumber_in_poster", field) == 0)
+        {
         	while (i < n1 && j < n2){
         		if (L[i]->facenumber_in_poster <= R[j]->facenumber_in_poster){
            			arr[k] = L[i];
@@ -303,8 +333,10 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
        	 		k++;
 			}
         	break;
+        }
 
-    	case "plot_keywords" :
+    	else if (strcmp("plot_keywords", field) == 0)
+        {
         	while (i < n1 && j < n2){
         		if(L[i]->plot_keywords == NULL){
         			arr[k] = L[i];
@@ -325,8 +357,10 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
        		 	k++;
 			}
       	  	break;
-      	  	
-    	case "movie_imbd_link" :
+      	}
+
+    	else if (strcmp("movie_imbd_link", field) == 0)
+        {
         	while (i < n1 && j < n2){
         		if(L[i]->movie_imbd_link == NULL){
         			arr[k] = L[i];
@@ -347,8 +381,10 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
        	 		k++;
 			}
         	break;
+        }
 
-    	case "num_user_for_reviews" :
+    	else if (strcmp("num_user_for_reviews", field) == 0)
+        {
         	while (i < n1 && j < n2){
         		if (L[i]->num_user_for_reviews <= R[j]->num_user_for_reviews){
            			arr[k] = L[i];
@@ -361,8 +397,10 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
        		 	k++;
 			}
       	  	break;
-      	  	
-    	case "language" :
+      	}
+
+    	else if (strcmp("language", field) == 0)
+        {
         	while (i < n1 && j < n2){
         		if(L[i]->language == NULL){
         			arr[k] = L[i];
@@ -383,8 +421,10 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
        	 		k++;
 			}
         	break;
+        }
 
-    	case "country" :
+    	else if (strcmp("country", field) == 0)
+        {
         	while (i < n1 && j < n2){
         		if(L[i]->country == NULL){
         			arr[k] = L[i];
@@ -405,8 +445,10 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
        		 	k++;
 			}
       	  	break;
-      	  	
-    	case "content_rating" :
+      	}
+
+    	else if (strcmp("content_rating", field) == 0)
+        {
         	while (i < n1 && j < n2){
         		if(L[i]->content_rating == NULL){
         			arr[k] = L[i];
@@ -427,8 +469,10 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
        	 		k++;
 			}
         	break;
+        }
 
-    	case "budget" :
+    	else if (strcmp("budget", field) == 0)
+        {
         	while (i < n1 && j < n2){
         		if (L[i]->budget <= R[j]->budget){
            			arr[k] = L[i];
@@ -441,8 +485,10 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
        		 	k++;
 			}
       	  	break;
-      	  	
-    	case "title_year" :
+      	}
+
+    	else if (strcmp("title_year", field) == 0)
+        {
         	while (i < n1 && j < n2){
         		if (L[i]->title_year <= R[j]->title_year){
            			arr[k] = L[i];
@@ -455,8 +501,10 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
        	 		k++;
 			}
         	break;
+        }
 
-    	case "actor_2_facebook_likes" :
+    	else if (strcmp("actor_2_facebook_likes", field) == 0)
+        {
         	while (i < n1 && j < n2){
         		if (L[i]->actor_2_facebook_likes <= R[j]->actor_2_facebook_likes){
            			arr[k] = L[i];
@@ -469,8 +517,10 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
        		 	k++;
 			}
       	  	break;
-      	  	
-    	case "imbd_score" :
+      	}
+
+    	else if (strcmp("imbd_score", field) == 0)
+        {
         	while (i < n1 && j < n2){
         		if (L[i]->imbd_score <= R[j]->imbd_score){
            			arr[k] = L[i];
@@ -483,8 +533,10 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
        	 		k++;
 			}
         	break;
+        }
 
-    	case "aspect_ratio" :
+    	else if (strcmp("aspect_ratio", field) == 0)
+        {
         	while (i < n1 && j < n2){
         		if (L[i]->aspect_ratio <= R[j]->aspect_ratio){
            			arr[k] = L[i];
@@ -497,8 +549,10 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
        		 	k++;
 			}
       	  	break;
-      	  	
-    	case "movie_facebook_likes" :
+      	}
+
+    	else if (strcmp("movie_facebook_likes", field) == 0)
+        {
         	while (i < n1 && j < n2){
         		if (L[i]->movie_facebook_likes <= R[j]->movie_facebook_likes){
            			arr[k] = L[i];
@@ -509,11 +563,13 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
         			j++;
         		}
        	 		k++;
-			}
         	break;
-
-      default :
+        }
+      
+        else 
+        {
          printf("Error: Please enter an appropriate field to sort by.\n" );
+        }
    }
 
     /* Copy the remaining elements of L[], if there
