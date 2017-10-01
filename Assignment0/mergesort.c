@@ -3,14 +3,14 @@
 #include <stdlib.h>
 #include <string.h>
 
-void merge(Movie* arr[], int l, int m, int r, char* field)
+void merge(Movie *arr[], int l, int m, int r, char* field)
 {
     int i, j, k;
     int n1 = m - l + 1;
     int n2 =  r - m;
 
     /* create temp arrays */
-    Movie* L[n1], R[n2];
+    Movie *L[n1], *R[n2];
 
     /* Copy data to temp arrays L[] and R[] */
     for (i = 0; i < n1; i++)
