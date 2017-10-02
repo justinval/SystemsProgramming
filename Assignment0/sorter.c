@@ -39,11 +39,11 @@ int main (int argc, char *argv[])
 		//Loops until scanf is unsuccessful/reaches EOF
 		while (fgets(str, 1000, stdin))
 		{	
-			printf("%s \n", str);		
+			//printf("%s \n", str);		
 			ptr = (Movie *)malloc(sizeof(Movie));
 			parseMovie(str, ptr);					
 			movieList[numOfMovies] = ptr;		
-			//printMovieFull(movieList[numOfMovies]);
+			printMovieFull(movieList[numOfMovies]);
 			numOfMovies++;
 		}
 
