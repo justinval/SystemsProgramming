@@ -25,20 +25,25 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
 
     	if (strcmp ("color", field) == 0) 
         {
-        	while (i < n1 && j < n2){
-        		if(L[i]->color == NULL){
+        	while (i < n1 && j < n2)
+            {
+        		if(L[i]->color == NULL)
+                {
         			arr[k] = L[i];
         			i++;
         		}
-        		else if(R[j]->color == NULL){
+        		else if(R[j]->color == NULL)
+                {
         			arr[k] = R[j];
         			j++;
         		}
-        		else if (strcmp(L[i]->color, R[j]->color)<1){
+        		else if (strcmp(L[i]->color, R[j]->color)<1)
+                {
            			arr[k] = L[i];
             		i++;
         		}
-        		else{
+        		else
+                {
             		arr[k] = R[j];
         			j++;
         		}
@@ -48,20 +53,25 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
 
     	else if (strcmp ("director_name", field) == 0) 
         {
-        	while (i < n1 && j < n2){
-        		if(L[i]->director_name == NULL){
+        	while (i < n1 && j < n2)
+            {
+        		if(L[i]->director_name == NULL)
+                {
         			arr[k] = L[i];
         			i++;
         		}
-        		else if(R[j]->director_name == NULL){
+        		else if(R[j]->director_name == NULL)
+                {
         			arr[k] = R[j];
         			j++;
         		}
-        		else if (strcmp(L[i]->director_name, R[j]->director_name)<1){
+        		else if (strcmp(L[i]->director_name, R[j]->director_name)<1)
+                {
            			arr[k] = L[i];
             		i++;
         		}
-        		else{
+        		else
+                {
             		arr[k] = R[j];
         			j++;
         		}
@@ -71,12 +81,15 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
 
     	else if (strcmp ("num_critic_for_reviews", field) == 0)
         {
-        	while (i < n1 && j < n2){
-        		if (L[i]->num_critic_for_reviews <= R[j]->num_critic_for_reviews){
+        	while (i < n1 && j < n2)
+            {
+        		if (L[i]->num_critic_for_reviews <= R[j]->num_critic_for_reviews)
+                {
            			arr[k] = L[i];
             		i++;
         		}
-        		else{
+        		else
+                {
             		arr[k] = R[j];
         			j++;
         		}
@@ -86,12 +99,15 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
 
     	else if (strcmp("duration", field) == 0)
         {
-        	while (i < n1 && j < n2){
-        		if (L[i]->duration <= R[j]->duration){
+        	while (i < n1 && j < n2)
+            {
+        		if (L[i]->duration <= R[j]->duration)
+                {
            			arr[k] = L[i];
             		i++;
         		}
-        		else{
+        		else
+                {
             		arr[k] = R[j];
         			j++;
         		}
@@ -101,12 +117,15 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
 
     	else if (strcmp("director_facebook_likes", field) == 0)
         {
-        	while (i < n1 && j < n2){
-        		if (L[i]->director_facebook_likes <= R[j]->director_facebook_likes){
+        	while (i < n1 && j < n2)
+            {
+        		if (L[i]->director_facebook_likes <= R[j]->director_facebook_likes)
+                {
            			arr[k] = L[i];
             		i++;
         		}
-        		else{
+        		else
+                {
             		arr[k] = R[j];
         			j++;
         		}
@@ -116,12 +135,15 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
 
     	else if (strcmp("actor_3_facebook_likes", field) == 0)
         {
-        	while (i < n1 && j < n2){
-        		if (L[i]->actor_3_facebook_likes <= R[j]->actor_3_facebook_likes){
+        	while (i < n1 && j < n2)
+            {
+        		if (L[i]->actor_3_facebook_likes <= R[j]->actor_3_facebook_likes)
+                {
            			arr[k] = L[i];
             		i++;
         		}
-        		else{
+        		else
+                {
             		arr[k] = R[j];
         			j++;
         		}
@@ -131,20 +153,25 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
 
     	else if (strcmp("actor_2_name", field) == 0)
         {
-        	while (i < n1 && j < n2){
-        		if(L[i]->actor_2_name == NULL){
+        	while (i < n1 && j < n2)
+            {
+        		if(L[i]->actor_2_name == NULL)
+                {
         			arr[k] = L[i];
         			i++;
         		}
-        		else if(R[j]->actor_2_name == NULL){
+        		else if(R[j]->actor_2_name == NULL)
+                {
         			arr[k] = R[j];
         			j++;
         		}
-        		else if (strcmp(L[i]->actor_2_name, R[j]->actor_2_name)<1){
+        		else if (strcmp(L[i]->actor_2_name, R[j]->actor_2_name)<1)
+                {
            			arr[k] = L[i];
             		i++;
         		}
-        		else{
+        		else
+                {
             		arr[k] = R[j];
         			j++;
         		}
@@ -154,12 +181,15 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
 
     	else if (strcmp("actor_1_facecbook_likes", field) == 0) 
         {
-        	while (i < n1 && j < n2){
-        		if (L[i]->actor_1_facecbook_likes <= R[j]->actor_1_facecbook_likes){
+        	while (i < n1 && j < n2)
+            {
+        		if (L[i]->actor_1_facecbook_likes <= R[j]->actor_1_facecbook_likes)
+                {
            			arr[k] = L[i];
             		i++;
         		}
-        		else{
+        		else
+                {
             		arr[k] = R[j];
         			j++;
         		}
@@ -169,12 +199,15 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
 
     	else if (strcmp("gross", field) == 0)
         {
-        	while (i < n1 && j < n2){
-        		if (L[i]->gross <= R[j]->gross){
+        	while (i < n1 && j < n2)
+            {
+        		if (L[i]->gross <= R[j]->gross)
+                {
            			arr[k] = L[i];
             		i++;
         		}
-        		else{
+        		else
+                {
             		arr[k] = R[j];
         			j++;
         		}
@@ -184,20 +217,25 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
 
     	else if (strcmp("genres",field) == 0)
         {
-        	while (i < n1 && j < n2){
-        		if(L[i]->genres == NULL){
+        	while (i < n1 && j < n2)
+            {
+        		if(L[i]->genres == NULL)
+                {
         			arr[k] = L[i];
         			i++;
         		}
-        		else if(R[j]->genres == NULL){
+        		else if(R[j]->genres == NULL)
+                {
         			arr[k] = R[j];
         			j++;
         		}
-        		else if (strcmp(L[i]->genres, R[j]->genres)<1){
+        		else if (strcmp(L[i]->genres, R[j]->genres)<1)
+                {
            			arr[k] = L[i];
             		i++;
         		}
-        		else{
+        		else
+                {
             		arr[k] = R[j];
         			j++;
         		}
@@ -207,20 +245,25 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
 
     	else if (strcmp("actor_1_name", field) == 0)
         {
-        	while (i < n1 && j < n2){
-        		if(L[i]->actor_1_name == NULL){
+        	while (i < n1 && j < n2)
+            {
+        		if(L[i]->actor_1_name == NULL)
+                {
         			arr[k] = L[i];
         			i++;
         		}
-        		else if(R[j]->actor_1_name == NULL){
+        		else if(R[j]->actor_1_name == NULL)
+                {
         			arr[k] = R[j];
         			j++;
         		}
-        		else if (strcmp(L[i]->actor_1_name, R[j]->actor_1_name)<1){
+        		else if (strcmp(L[i]->actor_1_name, R[j]->actor_1_name)<1)
+                {
            			arr[k] = L[i];
             		i++;
         		}
-        		else{
+        		else
+                {
             		arr[k] = R[j];
         			j++;
         		}
@@ -230,20 +273,25 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
 
     	else if (strcmp("movie_title", field) == 0)
         {
-        	while (i < n1 && j < n2){
-        		if(L[i]->movie_title == NULL){
+        	while (i < n1 && j < n2)
+            {
+        		if(L[i]->movie_title == NULL)
+                {
         			arr[k] = L[i];
         			i++;
         		}
-        		else if(R[j]->movie_title == NULL){
+        		else if(R[j]->movie_title == NULL)
+                {
         			arr[k] = R[j];
         			j++;
         		}
-        		else if (strcmp(L[i]->movie_title, R[j]->movie_title)<1){
+        		else if (strcmp(L[i]->movie_title, R[j]->movie_title)<1)
+                {
            			arr[k] = L[i];
             		i++;
         		}
-        		else{
+        		else
+                {
             		arr[k] = R[j];
         			j++;
         		}
@@ -253,12 +301,15 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
 
     	else if (strcmp("num_voted_users", field) == 0)
         {
-        	while (i < n1 && j < n2){
-        		if (L[i]->num_voted_users <= R[j]->num_voted_users){
+        	while (i < n1 && j < n2)
+            {
+        		if (L[i]->num_voted_users <= R[j]->num_voted_users)
+                {
            			arr[k] = L[i];
             		i++;
         		}
-        		else{
+        		else
+                {
             		arr[k] = R[j];
         			j++;
         		}
@@ -268,12 +319,15 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
 
     	else if (strcmp("cast_total_facebook_likes", field) == 0)
         {
-        	while (i < n1 && j < n2){
-        		if (L[i]->cast_total_facebook_likes <= R[j]->cast_total_facebook_likes){
+        	while (i < n1 && j < n2)
+            {
+        		if (L[i]->cast_total_facebook_likes <= R[j]->cast_total_facebook_likes)
+                {
            			arr[k] = L[i];
             		i++;
         		}
-        		else{
+        		else
+                {
             		arr[k] = R[j];
         			j++;
         		}
@@ -283,20 +337,25 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
 
     	else if (strcmp("actor_3_name", field) == 0)
         {
-        	while (i < n1 && j < n2){
-        		if(L[i]->actor_3_name == NULL){
+        	while (i < n1 && j < n2)
+            {
+        		if(L[i]->actor_3_name == NULL)
+                {
         			arr[k] = L[i];
         			i++;
         		}
-        		else if(R[j]->actor_3_name == NULL){
+        		else if(R[j]->actor_3_name == NULL)
+                {
         			arr[k] = R[j];
         			j++;
         		}
-        		else if (strcmp(L[i]->actor_3_name, R[j]->actor_3_name)<1){
+        		else if (strcmp(L[i]->actor_3_name, R[j]->actor_3_name)<1)
+                {
            			arr[k] = L[i];
             		i++;
         		}
-        		else{
+        		else
+                {
             		arr[k] = R[j];
         			j++;
         		}
@@ -306,12 +365,15 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
 
     	else if (strcmp("facenumber_in_poster", field) == 0)
         {
-        	while (i < n1 && j < n2){
-        		if (L[i]->facenumber_in_poster <= R[j]->facenumber_in_poster){
+        	while (i < n1 && j < n2)
+            {
+        		if (L[i]->facenumber_in_poster <= R[j]->facenumber_in_poster)
+                {
            			arr[k] = L[i];
             		i++;
         		}
-        		else{
+        		else
+                {
             		arr[k] = R[j];
         			j++;
         		}
@@ -321,20 +383,25 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
 
     	else if (strcmp("plot_keywords", field) == 0)
         {
-        	while (i < n1 && j < n2){
-        		if(L[i]->plot_keywords == NULL){
+        	while (i < n1 && j < n2)
+            {
+        		if(L[i]->plot_keywords == NULL)
+                {
         			arr[k] = L[i];
         			i++;
         		}
-        		else if(R[j]->plot_keywords == NULL){
+        		else if(R[j]->plot_keywords == NULL)
+                {
         			arr[k] = R[j];
         			j++;
         		}
-        		else if (strcmp(L[i]->plot_keywords, R[j]->plot_keywords)<1){
+        		else if (strcmp(L[i]->plot_keywords, R[j]->plot_keywords)<1)
+                {
            			arr[k] = L[i];
             		i++;
         		}
-        		else{
+        		else
+                {
             		arr[k] = R[j];
         			j++;
         		}
@@ -344,20 +411,25 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
 
     	else if (strcmp("movie_imbd_link", field) == 0)
         {
-        	while (i < n1 && j < n2){
-        		if(L[i]->movie_imbd_link == NULL){
+        	while (i < n1 && j < n2)
+            {
+        		if(L[i]->movie_imbd_link == NULL)
+                {
         			arr[k] = L[i];
         			i++;
         		}
-        		else if(R[j]->movie_imbd_link == NULL){
+        		else if(R[j]->movie_imbd_link == NULL)
+                {
         			arr[k] = R[j];
         			j++;
         		}
-        		else if (strcmp(L[i]->movie_imbd_link, R[j]->movie_imbd_link)<1){
+        		else if (strcmp(L[i]->movie_imbd_link, R[j]->movie_imbd_link)<1)
+                {
            			arr[k] = L[i];
             		i++;
         		}
-        		else{
+        		else
+                {
             		arr[k] = R[j];
         			j++;
         		}
@@ -367,12 +439,15 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
 
     	else if (strcmp("num_user_for_reviews", field) == 0)
         {
-        	while (i < n1 && j < n2){
-        		if (L[i]->num_user_for_reviews <= R[j]->num_user_for_reviews){
+        	while (i < n1 && j < n2)
+            {
+        		if (L[i]->num_user_for_reviews <= R[j]->num_user_for_reviews)
+                {
            			arr[k] = L[i];
             		i++;
         		}
-        		else{
+        		else
+                {
             		arr[k] = R[j];
         			j++;
         		}
@@ -382,20 +457,25 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
 
     	else if (strcmp("language", field) == 0)
         {
-        	while (i < n1 && j < n2){
-        		if(L[i]->language == NULL){
+        	while (i < n1 && j < n2)
+            {
+        		if(L[i]->language == NULL)
+                {
         			arr[k] = L[i];
         			i++;
         		}
-        		else if(R[j]->language == NULL){
+        		else if(R[j]->language == NULL)
+                {
         			arr[k] = R[j];
         			j++;
         		}
-        		else if (strcmp(L[i]->language, R[j]->language)<1){
+        		else if (strcmp(L[i]->language, R[j]->language)<1)
+                {
            			arr[k] = L[i];
             		i++;
         		}
-        		else{
+        		else
+                {
             		arr[k] = R[j];
         			j++;
         		}
@@ -405,20 +485,25 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
 
     	else if (strcmp("country", field) == 0)
         {
-        	while (i < n1 && j < n2){
-        		if(L[i]->country == NULL){
+        	while (i < n1 && j < n2)
+            {
+        		if(L[i]->country == NULL)
+                {
         			arr[k] = L[i];
         			i++;
         		}
-        		else if(R[j]->country == NULL){
+        		else if(R[j]->country == NULL)
+                {
         			arr[k] = R[j];
         			j++;
         		}
-        		else if (strcmp(L[i]->country, R[j]->country)<1){
+        		else if (strcmp(L[i]->country, R[j]->country)<1)
+                {
            			arr[k] = L[i];
             		i++;
         		}
-        		else{
+        		else
+                {
             		arr[k] = R[j];
         			j++;
         		}
@@ -428,20 +513,25 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
 
     	else if (strcmp("content_rating", field) == 0)
         {
-        	while (i < n1 && j < n2){
-        		if(L[i]->content_rating == NULL){
+        	while (i < n1 && j < n2)
+            {
+        		if(L[i]->content_rating == NULL)
+                {
         			arr[k] = L[i];
         			i++;
         		}
-        		else if(R[j]->content_rating == NULL){
+        		else if(R[j]->content_rating == NULL)
+                {
         			arr[k] = R[j];
         			j++;
         		}
-        		else if (strcmp(L[i]->content_rating, R[j]->content_rating)<1){
+        		else if (strcmp(L[i]->content_rating, R[j]->content_rating)<1)
+                {
            			arr[k] = L[i];
             		i++;
         		}
-        		else{
+        		else
+                {
             		arr[k] = R[j];
         			j++;
         		}
@@ -451,12 +541,15 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
 
     	else if (strcmp("budget", field) == 0)
         {
-        	while (i < n1 && j < n2){
-        		if (L[i]->budget <= R[j]->budget){
+        	while (i < n1 && j < n2)
+            {
+        		if (L[i]->budget <= R[j]->budget)
+                {
            			arr[k] = L[i];
             		i++;
         		}
-        		else{
+        		else
+                {
             		arr[k] = R[j];
         			j++;
         		}
@@ -466,12 +559,15 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
 
     	else if (strcmp("title_year", field) == 0)
         {
-        	while (i < n1 && j < n2){
-        		if (L[i]->title_year <= R[j]->title_year){
+        	while (i < n1 && j < n2)
+            {
+        		if (L[i]->title_year <= R[j]->title_year)
+                {
            			arr[k] = L[i];
             		i++;
         		}
-        		else{
+        		else
+                {
             		arr[k] = R[j];
         			j++;
         		}
@@ -481,12 +577,15 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
 
     	else if (strcmp("actor_2_facebook_likes", field) == 0)
         {
-        	while (i < n1 && j < n2){
-        		if (L[i]->actor_2_facebook_likes <= R[j]->actor_2_facebook_likes){
+        	while (i < n1 && j < n2)
+            {
+        		if (L[i]->actor_2_facebook_likes <= R[j]->actor_2_facebook_likes)
+                {
            			arr[k] = L[i];
             		i++;
         		}
-        		else{
+        		else
+                {
             		arr[k] = R[j];
         			j++;
         		}
@@ -496,12 +595,15 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
 
     	else if (strcmp("imbd_score", field) == 0)
         {
-        	while (i < n1 && j < n2){
-        		if (L[i]->imbd_score <= R[j]->imbd_score){
+        	while (i < n1 && j < n2)
+            {
+        		if (L[i]->imbd_score <= R[j]->imbd_score)
+                {
            			arr[k] = L[i];
             		i++;
         		}
-        		else{
+        		else
+                {
             		arr[k] = R[j];
         			j++;
         		}
@@ -511,12 +613,15 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
 
     	else if (strcmp("aspect_ratio", field) == 0)
         {
-        	while (i < n1 && j < n2){
-        		if (L[i]->aspect_ratio <= R[j]->aspect_ratio){
+        	while (i < n1 && j < n2)
+            {
+        		if (L[i]->aspect_ratio <= R[j]->aspect_ratio)
+                {
            			arr[k] = L[i];
             		i++;
         		}
-        		else{
+        		else
+                {
             		arr[k] = R[j];
         			j++;
         		}
@@ -526,24 +631,27 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
 
     	else if (strcmp("movie_facebook_likes", field) == 0)
         {
-        	while (i < n1 && j < n2){
-        		if (L[i]->movie_facebook_likes <= R[j]->movie_facebook_likes){
+        	while (i < n1 && j < n2)
+            {
+        		if (L[i]->movie_facebook_likes <= R[j]->movie_facebook_likes)
+                {
            			arr[k] = L[i];
             		i++;
         		}
-        		else{
+        		else
+                {
             		arr[k] = R[j];
         			j++;
         		}
        	 		k++;
             }
         }
-        
+
         else 
         {
          printf("Error: Please enter an appropriate field to sort by.\n" );
         }
-   }
+   
 
     /* Copy the remaining elements of L[], if there
        are any */
