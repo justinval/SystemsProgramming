@@ -137,12 +137,12 @@ void printMovie (Movie *ptr)
 
 void printMovieFull (Movie *ptr)
 {
-	printf("Color: %s | Director Name: %s | No. of Critics for Reviews: %i | Duration: %i | Director Facebook Likes: %i |
-			Actor 3 Facebook Likes: %i | Actor 2 Name: %s | Actor 1 Facebook Likes: %i | Gross: %i | Genres: %s |
-			Actor 1 Name: %s | Movie Title: %s | No. of Voted Users: %i | Cast Total Facebook Likes: %i | Actor 3 Name: %s |
-			Face No. in Poster: %i | Plot Keywords: %s | Movie IMBD Link: %s | No. of Users for Reviews: %i | Language: %s | 
-			Country: %s | Content Rating: %s | Budget: %i | Title Year: %i | Actor 2 Facebook Likes: %i | IMBD Score: %f |
-			Aspect Ratio: %f | Movie Facebook Likes: %i \n", ptr->color, ptr->director_name, ptr->num_critic_for_reviews, 
+	printf("Color: %s | Director Name: %s | No. of Critics for Reviews: %i | Duration: %i | Director Facebook Likes: %i | \n" +
+			"Actor 3 Facebook Likes: %i | Actor 2 Name: %s | Actor 1 Facebook Likes: %i | Gross: %i | Genres: %s | \n" +
+			"Actor 1 Name: %s | Movie Title: %s | No. of Voted Users: %i | Cast Total Facebook Likes: %i | Actor 3 Name: %s | \n" +
+			"Face No. in Poster: %i | Plot Keywords: %s | Movie IMBD Link: %s | No. of Users for Reviews: %i | Language: %s | \n" +
+			"Country: %s | Content Rating: %s | Budget: %i | Title Year: %i | Actor 2 Facebook Likes: %i | IMBD Score: %f | \n" +
+			"Aspect Ratio: %f | Movie Facebook Likes: %i \n", ptr->color, ptr->director_name, ptr->num_critic_for_reviews, 
 			ptr->duration, ptr->director_facebook_likes, ptr->actor_3_facebook_likes, ptr->actor_2_name, ptr->actor_1_facecbook_likes, 
 			ptr->gross, ptr->genres, ptr->actor_1_name, ptr->movie_title, ptr->num_voted_users, ptr->cast_total_facebook_likes, 
 			ptr->actor_3_name, ptr->facenumber_in_poster, ptr->plot_keywords, ptr->movie_imbd_link, ptr->num_user_for_reviews, 
