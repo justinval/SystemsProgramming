@@ -276,25 +276,25 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
             {
         		if(L[i]->movie_title == NULL)
                 {
-                    printf("Compared L[i]:%s & R[i]:%s \n", L[i]->movie_title, R[i]->movie_title);
+                    printf("K = %i | Compared L[%i]:%s & R[%i]:%s \n | Result is: 1", k, i, L[i]->movie_title, j, R[i]->movie_title);
         			arr[k] = L[i];
         			i++;
         		}
         		else if(R[j]->movie_title == NULL)
                 {
-                    printf("%s \n", L[i]->movie_title);
+                    printf("K = %i | Compared L[%i]:%s & R[%i]:%s \n | Result is: 2", k, i, L[i]->movie_title, j, R[i]->movie_title);
         			arr[k] = R[j];
         			j++;
         		}
         		else if (strcmp(L[i]->movie_title, R[j]->movie_title)<1)
                 {
-                    printf("%s \n", L[i]->movie_title);
+                    printf("K = %i | Compared L[%i]:%s & R[%i]:%s \n | Result is: 3", k, i, L[i]->movie_title, j, R[i]->movie_title);
            			arr[k] = L[i];
             		i++;
         		}
         		else
                 {
-                    printf("%s \n", L[i]->movie_title);
+                    printf("K = %i | Compared L[%i]:%s & R[%i]:%s \n | Result is: 4", k, i, L[i]->movie_title, j, R[i]->movie_title);
             		arr[k] = R[j];
         			j++;
         		}
