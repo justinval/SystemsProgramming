@@ -195,9 +195,9 @@ char *strtokPlus (char *str, const char *delim)
 			memcpy(token, str, index);
 		}
 
-		token[index - 1] = '\0';
-		printf("TOKEN: %s \n", token);
-		printf("%s \n", str);		
+		token[index] = '\0';
+		//printf("TOKEN: %s \n", token);
+		//printf("%s \n", str);		
 
 		free(temp);
 	}
