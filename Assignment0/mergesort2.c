@@ -276,29 +276,21 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
             {
         		if(L[i]->movie_title == NULL)
                 {
-                    printf("test \n");
-                    //printf("K = %i | Compared L[%i]:NULL & R[%i]:%s | Result is: 1\n", k, i, j, R[i]->movie_title);
         			arr[k] = L[i];
         			i++;
         		}
         		else if(R[j]->movie_title == NULL)
-                {
-                    printf("test \n");
-                    //printf("K = %i | Compared L[%i]:%s & R[%i]:NULL | Result is: 2\n", k, i, L[i]->movie_title, j);
+                {;
         			arr[k] = R[j];
         			j++;
         		}
         		else if (strcmp(L[i]->movie_title, R[j]->movie_title)<0)
                 {
-                    printf("test \n");
-                    //printf("K = %i | Compared L[%i]:%s & R[%i]:%s | Result is: 3\n", k, i, L[i]->movie_title, j, R[i]->movie_title);
            			arr[k] = L[i];
             		i++;
         		}
         		else
                 {
-                    printf("test \n");
-                    //printf("K = %i | Compared L[%i]:%s & R[%i]:%s | Result is: 4 \n", k, i, L[i]->movie_title, j, R[i]->movie_title);
             		arr[k] = R[j];
         			j++;
         		}
