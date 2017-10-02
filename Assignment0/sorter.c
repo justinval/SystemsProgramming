@@ -49,6 +49,7 @@ int main (int argc, char *argv[])
 
 		//Mergesort list based off of field
 		mergeSort(movieList, 0, numOfMovies-1, argv[2]);
+		printAll(movieList);
 		return 0;
     }
 
@@ -150,6 +151,16 @@ void printMovieFull (Movie *ptr)
 			ptr->aspect_ratio, ptr->movie_facebook_likes);
 
 	printf("___________________________________________________________________ \n");	
+}
+
+void printAll (Movie **movieList)
+{
+	int i;
+	while (movieList[i] != NULL)
+	{
+		printf("%i. Movie Title: %s \n", i, movieList[i]->movie_title);
+		i++;
+	}
 }
 
 /*Created b/c regular strtok wouldn't take in to consideration 
