@@ -649,6 +649,7 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
         else 
         {
          printf("Error: Please enter an appropriate field to sort by.\n" );
+         return;
         }
    
 
