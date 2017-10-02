@@ -184,7 +184,7 @@ char *strtokPlus (char *str, const char *delim)
 			//+1 for the '/0'
 			token = (char *)malloc((index * sizeof(char)) + 1);  
 			memcpy(token, str, index);
-			token[index - 1] = '/0';			
+			token[index - 1] = '\0';			
 			strcpy(str, temp + 1);	
 		}
 
@@ -195,7 +195,7 @@ char *strtokPlus (char *str, const char *delim)
 			printf("%i \n", index);
 			//+1 for the '/0'
 			token = (char *)malloc((index * sizeof(char)) + 1);
-			token[index - 1] = '/0';
+			token[index - 1] = '\0';
 			memcpy(token, str, index);
 		}
 
