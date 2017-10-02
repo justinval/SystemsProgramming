@@ -44,7 +44,6 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
         		}
        		 	k++;
 			}
-      	  	break;
         }
 
     	else if (strcmp ("director_name", field) == 0) 
@@ -68,7 +67,6 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
         		}
        	 		k++;
 			}
-        	break;
         }
 
     	else if (strcmp ("num_critic_for_reviews", field) == 0)
@@ -84,7 +82,6 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
         		}
        		 	k++;
 			}
-      	  	break;
         }
 
     	else if (strcmp("duration", field) == 0)
@@ -100,7 +97,6 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
         		}
        	 		k++;
 			}
-        	break;
         }
 
     	else if (strcmp("director_facebook_likes", field) == 0)
@@ -116,7 +112,6 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
         		}
        		 	k++;
 			}
-      	  	break;
         }
 
     	else if (strcmp("actor_3_facebook_likes", field) == 0)
@@ -132,7 +127,6 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
         		}
        	 		k++;
 			}
-        	break;
         }
 
     	else if (strcmp("actor_2_name", field) == 0)
@@ -156,7 +150,6 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
         		}
        		 	k++;
 			}
-      	  	break;
         }
 
     	else if (strcmp("actor_1_facecbook_likes", field) == 0) 
@@ -172,7 +165,6 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
         		}
        	 		k++;
 			}
-        	break;
         }
 
     	else if (strcmp("gross", field) == 0)
@@ -188,7 +180,6 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
         		}
        		 	k++;
 			}
-      	  	break;
       	}
 
     	else if (strcmp("genres",field) == 0)
@@ -212,7 +203,6 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
         		}
        	 		k++;
 			}
-        	break;
         }
 
     	else if (strcmp("actor_1_name", field) == 0)
@@ -236,7 +226,6 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
         		}
        		 	k++;
 			}
-      	  	break;
       	}
 
     	else if (strcmp("movie_title", field) == 0)
@@ -260,7 +249,6 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
         		}
        	 		k++;
 			}
-        	break;
         }
 
     	else if (strcmp("num_voted_users", field) == 0)
@@ -276,7 +264,6 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
         		}
        		 	k++;
 			}
-      	  	break;
       	}
 
     	else if (strcmp("cast_total_facebook_likes", field) == 0)
@@ -292,7 +279,6 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
         		}
        	 		k++;
 			}
-        	break;
         }
 
     	else if (strcmp("actor_3_name", field) == 0)
@@ -316,7 +302,6 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
         		}
        		 	k++;
 			}
-      	  	break;
       	}
 
     	else if (strcmp("facenumber_in_poster", field) == 0)
@@ -332,7 +317,6 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
         		}
        	 		k++;
 			}
-        	break;
         }
 
     	else if (strcmp("plot_keywords", field) == 0)
@@ -356,7 +340,6 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
         		}
        		 	k++;
 			}
-      	  	break;
       	}
 
     	else if (strcmp("movie_imbd_link", field) == 0)
@@ -380,7 +363,6 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
         		}
        	 		k++;
 			}
-        	break;
         }
 
     	else if (strcmp("num_user_for_reviews", field) == 0)
@@ -396,7 +378,6 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
         		}
        		 	k++;
 			}
-      	  	break;
       	}
 
     	else if (strcmp("language", field) == 0)
@@ -420,7 +401,6 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
         		}
        	 		k++;
 			}
-        	break;
         }
 
     	else if (strcmp("country", field) == 0)
@@ -444,7 +424,6 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
         		}
        		 	k++;
 			}
-      	  	break;
       	}
 
     	else if (strcmp("content_rating", field) == 0)
@@ -468,7 +447,6 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
         		}
        	 		k++;
 			}
-        	break;
         }
 
     	else if (strcmp("budget", field) == 0)
@@ -484,7 +462,6 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
         		}
        		 	k++;
 			}
-      	  	break;
       	}
 
     	else if (strcmp("title_year", field) == 0)
@@ -500,7 +477,6 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
         		}
        	 		k++;
 			}
-        	break;
         }
 
     	else if (strcmp("actor_2_facebook_likes", field) == 0)
@@ -516,7 +492,6 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
         		}
        		 	k++;
 			}
-      	  	break;
       	}
 
     	else if (strcmp("imbd_score", field) == 0)
@@ -532,7 +507,6 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
         		}
        	 		k++;
 			}
-        	break;
         }
 
     	else if (strcmp("aspect_ratio", field) == 0)
@@ -548,7 +522,6 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
         		}
        		 	k++;
 			}
-      	  	break;
       	}
 
     	else if (strcmp("movie_facebook_likes", field) == 0)
@@ -563,9 +536,9 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
         			j++;
         		}
        	 		k++;
-        	break;
+            }
         }
-      
+        
         else 
         {
          printf("Error: Please enter an appropriate field to sort by.\n" );
