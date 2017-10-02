@@ -276,11 +276,13 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
             {
         		if(L[i]->movie_title == NULL)
                 {
+                    printf("%s \n", L[i]->movie_title);
         			arr[k] = L[i];
         			i++;
         		}
         		else if(R[j]->movie_title == NULL)
                 {
+                    printf("%s \n", L[i]->movie_title);
         			arr[k] = R[j];
         			j++;
         		}
@@ -292,6 +294,7 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
         		}
         		else
                 {
+                    printf("%s \n", L[i]->movie_title);
             		arr[k] = R[j];
         			j++;
         		}
