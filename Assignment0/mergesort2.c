@@ -276,13 +276,13 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
             {
         		if(L[i]->movie_title == NULL)
                 {
-                    printf("K = %i | Compared L[%i]:%s & R[%i]:%s \n | Result is: 1", k, i, L[i]->movie_title, j, R[i]->movie_title);
+                    printf("K = %i | Compared L[%i]:NULL & R[%i]:%s \n | Result is: 1", k, i, j, R[i]->movie_title);
         			arr[k] = L[i];
         			i++;
         		}
         		else if(R[j]->movie_title == NULL)
                 {
-                    printf("K = %i | Compared L[%i]:%s & R[%i]:%s \n | Result is: 2", k, i, L[i]->movie_title, j, R[i]->movie_title);
+                    printf("K = %i | Compared L[%i]:%s & R[%i]:NULL \n | Result is: 2", k, i, L[i]->movie_title, j);
         			arr[k] = R[j];
         			j++;
         		}
