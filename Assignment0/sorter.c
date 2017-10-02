@@ -43,7 +43,7 @@ int main (int argc, char *argv[])
 			ptr = (Movie *)malloc(sizeof(Movie));
 			parseMovie(str, ptr);					
 			movieList[numOfMovies] = ptr;		
-			printMovieFull(movieList[numOfMovies]);
+			//printMovieFull(movieList[numOfMovies]);
 			numOfMovies++;
 		}
 
