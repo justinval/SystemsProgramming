@@ -16,7 +16,7 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
         L[i] = arr[l + i];
     for (j = 0; j < n2; j++)
         R[j] = arr[m + 1+ j];
-    printf("TEST \n");
+
     /* Merge the temp arrays back into arr[l..r]*/
     i = 0; // Initial index of first subarray
     j = 0; // Initial index of second subarray
@@ -286,6 +286,7 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
         		}
         		else if (strcmp(L[i]->movie_title, R[j]->movie_title)<1)
                 {
+                    printf("%s \n", L[i]->movie_title);
            			arr[k] = L[i];
             		i++;
         		}
