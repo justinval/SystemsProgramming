@@ -176,29 +176,26 @@ char *strtokPlus (char *str, const char *delim)
 
 		//If str still has more values
 		if (temp2 != NULL)
-		{
-			strcpy(temp, (strstr(str, delim)));
-			index = (strstr(str, delim)) - str;
-			printf("%i \n", index);
+		{	
+			strcpy(temp, temp2);			
 
-			//+1 for the '/0'
+			//Figure out how many bytes to allot and copy str into token
+			index = temp2 - str;
 			token = (char *)malloc((index * sizeof(char)) + 1);  
-			memcpy(token, str, index);
-			token[index - 1] = '\0';			
+			memcpy(token, str, index);			
 			strcpy(str, temp + 1);	
 		}
 
 		//If str doesn't have more values, tokenize the remaining string
 		else 
 		{
+			//Figure out how many bytes to allot and copy str into token
 			index = strlen(str);
-			printf("%i \n", index);
-			//+1 for the '/0'
 			token = (char *)malloc((index * sizeof(char)) + 1);
-			token[index - 1] = '\0';
 			memcpy(token, str, index);
 		}
 
+		token[index - 1] = '\0';
 		printf("TOKEN: %s \n", token);
 		printf("%s \n", str);		
 
