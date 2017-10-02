@@ -276,7 +276,7 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
             {
         		if(L[i]->movie_title == NULL)
                 {
-                    printf("%s \n", L[i]->movie_title);
+                    printf("Compared L[i]:%s & R[i]:%s \n", L[i]->movie_title, R[i]->movie_title);
         			arr[k] = L[i];
         			i++;
         		}
