@@ -48,7 +48,8 @@ int main (int argc, char *argv[])
 		//Mergesort list based off of field
 		mergeSort(movieList, 0, numOfMovies-1, argv[2]);
 		
-		printAll(movieList);
+		//printAll(movieList);
+		printAllCSV(movieList);
 		return 0;
     }
 
@@ -162,6 +163,31 @@ void printAll (Movie **movieList)
 	}
 }
 
+void printAllCSV (Movie **movieList)
+{
+	printf("color,director_name,num_critic_for_reviews,duration,director_facebook_likes"
+			",actor_3_facebook_likes,actor_2_name,actor_1_facebook_likes,gross,genres,"
+			"actor_1_name,movie_title,num_voted_users,cast_total_facebook_likes,actor_3_name,"
+			"facenumber_in_poster,plot_keywords,movie_imdb_link,num_user_for_reviews,language,"
+			"country,content_rating,budget,title_year,actor_2_facebook_likes,imdb_score,"
+			"aspect_ratio,movie_facebook_likes\n");	
+
+	int i = 0;
+	while (movieList[i] != NULL)
+	{
+		printf("%s,%s,%i,%i,%i,%i,%s,%i,%i,%s,%s,%s,%i,%i,%s,%i,%s,%s,%i,%s,%s,%s,%i,%i,%i,%f,%f,%i",
+			movieList[i]->color, movieList[i]->director_name, movieList[i]->num_critic_for_reviews, movieList[i]->duration, 
+			movieList[i]->director_facebook_likes, movieList[i]->actor_3_facebook_likes, movieList[i]->actor_2_name,
+			movieList[i]->actor_1_facecbook_likes, movieList[i]->gross, movieList[i]->genres, movieList[i]->actor_1_name, 
+			movieList[i]->movie_title, movieList[i]->num_voted_users, movieList[i]->cast_total_facebook_likes, 
+			movieList[i]->actor_3_name, movieList[i]->facenumber_in_poster, movieList[i]->plot_keywords, 
+			movieList[i]->movie_imbd_link, movieList[i]->num_user_for_reviews, movieList[i]->language, 
+			movieList[i]->country, movieList[i]->content_rating, movieList[i]->budget, movieList[i]->title_year, 
+			movieList[i]->actor_2_facebook_likes, movieList[i]->imbd_score, movieList[i]->aspect_ratio, 
+			movieList[i]->movie_facebook_likes);
+		i++;
+	}
+}
 /*Created b/c regular strtok wouldn't take in to consideration 
 consecutive delims (',')*/
 char *strtokPlus (char *str, const char *delim) 
