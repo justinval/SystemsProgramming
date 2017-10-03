@@ -180,6 +180,22 @@ char *strtokPlus (char *str, const char *delim)
 		strcpy(str, str + 1);
 	}
 
+	//Check to see if quotes are used
+	else if (str[0] == '"')
+	{
+		//Check for second '"'
+		char *temp2 = (strstr(str + 1, "\""));
+		strcpy(temp, temp2);
+
+		//Count all the bytes from the first char after the 
+		//first quote to the last char before the last quote
+		index = temp2 - (str + 1);
+		memcpy(token, str + 1, index);
+		
+		// +2 b/c of quote and comma
+		strcpy(str, temp + 2);
+	}
+
 	//If not NULL, tokenize the string until the next ','
 	else 
 	{		
