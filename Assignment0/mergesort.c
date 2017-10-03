@@ -16,7 +16,7 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
         L[i] = arr[l + i];
     for (j = 0; j < n2; j++)
         R[j] = arr[m + 1+ j];
-        
+
     /* Merge the temp arrays back into arr[l..r]*/
     i = 0; // Initial index of first subarray
     j = 0; // Initial index of second subarray
@@ -36,7 +36,7 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
         			arr[k] = R[j];
         			j++;
         		}
-        		else if (strcmp(L[i]->color, R[j]->color)<1)
+        		else if (strcmp(L[i]->color, R[j]->color)<0)
                 {
            			arr[k] = L[i];
             		i++;
@@ -64,7 +64,7 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
         			arr[k] = R[j];
         			j++;
         		}
-        		else if (strcmp(L[i]->director_name, R[j]->director_name)<1)
+        		else if (strcmp(L[i]->director_name, R[j]->director_name)<0)
                 {
            			arr[k] = L[i];
             		i++;
@@ -164,7 +164,7 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
         			arr[k] = R[j];
         			j++;
         		}
-        		else if (strcmp(L[i]->actor_2_name, R[j]->actor_2_name)<1)
+        		else if (strcmp(L[i]->actor_2_name, R[j]->actor_2_name)<0)
                 {
            			arr[k] = L[i];
             		i++;
@@ -228,7 +228,7 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
         			arr[k] = R[j];
         			j++;
         		}
-        		else if (strcmp(L[i]->genres, R[j]->genres)<1)
+        		else if (strcmp(L[i]->genres, R[j]->genres)<0)
                 {
            			arr[k] = L[i];
             		i++;
@@ -256,7 +256,7 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
         			arr[k] = R[j];
         			j++;
         		}
-        		else if (strcmp(L[i]->actor_1_name, R[j]->actor_1_name)<1)
+        		else if (strcmp(L[i]->actor_1_name, R[j]->actor_1_name)<0)
                 {
            			arr[k] = L[i];
             		i++;
@@ -280,11 +280,11 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
         			i++;
         		}
         		else if(R[j]->movie_title == NULL)
-                {
+                {;
         			arr[k] = R[j];
         			j++;
         		}
-        		else if (strcmp(L[i]->movie_title, R[j]->movie_title)<1)
+        		else if (strcmp(L[i]->movie_title, R[j]->movie_title)<0)
                 {
            			arr[k] = L[i];
             		i++;
@@ -348,7 +348,7 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
         			arr[k] = R[j];
         			j++;
         		}
-        		else if (strcmp(L[i]->actor_3_name, R[j]->actor_3_name)<1)
+        		else if (strcmp(L[i]->actor_3_name, R[j]->actor_3_name)<0)
                 {
            			arr[k] = L[i];
             		i++;
@@ -394,7 +394,7 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
         			arr[k] = R[j];
         			j++;
         		}
-        		else if (strcmp(L[i]->plot_keywords, R[j]->plot_keywords)<1)
+        		else if (strcmp(L[i]->plot_keywords, R[j]->plot_keywords)<0)
                 {
            			arr[k] = L[i];
             		i++;
@@ -422,7 +422,7 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
         			arr[k] = R[j];
         			j++;
         		}
-        		else if (strcmp(L[i]->movie_imbd_link, R[j]->movie_imbd_link)<1)
+        		else if (strcmp(L[i]->movie_imbd_link, R[j]->movie_imbd_link)<0)
                 {
            			arr[k] = L[i];
             		i++;
@@ -468,7 +468,7 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
         			arr[k] = R[j];
         			j++;
         		}
-        		else if (strcmp(L[i]->language, R[j]->language)<1)
+        		else if (strcmp(L[i]->language, R[j]->language)<0)
                 {
            			arr[k] = L[i];
             		i++;
@@ -496,7 +496,7 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
         			arr[k] = R[j];
         			j++;
         		}
-        		else if (strcmp(L[i]->country, R[j]->country)<1)
+        		else if (strcmp(L[i]->country, R[j]->country)<0)
                 {
            			arr[k] = L[i];
             		i++;
@@ -524,7 +524,7 @@ void merge(Movie *arr[], int l, int m, int r, char* field)
         			arr[k] = R[j];
         			j++;
         		}
-        		else if (strcmp(L[i]->content_rating, R[j]->content_rating)<1)
+        		else if (strcmp(L[i]->content_rating, R[j]->content_rating)<0)
                 {
            			arr[k] = L[i];
             		i++;
