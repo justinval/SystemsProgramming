@@ -2,7 +2,7 @@
 *
 *
 *	A beautiful list sorter program written by
-*	Justin Valeroso & Tim Song
+*	Justin Valeroso & Yong Jun Song
 *
 *
 *******/

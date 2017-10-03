@@ -16,7 +16,7 @@ had to be allocated delicately and precisely. The trailing whitespace also gave 
 formating. Also, some of the abstract rules of the CSV file such as the quotes in the movie titles
 were something we had to take into consideration.
 
-EXTRA CREDIT:
+EXTRA CREDIT (2):
 A way to generalize a sorter given any CSV file is to parse the column row (which should be the first
 row). This would serve as a way to create an array that holds (char **). A row would be created so that it 
 would hold data for each column read. Then, the program would parse the rest of the data into char * 
