@@ -38,17 +38,16 @@ int main (int argc, char *argv[])
 
 		//Loops until scanf is unsuccessful/reaches EOF
 		while (fgets(str, 1000, stdin))
-		{	
-			//printf("%s \n", str);		
+		{
 			ptr = (Movie *)malloc(sizeof(Movie));
 			parseMovie(str, ptr);					
 			movieList[numOfMovies] = ptr;		
-			//printMovieFull(movieList[numOfMovies]);
 			numOfMovies++;
 		}
 
 		//Mergesort list based off of field
 		mergeSort(movieList, 0, numOfMovies-1, argv[2]);
+		
 		printAll(movieList);
 		return 0;
     }
@@ -158,7 +157,7 @@ void printAll (Movie **movieList)
 	int i = 0;
 	while (movieList[i] != NULL)
 	{
-		printf("%i. Movie Title: %s \n", i, movieList[i]->movie_title);
+		printMovieFull(movieList[i]);
 		i++;
 	}
 }
