@@ -155,7 +155,7 @@ void printMovieFull (Movie *ptr)
 
 void printAll (Movie **movieList)
 {
-	int i;
+	int i = 0;
 	while (movieList[i] != NULL)
 	{
 		printf("%i. Movie Title: %s \n", i, movieList[i]->movie_title);
@@ -175,7 +175,7 @@ char *strtokPlus (char *str, const char *delim)
 	if (str[0] == ',') 
 	{
 		token = (char *)malloc(2 * sizeof(char));
-		token = " ";
+		token = " \0";
 
 		strcpy(str, str + 1);
 	}
