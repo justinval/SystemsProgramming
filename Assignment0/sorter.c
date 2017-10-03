@@ -188,6 +188,7 @@ void printAllCSV (Movie **movieList)
 		i++;
 	}
 }
+
 /*Created b/c regular strtok wouldn't take in to consideration 
 consecutive delims (',')*/
 char *strtokPlus (char *str, const char *delim) 
