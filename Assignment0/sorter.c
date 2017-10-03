@@ -214,9 +214,6 @@ char *strtokPlus (char *str, const char *delim)
 
 		//Count all the bytes from the first char after the 
 		//first quote to the last char before the last quote
-		printf("temp2: %i \n", temp2);
-		printf("temp: %i \n", temp);
-
 		index = temp2 - (str + 1);
 		token = (char *)malloc((index * sizeof(char)) + 1);
 		memcpy(token, str + 1, index);
