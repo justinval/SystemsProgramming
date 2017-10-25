@@ -27,7 +27,7 @@ typedef struct Movies {
 	int gross;
 	char genres[100];
 	char actor_1_name[30];
-	char movie_title[50];
+	char movie_title[100];
 	int num_voted_users;
 	int cast_total_facebook_likes;
 	char actor_3_name[30];
