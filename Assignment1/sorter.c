@@ -36,7 +36,7 @@ int main (int argc, char *argv[])
 		}
 
 		//Parse the directory params
-		char *targetDir = (char *)malloc(strlen(argv[5])+1);
+		char *targetDir = (char *)malloc(strlen(argv[4])+1);
 		strcpy(targetDir, argv[5]);
 		printf("%s", targetDir);
 		char *outputDir;
