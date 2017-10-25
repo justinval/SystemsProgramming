@@ -46,6 +46,7 @@ int main (int argc, char *argv[])
 			outputDir = argv[6];
 		}
 		printf("%s", outputDir);
+		return;
 		//Read format line of CSV file into str[100]
 		char str[1000];
 		scanf("%s\n", str);				
