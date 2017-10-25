@@ -38,9 +38,7 @@ int main (int argc, char *argv[])
 
 		//Parse the directory params
 		char *targetDir = argv[4];
-		printf("test \n");
 		printf("%s \n", targetDir);
-		printf("test \n");
 		char *outputDir;
 
 		//The 3rd flag is optional
@@ -48,8 +46,7 @@ int main (int argc, char *argv[])
 		{
 			outputDir = argv[6];
 		}
-		printf("%s", outputDir);
-		return;
+
 		//Read format line of CSV file into str[100]
 		char str[1000];
 		scanf("%s\n", str);				
