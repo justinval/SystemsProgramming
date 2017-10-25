@@ -39,7 +39,7 @@ int main (int argc, char *argv[])
 		//Parse the directory params
 		char *targetDir = argv[4];
 		printf("test \n");
-		printf("%s", targetDir);
+		printf("%s", argv[4]);
 		char *outputDir;
 
 		//The 3rd flag is optional
