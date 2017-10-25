@@ -19,9 +19,8 @@
 
 int main (int argc, char *argv[]) 
 {
-	printf("%i", argc);
 	//Check to see if there is the proper number of params
-	if (argc == 4 || argc == 6) 
+	if (argc == 5 || argc == 7) 
 	{	 		
 		//Check to see if 1st flag is "-c"
 		if (strcmp(argv[1], "-c") != 0) 
