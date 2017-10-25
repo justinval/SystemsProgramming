@@ -19,7 +19,7 @@
 
 int main (int argc, char *argv[]) 
 {
-	printf(argc);
+	printf("%i", argc);
 	//Check to see if there is the proper number of params
 	if (argc == 4 || argc == 6) 
 	{	 		
