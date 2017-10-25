@@ -19,6 +19,7 @@
 
 int main (int argc, char *argv[]) 
 {
+	prinf(argc);
 	//Check to see if there is the proper number of params
 	if (argc == 4 || argc == 6) 
 	{	 		
