@@ -32,18 +32,20 @@ int main (int argc, char *argv[])
 		//Check to see if 2nd flag is "-d"
 		if (strcmp(argv[3], "-d") != 0)
 		{
-			printf("Need directory to run program. Please try again.");
+			printf("Need directory to run program. Please try again. \n");
+			return 0;
 		}
 
 		//Parse the directory params
 		char *targetDir = argv[4];
+		printf("test \n");
 		printf("%s", targetDir);
 		char *outputDir;
 
 		//The 3rd flag is optional
 		if (strcmp(argv[5], "-o") == 0)
 		{
-			outputDir = (char *)malloc(strlen(argv[6])+1);
+			outputDir = argv[6];
 		}
 		printf("%s", outputDir);
 		return;
