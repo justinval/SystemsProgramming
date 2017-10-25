@@ -40,6 +40,7 @@ int main (int argc, char *argv[])
 		char *targetDir = argv[4];
 		printf("test \n");
 		printf("%s", argv[4]);
+		printf("test \n");
 		char *outputDir;
 
 		//The 3rd flag is optional
