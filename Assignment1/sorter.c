@@ -10,6 +10,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/types.h>
+#include <unistd.h>
 #include <ctype.h>
 #include "sorter.h"
 #include "mergesort.c"
@@ -18,15 +20,32 @@
 int main (int argc, char *argv[]) 
 {
 	//Check to see if there is the proper number of params
-	if (argc == 3) 
+	if (argc == 4 || argc == 6) 
 	{	 		
-		//Check to see if 1st param is "-c"
+		//Check to see if 1st flag is "-c"
 		if (strcmp(argv[1], "-c") != 0) 
 		{
 			printf("Can only sort by column. Please try again. \n");
 			return 0;
 		}
 
+		//Check to see if 2nd flag is "-d"
+		if (strcmp(argv[3], "-d") != 0)
+		{
+			printf("Need directory to run program. Please try again.")
+		}
+
+		//Parse the directory params
+		char targetDir[100] = argv[4];
+		printf("%s", targetDir);
+		char outputDir[100];
+
+		//The 3rd flag is optional
+		if (strcmp(argv[5], "-o") == 0)
+		{
+			outputDir = argv[6];
+		}
+		printf("%s", outputDir);
 		//Read format line of CSV file into str[100]
 		char str[1000];
 		scanf("%s\n", str);				
