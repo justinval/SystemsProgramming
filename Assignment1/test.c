@@ -19,12 +19,12 @@ void traverseDir (char *targetDir)
 		while ((ent = readdir(dir)) != NULL) 
 		{
 			char *path = (char *)malloc(1024 * sizeof(char));
-			if ((subDir = opendir(ent->d_name)) != NULL)
+			strcpy(path, targetDir);
+			strcat(path, "/");
+			strcat(path, ent->d_name);
+			if ((subDir = opendir(path)) != NULL)
 			{	
 				closedir(subDir);
-				strcpy(path, targetDir);
-				strcat(path, "/");
-				strcat(path, ent->d_name);
 				printf("found directory: %s \n", path);
 				pid_t pid = fork();
 
