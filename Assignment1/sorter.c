@@ -13,8 +13,10 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <ctype.h>
+#include <dirent.h>
 #include "sorter.h"
 #include "mergesort.c"
+#include "sortFile.c"
 #define MAX 10000
 
 int main (int argc, char *argv[]) 
