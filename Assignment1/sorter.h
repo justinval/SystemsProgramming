@@ -14,7 +14,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "sortFile.c"
 
 typedef struct Movies {
 	char color[10];

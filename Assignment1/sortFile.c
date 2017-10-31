@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "sorter.h"
 #define MAX 10000
 
 //Read format line of CSV file into str[100]
