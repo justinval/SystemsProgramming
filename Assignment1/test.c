@@ -28,7 +28,7 @@ void traverseDir (char *targetDir)
 			if ((subDir = opendir(path)) != NULL)
 			{	
 				closedir(subDir);
-				if (strcmp(ent->d_name, ".") == 0 || strcmp(ent->d_name, "..") == 0) || (strcmp(ent->d_name, ".git") == 0){
+				if (strcmp(ent->d_name, ".") == 0 || strcmp(ent->d_name, "..") == 0 || strcmp(ent->d_name, ".git") == 0){
                 	continue;
 				}
 				printf("found directory: %s \n", path);
