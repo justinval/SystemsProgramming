@@ -37,6 +37,7 @@ void traverseDir (char *targetDir)
 					traverseDir(path);
 					return;
 				}
+				return;
 			}
 			// else if (csvfile) 
 			// {
