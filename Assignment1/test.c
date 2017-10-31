@@ -56,12 +56,13 @@ void traverseDir (char *targetDir)
 	  /* could not open directory */
 	  	perror ("");
 		return;
-	}		
+	}
+	return;
 }
 
 int main (int argc, char *argv[]) 
 {
 	char *targetDir = argv[1];
 	traverseDir(targetDir);
-
+	return 0;
 }
