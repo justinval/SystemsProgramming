@@ -213,17 +213,19 @@ void printAllCSV (Movie **movieList)
 void printAllCSVFile (Movie **movieList, char *fileDirPath, char *filePath, char *outputFileName, char *outputDir)
 {	
 	// If outputDir wasn't inputted, create an output file in the directory that the CSV file was found in
+	FILE *outputFile;
+
 	if (outputDir == NULL)
 	{
 		strcat(fileDirPath, "/");
 		strcat(fileDirPath, outputFileName);
-		FILE *outputFile = fopen(fileDirPath, "w");
+		outputFile = fopen(fileDirPath, "w");
 	}
 	else
 	{
 		strcat(outputDir, "/");
 		strcat(outputDir, outputFileName);
-		FILE *outputFile = fopen(outputDir, "w");
+		outputFile = fopen(outputDir, "w");
 	}
 	
 	// If you couldn't create the file or open it, exit
@@ -378,7 +380,7 @@ void sortDir (char *targetDir, char *sortBy, char *outputDir)
 				pid_t pid = fork();
 				if (pid == 0)
 				{
-					sortDir(path);
+					sortDir(path, sortBy, outputDir);
 					return;
 				}
 				else if (pid > 0)
