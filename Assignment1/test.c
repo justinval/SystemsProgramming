@@ -10,7 +10,6 @@
 
 void traverseDir (char *targetDir) 
 {
-	char *path = (char *)malloc(1024 * sizeof(char));
 	DIR *dir, *subDir;
 	struct dirent *ent;
 
@@ -19,13 +18,14 @@ void traverseDir (char *targetDir)
 		/* print all the files and directories within directory */
 		while ((ent = readdir(dir)) != NULL) 
 		{
+			char *path = (char *)malloc(1024 * sizeof(char));
 			if ((subDir = opendir(ent->d_name)) != NULL)
 			{	
 				closedir(subDir);
 				strcpy(path, targetDir);
 				strcat(path, "/");
 				strcat(path, ent->d_name);
-				printf("found directory: %s", path);
+				printf("found directory: %s \n", path);
 				pid_t pid = fork();
 
 				// Child process
@@ -46,6 +46,7 @@ void traverseDir (char *targetDir)
 			// }
 			//printf ("%s\n", ent->d_name);
 		}
+			free(path);
 		closedir (dir);
 	}
 	else 
