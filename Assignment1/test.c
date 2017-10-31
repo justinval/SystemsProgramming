@@ -36,6 +36,7 @@ void traverseDir (char *targetDir)
 				pid_t pid = fork();
 				if (pid == 0)
 				{
+					printf("forked \n");
 					traverseDir(path);
 					return;
 				}
