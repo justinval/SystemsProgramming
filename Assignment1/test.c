@@ -20,7 +20,7 @@ void traverseDir (char *targetDir)
 		{
 			if ((subDir = opendir(ent->d_name)) != NULL)
 			{	
-				close(subDir);
+				closedir(subDir);
 				strcpy(path, targetDir);
 				strcat(path, "/");
 				strcat(path, ent->d_name);
