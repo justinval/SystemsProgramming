@@ -42,34 +42,16 @@ int main (int argc, char *argv[])
 		char *outputDir;
 
 		//The 3rd flag is optional
-		if (strcmp(argv[5], "-o") == 0)
+		if (argc == 7) 
 		{
-			outputDir = argv[6];
+			if (strcmp(argv[5], "-o") == 0)
+			{
+				outputDir = argv[6];
+			}
 		}
-
-		//Read format line of CSV file into str[100]
-		char str[1000];
-		scanf("%s\n", str);				
-
-		//Initializes ptr and movieList
-		Movie *ptr;
-		Movie **movieList = (Movie **)malloc(MAX * sizeof(Movie *));
-		int numOfMovies = 0;
-
-		//Loops until scanf is unsuccessful/reaches EOF
-		while (fgets(str, 1000, stdin))
-		{
-			ptr = (Movie *)malloc(sizeof(Movie));
-			parseMovie(str, ptr);					
-			movieList[numOfMovies] = ptr;		
-			numOfMovies++;
-		}
-
-		//Mergesort list based off of field
-		mergeSort(movieList, 0, numOfMovies-1, argv[2]);
 		
-		//printAll(movieList);
-		printAllCSV(movieList);
+		// Traverse the dir and find CSV files to sort
+		sortDir(targetDir, argv[2], outputDir);
 		return 0;
     }
 
@@ -226,6 +208,69 @@ void printAllCSV (Movie **movieList)
 	}
 }
 
+void printAllCSVFile (Movie **movieList, char *fileDirPath, char *filePath, char *outputFileName, char *outputDir)
+{	
+	// If outputDir wasn't inputted, create an output file in the directory that the CSV file was found in
+	if (outputDir == NULL)
+	{
+		strcat(fileDirPath, "/");
+		strcat(fileDirPath, outputFileName);
+		FILE *outputFile = fopen(fileDirPath, "w");
+	}
+	else
+	{
+		strcat(outputDir, "/");
+		strcat(outputDir, outputFileName);
+		FILE *outputFile = fopen(outputDir, "w");
+	}
+	
+	// If you couldn't create the file or open it, exit
+	if (outputFile == NULL) {
+  		fprintf(stderr, "Can't open output file %s!\n", outputFileName);
+	  	exit(1);
+	}
+
+	fprintf(outputFile, "color,director_name,num_critic_for_reviews,duration,director_facebook_likes"
+			",actor_3_facebook_likes,actor_2_name,actor_1_facebook_likes,gross,genres,"
+			"actor_1_name,movie_title,num_voted_users,cast_total_facebook_likes,actor_3_name,"
+			"facenumber_in_poster,plot_keywords,movie_imdb_link,num_user_for_reviews,language,"
+			"country,content_rating,budget,title_year,actor_2_facebook_likes,imdb_score,"
+			"aspect_ratio,movie_facebook_likes\n");	
+
+	int i = 0;
+	while (movieList[i] != NULL)
+	{
+		if (strchr(movieList[i]->movie_title, ',') != NULL)
+		{
+			fprintf(outputFile, "%s,%s,%i,%i,%i,%i,%s,%i,%i,%s,%s,\"%s\",%i,%i,%s,%i,%s,%s,%i,%s,%s,%s,%i,%i,%i,%f,%f,%i\n",
+				movieList[i]->color, movieList[i]->director_name, movieList[i]->num_critic_for_reviews, movieList[i]->duration, 
+				movieList[i]->director_facebook_likes, movieList[i]->actor_3_facebook_likes, movieList[i]->actor_2_name,
+				movieList[i]->actor_1_facecbook_likes, movieList[i]->gross, movieList[i]->genres, movieList[i]->actor_1_name, 
+				movieList[i]->movie_title, movieList[i]->num_voted_users, movieList[i]->cast_total_facebook_likes, 
+				movieList[i]->actor_3_name, movieList[i]->facenumber_in_poster, movieList[i]->plot_keywords, 
+				movieList[i]->movie_imbd_link, movieList[i]->num_user_for_reviews, movieList[i]->language, 
+				movieList[i]->country, movieList[i]->content_rating, movieList[i]->budget, movieList[i]->title_year, 
+				movieList[i]->actor_2_facebook_likes, movieList[i]->imbd_score, movieList[i]->aspect_ratio, 
+				movieList[i]->movie_facebook_likes);
+		i++;
+		}
+
+		else {
+			fprintf(outputFile, "%s,%s,%i,%i,%i,%i,%s,%i,%i,%s,%s,%s,%i,%i,%s,%i,%s,%s,%i,%s,%s,%s,%i,%i,%i,%f,%f,%i\n",
+				movieList[i]->color, movieList[i]->director_name, movieList[i]->num_critic_for_reviews, movieList[i]->duration, 
+				movieList[i]->director_facebook_likes, movieList[i]->actor_3_facebook_likes, movieList[i]->actor_2_name,
+				movieList[i]->actor_1_facecbook_likes, movieList[i]->gross, movieList[i]->genres, movieList[i]->actor_1_name, 
+				movieList[i]->movie_title, movieList[i]->num_voted_users, movieList[i]->cast_total_facebook_likes, 
+				movieList[i]->actor_3_name, movieList[i]->facenumber_in_poster, movieList[i]->plot_keywords, 
+				movieList[i]->movie_imbd_link, movieList[i]->num_user_for_reviews, movieList[i]->language, 
+				movieList[i]->country, movieList[i]->content_rating, movieList[i]->budget, movieList[i]->title_year, 
+				movieList[i]->actor_2_facebook_likes, movieList[i]->imbd_score, movieList[i]->aspect_ratio, 
+				movieList[i]->movie_facebook_likes);
+			i++;
+		}
+	}
+}
+
 /*Created b/c regular strtok wouldn't take in to consideration 
 consecutive delims (',')*/
 char *strtokPlus (char *str, const char *delim) 
@@ -297,4 +342,89 @@ char *strtokPlus (char *str, const char *delim)
 	}
 
 	return token;
+}
+
+void sortDir (char *targetDir, char *sortBy, char *outputDir) 
+{
+	DIR *dir, *subDir;
+	struct dirent *ent;
+
+	// Try to open targetDir
+	if ((dir = opendir(targetDir)) != NULL) 
+	{
+		// Iterate through each directory entry within dir
+		while ((ent = readdir(dir)) != NULL) 
+		{
+			// Create a path for each directory entry
+			char *path = (char *)malloc(1024 * sizeof(char));
+			strcpy(path, targetDir);
+			strcat(path, "/");
+			strcat(path, ent->d_name);
+
+			// Try to open each path, and if successful, it's a directory
+			if ((subDir = opendir(path)) != NULL)
+			{	
+				closedir(subDir);
+
+				// Ignore some weird folders
+				if (strcmp(ent->d_name, ".") == 0 || strcmp(ent->d_name, "..") == 0 || strcmp(ent->d_name, ".git") == 0){
+                	continue;
+				}
+				printf("found directory: %s \n", path);
+				
+				// Use the child process to traverse the found directory
+				pid_t pid = fork();
+				if (pid == 0)
+				{
+					sortDir(path);
+					return;
+				}
+				else if (pid > 0)
+				{
+					printf("Parent process: %i \n", pid);
+				}
+			}
+
+			// If the directory entry is a CSV file
+			else if (strstr(ent->d_name, ".csv") != NULL) 
+			{
+				printf("Found CSV file: %s \n", path);
+
+				char *outputFileName = (char *)malloc(256 * sizeof(char));
+				strcpy(outputFileName, ent->d_name);
+				strcat(outputFileName, "-sorted-");
+				strcat(outputFileName, sortBy);
+				strcat(outputFileName, ".csv");
+
+				// Use the child process to sort the found CSV file
+				pid_t pid = fork();
+				if (pid == 0)
+				{ 
+    				sortFile(targetDir, path, sortBy, outputFileName, outputDir);
+					return;
+				}
+				else if (pid > 0)
+				{
+					printf("Parent process: %i \n", pid);
+				}
+
+				free (outputFileName);
+			}
+			free(path);
+		}
+		closedir (dir);
+	}
+	else 
+	{
+		// Could not open directory
+	  	perror ("");
+		return;
+	}
+
+	int status;
+	if (wait(&status) >= 0)
+	{
+        printf("Child process exited with %d status\n", WEXITSTATUS(status));
+	}
+	return;
 }

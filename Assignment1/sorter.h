@@ -14,6 +14,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "sortFile.c"
 
 typedef struct Movies {
 	char color[10];
@@ -51,4 +52,6 @@ void printMovie (Movie *ptr);
 void printMovieFull (Movie *ptr);
 void printAll (Movie **movieList);
 void printAllCSV (Movie **movieList);
+void printAllCSVFile (Movie **movieList, char *fileDirPath, char *filePath, char *outputFileName, char *outputDir);
 char *strtokPlus (char *str, const char *delim);
+void sortDir (char *targetDir, char *outputDir);

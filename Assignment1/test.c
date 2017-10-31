@@ -49,6 +49,10 @@ void traverseDir (char *targetDir)
 			else if (strstr(ent->d_name, ".csv") != NULL) 
 			{
 				printf("Found CSV file: %s \n", path);
+
+				//fork ()
+
+
 			}
 			free(path);
 		}
