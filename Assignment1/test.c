@@ -10,7 +10,7 @@
 
 void traverseDir (char *targetDir) 
 {
-	char *path;
+	char *path = (char *)malloc(1000 * sizeof(char));
 	DIR *dir, *subDir;
 	struct dirent *ent;
 	if ((dir = opendir(targetDir)) != NULL) 
