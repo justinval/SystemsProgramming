@@ -60,11 +60,7 @@ void traverseDir (char *targetDir)
 	int status;
 	if (wait(&status) >= 0)
 	{
-		if (WEXITED(status))
-    	{
-        	/* Child process exited normally, through `return` or `exit` */
-        	printf("Child process exited with %d status\n", WEXITSTATUS(status));
-    	}
+        printf("Child process exited with %d status\n", WEXITSTATUS(status));
 	}
 	return;
 
