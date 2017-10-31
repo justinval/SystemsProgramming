@@ -45,8 +45,8 @@ void traverseDir (char *targetDir)
 
 			// }
 			//printf ("%s\n", ent->d_name);
-		}
 			free(path);
+		}
 		closedir (dir);
 	}
 	else 
