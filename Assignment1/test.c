@@ -30,13 +30,12 @@ void traverseDir (char *targetDir)
 				if (strcmp(ent->d_name, ".") == 0 || strcmp(ent->d_name, "..") == 0 || strcmp(ent->d_name, ".git") == 0){
                 	continue;
 				}
-				//printf("found directory: %s \n", path);
+				printf("found directory: %s \n", path);
 				
 				// Use the child process to traverse the found directory
 				pid_t pid = fork();
 				if (pid == 0)
 				{
-					printf("forked \n");
 					traverseDir(path);
 					return;
 				}
