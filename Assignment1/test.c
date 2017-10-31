@@ -8,13 +8,6 @@
 #include "mergesort.c"
 #include <dirent.h>
 
-int main (int argc, char *argv[]) 
-{
-	char *targetDir = argv[1];
-	traverseDir(targetDir);
-
-}
-
 void traverseDir (char *targetDir) 
 {
 	char *path;
@@ -27,7 +20,7 @@ void traverseDir (char *targetDir)
 		{
 			if ((subDir = opendir(ent->d_name)) != NULL)
 			{	
-				close(subdir);
+				close(subDir);
 				strcpy(path, targetDir)
 				strcat(path, "/");
 				strcat(path, ent->d_name);
@@ -52,4 +45,11 @@ void traverseDir (char *targetDir)
 	  	perror ("");
 		return EXIT_FAILURE;
 	}
+}
+
+int main (int argc, char *argv[]) 
+{
+	char *targetDir = argv[1];
+	traverseDir(targetDir);
+
 }
