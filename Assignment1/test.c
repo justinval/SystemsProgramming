@@ -18,20 +18,25 @@ void traverseDir (char *targetDir)
 		/* print all the files and directories within directory */
 		while ((ent = readdir(dir)) != NULL) 
 		{
+			// Create a path for each directory entry
 			char *path = (char *)malloc(1024 * sizeof(char));
 			strcpy(path, targetDir);
 			strcat(path, "/");
 			strcat(path, ent->d_name);
+
+			// Try to open each path, and if successful, it's a directory
 			if ((subDir = opendir(path)) != NULL)
 			{	
 				closedir(subDir);
 				printf("found directory: %s \n", path);
-				// Parent process
-				// fork()
-				// if ()
-				// {
-				// 	traverseDir(path);
-				// }
+				
+				// Use the child process to traverse the found directory
+				pid_t pid = fork();
+				if (pid == 0)
+				{
+					traverseDir(path);
+					return;
+				}
 			}
 			// else if (csvfile) 
 			// {
