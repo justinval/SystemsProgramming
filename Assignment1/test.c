@@ -21,7 +21,7 @@ void traverseDir (char *targetDir)
 			if ((subDir = opendir(ent->d_name)) != NULL)
 			{	
 				close(subDir);
-				strcpy(path, targetDir)
+				strcpy(path, targetDir);
 				strcat(path, "/");
 				strcat(path, ent->d_name);
 				printf("%s", path);
