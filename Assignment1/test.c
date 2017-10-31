@@ -25,9 +25,14 @@ void traverseDir (char *targetDir)
 				strcpy(path, targetDir);
 				strcat(path, "/");
 				strcat(path, ent->d_name);
-				printf("found directory: %s", path;
-				
+				printf("found directory: %s", path);
+				pid_t pid = fork();
 
+				// Child process
+				if (pid == 0)
+				{
+						
+				}
 				// Parent process
 				// fork()
 				// if ()
