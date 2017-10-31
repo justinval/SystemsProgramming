@@ -10,6 +10,7 @@
 
 void traverseDir (char *targetDir) 
 {
+	int status;
 	DIR *dir, *subDir;
 	struct dirent *ent;
 
@@ -49,7 +50,6 @@ void traverseDir (char *targetDir)
 			free(path);
 		}
 		closedir (dir);
-		return;
 	}
 	else 
 	{
@@ -57,7 +57,19 @@ void traverseDir (char *targetDir)
 	  	perror ("");
 		return;
 	}
+
+	int status;
+	if (wait(&status) >= 0)
+	{
+		if (WEXITED(status))
+    	{
+        	/* Child process exited normally, through `return` or `exit` */
+        	printf("Child process exited with %d status\n", WEXITSTATUS(status));
+    	}
+	}
 	return;
+
+
 }
 
 int main (int argc, char *argv[]) 
