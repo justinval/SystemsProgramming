@@ -40,7 +40,6 @@ void traverseDir (char *targetDir)
 					traverseDir(path);
 					return;
 				}
-				return;
 			}
 			// else if (csvfile) 
 			// {
@@ -49,6 +48,7 @@ void traverseDir (char *targetDir)
 			//printf ("%s\n", ent->d_name);
 			free(path);
 		}
+		return;
 		closedir (dir);
 	}
 	else 
