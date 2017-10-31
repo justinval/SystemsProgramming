@@ -41,7 +41,7 @@ void traverseDir (char *targetDir)
 				}
 				if (pid > 0)
 				{
-					printf("Parent process: %s", pid);
+					printf("Parent process: %i", pid);
 				}
 			}
 
