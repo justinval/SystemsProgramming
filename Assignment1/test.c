@@ -43,7 +43,7 @@ void traverseDir (char *targetDir)
 	{
 	  /* could not open directory */
 	  	perror ("");
-		return EXIT_FAILURE;
+		return;
 	}
 }
 
