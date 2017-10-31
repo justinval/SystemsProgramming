@@ -11,18 +11,45 @@
 int main (int argc, char *argv[]) 
 {
 	char *targetDir = argv[1];
+	traverseDir(targetDir);
 
-	DIR *dir;
+}
+
+void traverseDir (char *targetDir) 
+{
+	char *path;
+	DIR *dir, *subDir;
 	struct dirent *ent;
-	if ((dir = opendir(targetDir)) != NULL) {
-	  /* print all the files and directories within directory */
-	  while ((ent = readdir (dir)) != NULL) {
-	    printf ("%s\n", ent->d_name);
-	  }
-	  closedir (dir);
-	} else {
+	if ((dir = opendir(targetDir)) != NULL) 
+	{
+		/* print all the files and directories within directory */
+		while ((ent = readdir(dir)) != NULL) 
+		{
+			if ((subDir = opendir(ent->d_name)) != NULL)
+			{	
+				close(subdir);
+				strcpy(path, targetDir)
+				strcat(path, "/");
+				strcat(path, ent->d_name);
+				printf("%s", path);
+				// fork()
+				// if ()
+				// {
+				// 	traverseDir(path);
+				// }
+			}
+			// else if (csvfile) 
+			// {
+
+			// }
+			printf ("%s\n", ent->d_name);
+		}
+		closedir (dir);
+	}
+	else 
+	{
 	  /* could not open directory */
-	  perror ("");
-	  return EXIT_FAILURE;
-	}	
+	  	perror ("");
+		return EXIT_FAILURE;
+	}
 }
