@@ -10,7 +10,6 @@
 
 void traverseDir (char *targetDir) 
 {
-	int status;
 	DIR *dir, *subDir;
 	struct dirent *ent;
 
