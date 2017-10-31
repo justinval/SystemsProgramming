@@ -15,7 +15,6 @@ void traverseDir (char *targetDir)
 
 	if ((dir = opendir(targetDir)) != NULL) 
 	{
-		/* print all the files and directories within directory */
 		while ((ent = readdir(dir)) != NULL) 
 		{
 			// Create a path for each directory entry
@@ -31,7 +30,7 @@ void traverseDir (char *targetDir)
 				if (strcmp(ent->d_name, ".") == 0 || strcmp(ent->d_name, "..") == 0 || strcmp(ent->d_name, ".git") == 0){
                 	continue;
 				}
-				printf("found directory: %s \n", path);
+				//printf("found directory: %s \n", path);
 				
 				// Use the child process to traverse the found directory
 				pid_t pid = fork();
@@ -41,15 +40,16 @@ void traverseDir (char *targetDir)
 					return;
 				}
 			}
-			// else if (csvfile) 
-			// {
 
-			// }
-			//printf ("%s\n", ent->d_name);
+			// If the directory entry is a csv file
+			else if (strstr(ent->d_name, ".csv") != NULL) 
+			{
+				printf("Found CSV file: %s \n", path);
+			}
 			free(path);
 		}
-		return;
 		closedir (dir);
+		return;
 	}
 	else 
 	{
