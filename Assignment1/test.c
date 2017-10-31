@@ -39,6 +39,10 @@ void traverseDir (char *targetDir)
 					traverseDir(path);
 					return;
 				}
+				if (pid > 0)
+				{
+					printf("Parent process: %s", pid);
+				}
 			}
 
 			// If the directory entry is a csv file
