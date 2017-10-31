@@ -28,6 +28,9 @@ void traverseDir (char *targetDir)
 			if ((subDir = opendir(path)) != NULL)
 			{	
 				closedir(subDir);
+				if (strcmp(entry->d_name, ".") == 0 || strcmp(entry->d_name, "..") == 0) {
+                	continue;
+				}
 				printf("found directory: %s \n", path);
 				
 				// Use the child process to traverse the found directory
