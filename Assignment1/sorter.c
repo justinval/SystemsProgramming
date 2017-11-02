@@ -21,7 +21,7 @@
 
 int main (int argc, char *argv[]) 
 {
-	print("%d", getpid());
+	printf("%d", getpid());
 	//Check to see if there is the proper number of params
 	if (argc == 5 || argc == 7) 
 	{	 		
