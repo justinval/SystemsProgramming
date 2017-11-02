@@ -65,11 +65,11 @@ int main (int argc, char *argv[])
 		FILE *file2 = fopen("processesList.txt", "r");
 		//List all the threads
 		char line[50];
-		int numOfThreads;
+		int numOfThreads = 0;
 		printf("PIDS of all child processes: ");
 		while (fgets(line, 50, file2))
 		{
-			printf("%s ,", line);
+			printf("%s", line);
 			numOfThreads++;
 		}		
 		printf("\n");
@@ -422,7 +422,7 @@ void sortDir (char *targetDir, char *sortBy, char *outputDir, FILE *file)
 				//printf("Found CSV file: %s \n", path);
 
 				char *outputFileName = (char *)malloc(256 * sizeof(char));
-				strcpy(outputFileName, ent->d_name);
+				strncpy(outputFileName, ent->d_name, strlen(ent->d_name)-4);
 				strcat(outputFileName, "-sorted-");
 				strcat(outputFileName, sortBy);
 				strcat(outputFileName, ".csv");
