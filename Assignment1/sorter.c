@@ -21,7 +21,6 @@
 
 int main (int argc, char *argv[]) 
 {
-	printf("%d", getpid());
 	//Check to see if there is the proper number of params
 	if (argc == 5 || argc == 7) 
 	{	 		
@@ -53,8 +52,24 @@ int main (int argc, char *argv[])
 			}
 		}
 		
-		// Traverse the dir and find CSV files to sort
-		sortDir(targetDir, argv[2], outputDir);
+		printf("Initial PID: %d \n", getpid());
+
+		//Open up a file so threads can write to it
+		FILE *file = fopen("threadsList.txt", "w+");
+
+		//Traverse the dir and find CSV files to sort
+		sortDir(targetDir, argv[2], outputDir, file);
+
+		fclose(file);
+
+		//List all the threads
+		int numOfThreads;
+		while (fgets(line, 50, file))
+		{
+
+			numOfThreads++;
+		}		
+
 		return 0;
     }
 
@@ -349,7 +364,7 @@ char *strtokPlus (char *str, const char *delim)
 	return token;
 }
 
-void sortDir (char *targetDir, char *sortBy, char *outputDir) 
+void sortDir (char *targetDir, char *sortBy, char *outputDir, FILE *file) 
 {
 	DIR *dir, *subDir;
 	struct dirent *ent;
@@ -375,25 +390,27 @@ void sortDir (char *targetDir, char *sortBy, char *outputDir)
 				if (strcmp(ent->d_name, ".") == 0 || strcmp(ent->d_name, "..") == 0 || strcmp(ent->d_name, ".git") == 0){
                 	continue;
 				}
-				printf("found directory: %s \n", path);
+				//printf("found directory: %s \n", path);
 				
 				// Use the child process to traverse the found directory
 				pid_t pid = fork();
 				if (pid == 0)
 				{
+					fprintf(file, "%d \n", getpid());
 					sortDir(path, sortBy, outputDir);
 					return;
 				}
 				else if (pid > 0)
 				{
-					printf("Parent process: %i \n", pid);
+					fprintf(file, "%d \n", getpid());
+					//printf("Parent process: %i \n", pid);
 				}
 			}
 
 			// If the directory entry is a CSV file
 			else if (strstr(ent->d_name, ".csv") != NULL) 
 			{
-				printf("Found CSV file: %s \n", path);
+				//printf("Found CSV file: %s \n", path);
 
 				char *outputFileName = (char *)malloc(256 * sizeof(char));
 				strcpy(outputFileName, ent->d_name);
@@ -405,12 +422,14 @@ void sortDir (char *targetDir, char *sortBy, char *outputDir)
 				pid_t pid = fork();
 				if (pid == 0)
 				{ 
+					fprintf(file, "%d \n", getpid());
     				sortFile(targetDir, path, sortBy, outputFileName, outputDir);
 					return;
 				}
 				else if (pid > 0)
 				{
-					printf("Parent process: %i \n", pid);
+					fprintf(file, "%d \n", getpid());
+					//printf("Parent process: %i \n", pid);
 				}
 
 				free (outputFileName);
@@ -429,7 +448,7 @@ void sortDir (char *targetDir, char *sortBy, char *outputDir)
 	int status;
 	if (wait(&status) >= 0)
 	{
-        printf("Child process exited with %d status\n", WEXITSTATUS(status));
+        //printf("Child process exited with %d status\n", WEXITSTATUS(status));
 	}
 	return;
 }
