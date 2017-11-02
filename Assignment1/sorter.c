@@ -63,13 +63,15 @@ int main (int argc, char *argv[])
 		//List all the threads
 		char line[50];
 		int numOfThreads;
+		printf("PIDS of all child processes: ")
 		while (fgets(line, 50, file))
 		{
-
+			printf("%d ,", line);
 			numOfThreads++;
 		}		
+		printf("%i", &numOfThreads);
 		fclose(file);
-		
+
 		return 0;
     }
 
