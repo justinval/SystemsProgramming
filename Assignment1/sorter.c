@@ -451,6 +451,5 @@ void sortDir (char *targetDir, char *sortBy, char *outputDir, FILE *file)
 	  	perror ("");
 		return;
 	}
-	wait(&status);
 	return;
 }
