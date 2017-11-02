@@ -55,7 +55,7 @@ int main (int argc, char *argv[])
 		printf("Initial PID: %d \n", getpid());
 
 		//Open up a file so threads can write to it
-		FILE *file = fopen("threadsList.txt", "w+");
+		FILE *file = fopen("processesList.txt", "w+");
 
 		//Traverse the dir and find CSV files to sort
 		sortDir(targetDir, argv[2], outputDir, file);
@@ -369,6 +369,7 @@ char *strtokPlus (char *str, const char *delim)
 
 void sortDir (char *targetDir, char *sortBy, char *outputDir, FILE *file) 
 {	
+	exit(0);
 	int status;
 	DIR *dir, *subDir;
 	struct dirent *ent;
@@ -440,7 +441,7 @@ void sortDir (char *targetDir, char *sortBy, char *outputDir, FILE *file)
 					printf("couldn't fork \n");
 				}
 
-				free (outputFileName);
+				free(outputFileName);
 			}
 			free(path);
 		}
