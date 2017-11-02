@@ -402,11 +402,10 @@ void sortDir (char *targetDir, char *sortBy, char *outputDir, FILE *file)
 				{
 					fprintf(file, "%d \n", getpid());
 					sortDir(path, sortBy, outputDir, file);
-					return;
+					System.exit(0);
 				}
 				else if (pid > 0)
 				{
-					wait(&status);
 					//printf("Parent process: %i \n", pid);
 				}
 				else {
@@ -431,7 +430,7 @@ void sortDir (char *targetDir, char *sortBy, char *outputDir, FILE *file)
 				{ 
 					fprintf(file, "%d \n", getpid());
     				sortFile(targetDir, path, sortBy, outputFileName, outputDir);
-					return;
+					System.exit(0);
 				}
 				else if (pid > 0)
 				{
@@ -454,5 +453,6 @@ void sortDir (char *targetDir, char *sortBy, char *outputDir, FILE *file)
 	  	perror ("");
 		return;
 	}
+	wait(&status);
 	return;
 }
