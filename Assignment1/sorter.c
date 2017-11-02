@@ -434,7 +434,6 @@ void sortDir (char *targetDir, char *sortBy, char *outputDir, FILE *file)
 				}
 				else if (pid > 0)
 				{
-					wait(&status);
 					//printf("Parent process: %i \n", pid);
 				}
 				else {
