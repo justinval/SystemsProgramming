@@ -69,7 +69,7 @@ int main (int argc, char *argv[])
 			numOfThreads++;
 		}		
 		printf("\n");
-		printf("%i", &numOfThreads);
+		printf("Total number of processes: %i \n", &numOfThreads);
 		fclose(file);
 
 		return 0;
