@@ -40,7 +40,6 @@ int main (int argc, char *argv[])
 
 		//Parse the directory params
 		char *targetDir = argv[4];
-		printf("%s \n", targetDir);
 		char *outputDir;
 
 		//The 3rd flag is optional
@@ -368,8 +367,7 @@ char *strtokPlus (char *str, const char *delim)
 }
 
 void sortDir (char *targetDir, char *sortBy, char *outputDir, FILE *file) 
-{	
-	exit(0);
+{
 	int status;
 	DIR *dir, *subDir;
 	struct dirent *ent;
