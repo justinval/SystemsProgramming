@@ -441,9 +441,9 @@ void sortDir (char *targetDir, char *sortBy, char *outputDir, FILE *file)
 					printf("couldn't fork \n");
 				}
 
-				free(outputFileName);
+				//free(outputFileName);
 			}
-			free(path);
+			//free(path);
 		}
 		closedir (dir);
 	}
