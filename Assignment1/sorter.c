@@ -69,6 +69,7 @@ int main (int argc, char *argv[])
 			printf("%d ,", line);
 			numOfThreads++;
 		}		
+		printf("\n");
 		printf("%i", &numOfThreads);
 		fclose(file);
 
