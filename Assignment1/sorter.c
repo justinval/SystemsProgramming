@@ -368,7 +368,8 @@ char *strtokPlus (char *str, const char *delim)
 }
 
 void sortDir (char *targetDir, char *sortBy, char *outputDir, FILE *file) 
-{
+{	
+	int status;
 	DIR *dir, *subDir;
 	struct dirent *ent;
 
@@ -405,7 +406,7 @@ void sortDir (char *targetDir, char *sortBy, char *outputDir, FILE *file)
 				}
 				else if (pid > 0)
 				{
-					fprintf(file, "%d \n", getpid());
+					wait(&status);
 					//printf("Parent process: %i \n", pid);
 				}
 				else {
@@ -434,7 +435,7 @@ void sortDir (char *targetDir, char *sortBy, char *outputDir, FILE *file)
 				}
 				else if (pid > 0)
 				{
-					fprintf(file, "%d \n", getpid());
+					wait(&status);
 					//printf("Parent process: %i \n", pid);
 				}
 				else {
@@ -452,12 +453,6 @@ void sortDir (char *targetDir, char *sortBy, char *outputDir, FILE *file)
 		// Could not open directory
 	  	perror ("");
 		return;
-	}
-
-	int status;
-	if (wait(&status) >= 0)
-	{
-        //printf("Child process exited with %d status\n", WEXITSTATUS(status));
 	}
 	return;
 }
