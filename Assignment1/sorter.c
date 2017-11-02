@@ -402,7 +402,7 @@ void sortDir (char *targetDir, char *sortBy, char *outputDir, FILE *file)
 				{
 					fprintf(file, "%d \n", getpid());
 					sortDir(path, sortBy, outputDir, file);
-					System.exit(0);
+					exit(0);
 				}
 				else if (pid > 0)
 				{
@@ -430,7 +430,7 @@ void sortDir (char *targetDir, char *sortBy, char *outputDir, FILE *file)
 				{ 
 					fprintf(file, "%d \n", getpid());
     				sortFile(targetDir, path, sortBy, outputFileName, outputDir);
-					System.exit(0);
+					exit(0);
 				}
 				else if (pid > 0)
 				{
