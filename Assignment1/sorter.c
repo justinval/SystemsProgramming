@@ -60,16 +60,16 @@ int main (int argc, char *argv[])
 		//Traverse the dir and find CSV files to sort
 		sortDir(targetDir, argv[2], outputDir, file);
 
-		fclose(file);
-
 		//List all the threads
+		char line[50];
 		int numOfThreads;
 		while (fgets(line, 50, file))
 		{
 
 			numOfThreads++;
 		}		
-
+		fclose(file);
+		
 		return 0;
     }
 
@@ -397,7 +397,7 @@ void sortDir (char *targetDir, char *sortBy, char *outputDir, FILE *file)
 				if (pid == 0)
 				{
 					fprintf(file, "%d \n", getpid());
-					sortDir(path, sortBy, outputDir);
+					sortDir(path, sortBy, outputDir, file);
 					return;
 				}
 				else if (pid > 0)
