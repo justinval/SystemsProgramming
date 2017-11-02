@@ -408,6 +408,9 @@ void sortDir (char *targetDir, char *sortBy, char *outputDir, FILE *file)
 					fprintf(file, "%d \n", getpid());
 					//printf("Parent process: %i \n", pid);
 				}
+				else {
+					printf("couldn't fork \n");
+				}
 			}
 
 			// If the directory entry is a CSV file
@@ -433,6 +436,9 @@ void sortDir (char *targetDir, char *sortBy, char *outputDir, FILE *file)
 				{
 					fprintf(file, "%d \n", getpid());
 					//printf("Parent process: %i \n", pid);
+				}
+				else {
+					printf("couldn't fork \n");
 				}
 
 				free (outputFileName);
