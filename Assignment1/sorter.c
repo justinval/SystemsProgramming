@@ -54,24 +54,27 @@ int main (int argc, char *argv[])
 		printf("Initial PID: %d \n", getpid());
 
 		//Open up a file so threads can write to it
-		FILE *file = fopen("processesList.txt", "w+");
+		FILE *file = fopen("processesList.txt", "w");
 
 		//Traverse the dir and find CSV files to sort
 		sortDir(targetDir, argv[2], outputDir, file);
 
+		//Close file
+		fclose(file);
+
+		FILE *file2 = fopen("processesList.txt", "r");
 		//List all the threads
 		char line[50];
 		int numOfThreads;
 		printf("PIDS of all child processes: ");
-		while (fgets(line, 50, file))
+		while (fgets(line, 50, file2))
 		{
 			printf("%s ,", line);
 			numOfThreads++;
 		}		
 		printf("\n");
 		printf("Total number of processes: %i \n", numOfThreads);
-		fclose(file);
-
+		fclose(file2);
 		return 0;
     }
 
