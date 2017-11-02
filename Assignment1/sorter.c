@@ -413,8 +413,8 @@ void sortDir (char *targetDir, char *sortBy, char *outputDir, FILE *file)
 				}
 			}
 
-			// If the directory entry is a CSV file
-			else if (strstr(ent->d_name, ".csv") != NULL) 
+			// If the directory entry is a CSV file and is not already sorted
+			else if (strstr(ent->d_name, ".csv") != NULL && (strstr(ent->d_name, "-sorted-") == NULL)) 
 			{
 				//printf("Found CSV file: %s \n", path);
 
