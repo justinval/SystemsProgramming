@@ -380,7 +380,7 @@ void sortDir (char *targetDir, char *sortBy, char *outputDir, FILE *file)
 		while ((ent = readdir(dir)) != NULL) 
 		{
 			// Create a path for each directory entry
-			char *path = (char *)malloc(1024 * sizeof(char));
+			char *path = (char *)malloc(256 * sizeof(char));
 			strcpy(path, targetDir);
 			strcat(path, "/");
 			strcat(path, ent->d_name);
