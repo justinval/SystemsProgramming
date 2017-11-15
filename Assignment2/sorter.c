@@ -39,37 +39,6 @@ int main (int argc, char *argv[])
 					outputDir = argv[index];
 			}
 		}
-		printf("Column: %s \n", column);
-		printf("TargetDir: %s \n", targetDir);
-		if (outputDir != NULL) 
-			printf("OutputDir: %s \n", outputDir);
-		return 0;
-		// //Check to see if 1st flag is "-c"
-		// if (strcmp(argv[1], "-c") != 0) 
-		// {
-		// 	printf("Can only sort by column. Please try again. \n");
-		// 	return 0;
-		// }
-
-		// //Check to see if 2nd flag is "-d"
-		// if (strcmp(argv[3], "-d") != 0)
-		// {
-		// 	printf("Need directory to run program. Please try again. \n");
-		// 	return 0;
-		// }
-
-		// //Parse the directory params
-		// char *targetDir = argv[4];
-		// char *outputDir;
-
-		// //The 3rd flag is optional
-		// if (argc == 7) 
-		// {
-		// 	if (strcmp(argv[5], "-o") == 0)
-		// 	{
-		// 		outputDir = argv[6];
-		// 	}
-		// }
 		
 		printf("Initial PID: %d \n", getpid());
 
