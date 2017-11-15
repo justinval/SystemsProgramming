@@ -26,17 +26,17 @@ int main (int argc, char *argv[])
 	{	 		
 		// Use switch-case to parse flags
 		char *column, *targetDir, *outputDir; 
-		int flagCounter;
-		for (flagCounter = 1; flagCounter < argc; flagCounter+=2) {
-			switch (argv[flagCounter*2+1][1]) {
+		int index;
+		for (index = 1; index < argc; index+=2) {
+			switch (argv[index][1]) {
 				case 'c':
-					column = argv[flagCounter*2+1];
+					column = argv[index];
 					break;
 				case 'd':
-					targetDir = argv[flagCounter*2+1];
+					targetDir = argv[index];
 					break;
 				case 'o':
-					outputDir = argv[flagCounter*2+1];
+					outputDir = argv[index];
 			}
 		}
 		printf("Column: %s \n", column);
