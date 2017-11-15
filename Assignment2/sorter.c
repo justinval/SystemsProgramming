@@ -27,7 +27,7 @@ int main (int argc, char *argv[])
 		// Use switch-case to parse flags
 		char *column, *targetDir, *outputDir; 
 		int index;
-		for (index = 1; index < argc; index+=2) {
+		for (index = 2; index < argc; index+=2) {
 			switch (argv[index][1]) {
 				case 'c':
 					column = argv[index];
