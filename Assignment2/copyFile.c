@@ -7,7 +7,7 @@
 
 int main (int argc, char *argv[]) {
 	mkdir(DIRNAME, 0777);
-
+	printf("test");
 
 	FILE *file = fopen(FILENAME, "r");	
 	char *tempFileName =  (char *)malloc(10 * sizeof(char));
