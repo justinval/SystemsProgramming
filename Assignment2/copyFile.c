@@ -7,13 +7,12 @@
 #define DIRNAME "someDir"
 
 int main (int argc, char *argv[]) {
-	mkdir(DIRNAME, 0777);
-
-	FILE *file = fopen(FILENAME, "r");	
+	mkdir(DIRNAME, 0777);	
 	char *tempFileName =  (char *)malloc(10 * sizeof(char));
 	int i;
 	for (i = 0; i < NUMFILES; i++)
 	{
+		FILE *file = fopen(FILENAME, "r");
 		sprintf(tempFileName, "%s/%d.txt", DIRNAME, i);
 		printf("%s \n", tempFileName);
 		FILE *destFile = fopen(tempFileName, "w");
@@ -22,6 +21,7 @@ int main (int argc, char *argv[]) {
 		{
 			fputc(c, destFile);
 		}
+		fclose(file);
 		fclose(destFile);
 	}
 }
