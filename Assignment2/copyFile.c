@@ -3,8 +3,6 @@
 #include <sys/stat.h>
 #define NUMFILES 1
 #define NUMDIR 1 
-#define FILENAME "movie_metadata.csv"
-#define DIRNAME "someDir"
 
 int main (int argc, char *argv[]) {
 	printf("test");
