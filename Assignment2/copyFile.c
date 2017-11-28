@@ -11,7 +11,7 @@ int main (int argc, char *argv[]) {
 	//mkdir("someDir", 0777);
 	printf("test");
 
-	FILE *file = fopen(movie_metadata.csv, "r");	
+	FILE *file = fopen("movie_metadata.csv", "r");	
 	char *tempFileName =  (char *)malloc(10 * sizeof(char));
 	int i;
 	for (i = 0; i < NUMFILES; i++)
