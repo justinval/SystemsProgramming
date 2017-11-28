@@ -7,7 +7,7 @@
 #define DIRNAME "someDir"
 
 int main (int argc, char *argv[]) {
-	mkdir(DIRNAME, 0777);
+	mkdir("someDir", 0777);
 	printf("test");
 
 	FILE *file = fopen(FILENAME, "r");	
@@ -15,7 +15,7 @@ int main (int argc, char *argv[]) {
 	int i;
 	for (i = 0; i < NUMFILES; i++)
 	{
-		sprintf(tempFileName, "%s/%d.txt", DIRNAME, i);
+		sprintf(tempFileName, "%s/%d.txt", "someDir", i);
 		FILE *destFile = fopen(tempFileName, "w");
 		char c;
 		while ((c = fgetc(file)) != EOF)
