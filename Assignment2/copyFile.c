@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <sys/stat.h>
 #define NUMFILES 1
 #define NUMDIR 1 
 #define FILENAME "movie_metadata.csv"
