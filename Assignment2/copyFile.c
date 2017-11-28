@@ -7,9 +7,9 @@
 //#define DIRNAME "someDir"
 
 int main (int argc, char *argv[]) {
-	printf("test");
+	printf("test \n");
 	//mkdir("someDir", 0777);
-	printf("test");
+	printf("test \n");
 
 	FILE *file = fopen("movie_metadata.csv", "r");	
 	char *tempFileName =  (char *)malloc(10 * sizeof(char));
