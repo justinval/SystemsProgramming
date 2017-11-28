@@ -15,7 +15,7 @@ int main (int argc, char *argv[]) {
 	for (i = 0; i < NUMFILES; i++)
 	{
 		sprintf(tempFileName, "%s/%d.txt", DIRNAME, i);
-		printf("%s \n", tempFileName)
+		printf("%s \n", tempFileName);
 		FILE *destFile = fopen(tempFileName, "w");
 		char c;
 		while ((c = fgetc(file)) != EOF)
