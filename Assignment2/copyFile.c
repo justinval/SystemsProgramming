@@ -21,5 +21,6 @@ int main (int argc, char *argv[]) {
 		{
 			fputc(c, destFile);
 		}
+		fclose(destFile);
 	}
 }
