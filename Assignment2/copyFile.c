@@ -7,6 +7,7 @@
 #define DIRNAME "someDir"
 
 int main (int argc, char *argv[]) {
+	printf("test");
 	mkdir("someDir", 0777);
 	printf("test");
 
