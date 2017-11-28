@@ -1,14 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/stat.h>
-#define NUMFILES 1
+#define NUMFILES 100
 #define NUMDIR 1 
 #define FILENAME "movie_metadata.csv"
 #define DIRNAME "someDir"
 
 int main (int argc, char *argv[]) {
 	mkdir(DIRNAME, 0777);
-	printf("test");
 
 	FILE *file = fopen(FILENAME, "r");	
 	char *tempFileName =  (char *)malloc(10 * sizeof(char));
