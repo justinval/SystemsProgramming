@@ -1,3 +1,5 @@
+#include <stdio.h>
+#include <stdlib.h>
 #define NUMFILES 1
 #define NUMDIR 1 
 #define FILENAME "movie_metadata.csv"
@@ -12,12 +14,12 @@ int main (int argc, char *argv[]) {
 	int i;
 	for (i = 0; i < NUMFILES; i++)
 	{
-		sprintf(tempFileName, "%s/%d.txt", DIRNAME, j);
+		sprintf(tempFileName, "%s/%d.txt", DIRNAME, i);
 		FILE *destFile = fopen(tempFileName, "w");
 		char c;
 		while ((c = fgetc(file)) != EOF)
 		{
-			fputc(destFle);
+			fputc(destFile);
 		}
 	}
 }
