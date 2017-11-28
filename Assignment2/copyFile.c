@@ -8,7 +8,7 @@
 
 int main (int argc, char *argv[]) {
 	printf("test");
-	mkdir("someDir", 0777);
+	//mkdir("someDir", 0777);
 	printf("test");
 
 	FILE *file = fopen(FILENAME, "r");	
