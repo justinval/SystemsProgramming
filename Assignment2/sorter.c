@@ -428,7 +428,7 @@ void *sortDir (void *ptrIn)
 				
 				// Create new thread to traverse the found directory
 				t1 = pthread_create(&dtid, NULL, sortDir, (void *)sortDirParams);
-				print("ThreadID: %i", gettid());
+				printf("ThreadID: %i", syscall( __NR_gettid));
 				// Waits for the newly created thread to terminate before continuing
 				t2 = pthread_join(dtid, NULL);
 			}
@@ -454,7 +454,7 @@ void *sortDir (void *ptrIn)
 
 				// Use the child process to sort the found CSV file
 				t3 = pthread_create(&ftid, NULL, sortFile, (void *)sortFileParams);
-				print("ThreadID: %i", gettid());
+				printf("ThreadID: %i", syscall( __NR_gettid ));
 				// Waits for the newly created thread to terminate before continuing				
 				t4 = pthread_join(ftid, NULL);
 
