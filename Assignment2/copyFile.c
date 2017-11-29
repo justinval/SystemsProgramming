@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/stat.h>
-#define NUMFILES 128
+#define NUMFILES 256
 #define NUMDIR 1 
 #define FILENAME "movie_metadata.csv"
-#define DIRNAME "someDir/test8"
+#define DIRNAME "someDir/test9"
 
 int main (int argc, char *argv[]) {
 	mkdir(DIRNAME, 0777);	
