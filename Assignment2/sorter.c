@@ -441,7 +441,7 @@ void* sortDir (void* ptrIn)
 				char *outputFileName = (char *)malloc(256 * sizeof(char));
 				strncpy(outputFileName, ent->d_name, strlen(ent->d_name)-4);
 				strcat(outputFileName, "-sorted-");
-				strcat(outputFileName, tempDir->sortBy);
+				strcat(outputFileName, sortBy);
 				strcat(outputFileName, ".csv");
 
 				// Initialize a fileStruct to pass into pthread_create
