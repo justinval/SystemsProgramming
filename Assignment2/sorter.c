@@ -43,7 +43,7 @@ int main (int argc, char *argv[])
 		printf("Initial PID: %d \n", getpid());
 
 		//Open up a file so threads can write to it
-		FILE *file = fopen("processesList.txt", "w");
+		FILE *file = fopen("threadsList.txt", "w");
 
 		//Traverse the dir and find CSV files to sort
 		sortDir(targetDir, argv[2], outputDir, file);
@@ -51,19 +51,20 @@ int main (int argc, char *argv[])
 		//Close file
 		fclose(file);
 
-		FILE *file2 = fopen("processesList.txt", "r");
-		//List all the threads
-		char line[50];
-		int numOfThreads = 0;
-		printf("PIDS of all child processes: ");
-		while (fgets(line, 50, file2))
-		{
-			printf("%s", line);
-			numOfThreads++;
-		}		
-		printf("\n");
-		printf("Total number of processes: %i \n", numOfThreads);
-		fclose(file2);
+		// FILE *file2 = fopen("threadsList.txt", "r");
+		// //List all the threads
+		// char line[50];
+		// int numOfThreads = 0;
+		// printf("PIDS of all child processes: ");
+		// while (fgets(line, 50, file2))
+		// {
+		// 	printf("%s", line);
+		// 	numOfThreads++;
+		// }		
+		// printf("\n");
+		// printf("Total number of processes: %i \n", numOfThreads);
+		// fclose(file2);
+		printThreads();
 		return 0;
     }
 
@@ -357,6 +358,33 @@ char *strtokPlus (char *str, const char *delim)
 
 	return token;
 }
+
+/* Read threads from a file and output them in a proper format*/
+void printThreads ()
+{
+
+	FILE *file = fopen("threadsList.txt", "r");
+	char *line = NULL;
+	size_t len = 0;
+	int numOfThreads = 0;
+	while (getline(&line, &len, file) != -1)
+	{
+		if (numOfThreads == 0)
+		{
+			printf("TIDS of all child threads: %s", line);
+		}
+		else 
+		{
+			printf(", %s", line);
+		}
+		numOfThreads++;
+	}
+
+	printf("\n Total number of threads: %i \n", numOfThreads);
+
+	fclose(file);
+}
+
 
 void sortDir (char *targetDir, char *sortBy, char *outputDir, FILE *file) 
 {
