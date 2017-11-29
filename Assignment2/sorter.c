@@ -296,7 +296,9 @@ void printThreads ()
 	ssize_t read;
 	int numOfThreads = 0;
 	while (getline(&line, &len, file) != -1)
-	{
+	{	
+		int bytes = strlen(line);
+		char *temp = strncpy(line, temp, bytes-2);
 		if (numOfThreads == 0)
 		{
 			printf("TIDS of all child threads: %s", line);
@@ -305,8 +307,6 @@ void printThreads ()
 		{
 			printf(", %s", line);
 		}
-		int bytes = strlen(line);
-		printf("%i", bytes);
 		numOfThreads++;
 	}
 
