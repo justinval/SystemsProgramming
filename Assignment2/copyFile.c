@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/stat.h>
-#define NUMFILES 1
+#define NUMFILES 2
 #define NUMDIR 1 
 #define FILENAME "movie_metadata.csv"
 #define DIRNAME "someDir/test2"
