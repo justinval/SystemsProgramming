@@ -297,7 +297,7 @@ void printThreads ()
 	int numOfThreads = 0;
 	while (getline(&line, &len, file) != -1)
 	{	
-		int bytes = strlen(line)-1;
+		int bytes = strlen(line)-2;
 		char *temp = (char *)malloc(bytes * sizeof(char));
 		strncpy(temp, line, bytes);
 		if (numOfThreads == 0)
@@ -306,7 +306,7 @@ void printThreads ()
 		}
 		else 
 		{
-			printf(",%s", temp);
+			printf(", %s", temp);
 		}
 		numOfThreads++;
 	}
