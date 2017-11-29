@@ -11,6 +11,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/types.h>
+#include <sys/syscall.h>
 #include <unistd.h>
 #include <ctype.h>
 #include <dirent.h>
