@@ -299,13 +299,14 @@ void printThreads ()
 	{	
 		int bytes = strlen(line)-2;
 		char *temp = (char *)malloc(bytes * sizeof(char));
+		strncpy(line, temp, bytes);
 		if (numOfThreads == 0)
 		{
-			printf("TIDS of all child threads: %s", line);
+			printf("TIDS of all child threads: %s", temp);
 		}
 		else 
 		{
-			printf(", %s", line);
+			printf(", %s", temp);
 		}
 		numOfThreads++;
 	}
