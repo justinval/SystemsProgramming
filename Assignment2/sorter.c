@@ -297,8 +297,8 @@ void printThreads ()
 	int numOfThreads = 0;
 	while (getline(&line, &len, file) != -1)
 	{	
-		int bytes = strlen(line);
-		char *temp = strncpy(line, temp, bytes-2);
+		int bytes = strlen(line)-2;
+		char *temp = (char *)malloc(bytes * sizeof(char));
 		if (numOfThreads == 0)
 		{
 			printf("TIDS of all child threads: %s", line);
