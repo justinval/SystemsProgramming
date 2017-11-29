@@ -4,8 +4,16 @@
 #define MAX 10000
 
 //Read format line of CSV file into str[100]
-Movie **sortFile(char *fileDirPath, char *filePath, char *sortBy, char *outputFileName, char *outputDir)
+void *sortFile(void *ptrIn)
 {
+	// Parse out data from sortFileParams
+	SortFileStruct *sortFileParams = (SortFileStruct *)ptrIn;
+	char *fileDirPath = sortFileParams->fileDirPath;
+	char *filePath = sortFileParams->filePath;
+	char *sortBy = sortFileParams->sortBy;
+	char *outputFileName = sortFileParams->outputFileName;
+	char *outputDir = sortFileParams->outputDir;
+
 	FILE *file = fopen(filePath, "r");
 
     char line[1000];

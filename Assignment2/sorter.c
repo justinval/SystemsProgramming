@@ -386,7 +386,7 @@ char *strtokPlus (char *str, const char *delim)
 	return token;
 }
 
-void* sortDir (void* ptrIn) 
+void *sortDir (void *ptrIn) 
 {
 	// Parse out data from sortDirParams
 	SortDirStruct *sortDirParams = (SortDirStruct *)ptrIn;
