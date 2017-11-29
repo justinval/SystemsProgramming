@@ -389,7 +389,7 @@ char *strtokPlus (char *str, const char *delim)
 void* sortDir (void* ptrIn) 
 {
 	// Parse out data from sortDirParams
-	SortDirStruct* sortDirParams = (SortDirStruct*)ptrIn;
+	SortDirStruct *sortDirParams = (SortDirStruct *)ptrIn;
 	char *targetDir = sortDirParams->targetDir;
 	char *outputDir = sortDirParams->outputDir;
 	char *sortBy = sortDirParams->sortBy; 
@@ -414,8 +414,6 @@ void* sortDir (void* ptrIn)
 			strcat(path, "/");
 			strcat(path, ent->d_name);
 
-
-
 			// Try to open each path, and if successful, it's a directory
 			if ((subDir = opendir(path)) != NULL)
 			{	
@@ -429,7 +427,7 @@ void* sortDir (void* ptrIn)
 				//printf("found directory: %s \n", path);
 				
 				// Create new thread to traverse the found directory
-				t1 = pthread_create(&dtid, NULL, sortDir, (void*)sortDirParams);
+				t1 = pthread_create(&dtid, NULL, sortDir, (void *)sortDirParams);
 				// Waits for the newly created thread to terminate before continuing
 				t2 = pthread_join(dtid, NULL);
 			}
@@ -446,7 +444,7 @@ void* sortDir (void* ptrIn)
 				strcat(outputFileName, ".csv");
 
 				// Initialize a fileStruct to pass into pthread_create
-				SortFileStruct *sortFileParams = (SortFileStruct*)malloc(sizeof(SortFileStruct*));
+				SortFileStruct *sortFileParams = (SortFileStruct *)malloc(sizeof(SortFileStruct));
 				sortFileParams->fileDirPath = targetDir;
 				sortFileParams->filePath = path;
 				sortFileParams->sortBy = sortBy;
@@ -454,7 +452,7 @@ void* sortDir (void* ptrIn)
 				sortFileParams->outputDir = outputDir;
 
 				// Use the child process to sort the found CSV file
-				t3 = pthread_create(&ftid, NULL, sortFile, (void*)sortFileParams);
+				t3 = pthread_create(&ftid, NULL, sortFile, (void *)sortFileParams);
 				// Waits for the newly created thread to terminate before continuing				
 				t4 = pthread_join(ftid, NULL);
 
