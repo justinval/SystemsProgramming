@@ -286,6 +286,34 @@ void printAllCSVFile (Movie **movieList, char *fileDirPath, char *filePath, char
 	}
 }
 
+
+/* Read threads from a file and output them in a proper format*/
+void printThreads ()
+{
+
+	FILE *file = fopen("threadsList.txt", "r");
+	char *line = NULL;
+	size_t len = 0;
+	int numOfThreads = 0;
+	while (getline(&line, &len, file) != -1)
+	{
+		if (numOfThreads == 0)
+		{
+			printf("TIDS of all child threads: %s", line);
+		}
+		else 
+		{
+			printf(", %s", line);
+		}
+		numOfThreads++;
+	}
+
+	printf("\n Total number of threads: %i \n", numOfThreads);
+
+	fclose(file);
+}
+
+
 /*Created b/c regular strtok wouldn't take in to consideration 
 consecutive delims (',')*/
 char *strtokPlus (char *str, const char *delim) 
@@ -358,33 +386,6 @@ char *strtokPlus (char *str, const char *delim)
 
 	return token;
 }
-
-/* Read threads from a file and output them in a proper format*/
-void printThreads ()
-{
-
-	FILE *file = fopen("threadsList.txt", "r");
-	char *line = NULL;
-	size_t len = 0;
-	int numOfThreads = 0;
-	while (getline(&line, &len, file) != -1)
-	{
-		if (numOfThreads == 0)
-		{
-			printf("TIDS of all child threads: %s", line);
-		}
-		else 
-		{
-			printf(", %s", line);
-		}
-		numOfThreads++;
-	}
-
-	printf("\n Total number of threads: %i \n", numOfThreads);
-
-	fclose(file);
-}
-
 
 void sortDir (char *targetDir, char *sortBy, char *outputDir, FILE *file) 
 {
