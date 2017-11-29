@@ -377,23 +377,32 @@ char *strtokPlus (char *str, const char *delim)
 	return token;
 }
 
-void sortDir (char *targetDir, char *sortBy, char *outputDir, FILE *file) 
+void* sortDir (void* ptrIn) 
 {
+	Directory* tempDir = (Directory*)ptrIn;
+
+	int t1,t2,t3,t4;
+	
+	pthread_t dtid, ftid;
+	int err;
+
 	int status;
 	DIR *dir, *subDir;
 	struct dirent *ent;
 
 	// Try to open targetDir
-	if ((dir = opendir(targetDir)) != NULL) 
+	if ((dir = opendir(tempDir->targetDir)) != NULL) 
 	{
 		// Iterate through each directory entry within dir
 		while ((ent = readdir(dir)) != NULL) 
 		{
 			// Create a path for each directory entry
 			char *path = (char *)malloc(256 * sizeof(char));
-			strcpy(path, targetDir);
+			strcpy(path, tempDir->targetDir);
 			strcat(path, "/");
 			strcat(path, ent->d_name);
+
+
 
 			// Try to open each path, and if successful, it's a directory
 			if ((subDir = opendir(path)) != NULL)
@@ -406,22 +415,10 @@ void sortDir (char *targetDir, char *sortBy, char *outputDir, FILE *file)
 				}
 				//printf("found directory: %s \n", path);
 				
-				// Use the child process to traverse the found directory
-				pid_t pid = fork();
-				if (pid == 0)
-				{
-					fprintf(file, "%d \n", getpid());
-					sortDir(path, sortBy, outputDir, file);
-					exit(0);
-				}
-				else if (pid > 0)
-				{
-					wait();
-					//printf("Parent process: %i \n", pid);
-				}
-				else {
-					printf("couldn't fork \n");
-				}
+				// Create new thread to traverse the found directory
+				t1 = pthread_create(&dtid, NULL, &sortDir, (void*)tempDir);
+				// Waits for the newly created thread to terminate before continuing
+				t2 = pthread_join(dtid, NULL);
 			}
 
 			// If the directory entry is a CSV file and is not already sorted
@@ -432,37 +429,33 @@ void sortDir (char *targetDir, char *sortBy, char *outputDir, FILE *file)
 				char *outputFileName = (char *)malloc(256 * sizeof(char));
 				strncpy(outputFileName, ent->d_name, strlen(ent->d_name)-4);
 				strcat(outputFileName, "-sorted-");
-				strcat(outputFileName, sortBy);
+				strcat(outputFileName, tempDir->sortBy);
 				strcat(outputFileName, ".csv");
 
+				// Initialize a fileStruct to pass into pthread_create
+				fileSt* filePtr = (fileSt*)malloc(sizeof(fileSt*));
+				filePtr->fileDirPath = tempDir->targetDir;
+				filePtr->filePath = path;
+				filePtr->sortBy = tempDir->sortBy;
+				filePtr->outputFileName = outputFileName;
+				filePtr->outputDir = tempDir->outputDir;
+
 				// Use the child process to sort the found CSV file
-				pid_t pid = fork();
-				if (pid == 0)
-				{ 
-					fprintf(file, "%d \n", getpid());
-    				sortFile(targetDir, path, sortBy, outputFileName, outputDir);
-					exit(0);
-				}
-				else if (pid > 0)
-				{
-					wait();
-					//printf("Parent process: %i \n", pid);
-				}
-				else {
-					printf("couldn't fork \n");
-				}
+				t3 = pthread_create(&ftid, NULL, &sortFile, (void*)filePtr);
+				// Waits for the newly created thread to terminate before continuing				
+				t4 = pthread_join(ftid, NULL);
 
 				free(outputFileName);
 			}
 			free(path);
 		}
-		closedir (dir);
+		closedir(dir);
 	}
 	else 
 	{
 		// Could not open directory
 	  	perror ("");
-		return;
+		return NULL;
 	}
-	return;
+	return NULL;
 }

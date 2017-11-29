@@ -15,6 +15,22 @@
 #include <stdlib.h>
 #include <string.h>
 
+typedef struct Directories{
+	char *targetDir; 
+	char *outputDir;	
+	char *sortBy; 
+	FILE *file;
+} Directory;
+
+
+typedef struct fileStruct{
+	char *fileDirPath; 
+	char *filePath;
+	char *sortBy;
+	char *outputFileName; 
+	char *outputDir;
+}fileSt;
+
 typedef struct Movies {
 	char color[10];
 	char director_name[30];
