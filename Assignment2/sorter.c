@@ -293,8 +293,9 @@ void printThreads ()
 	FILE *file = fopen("threadsList.txt", "r");
 	char *line = NULL;
 	size_t len = 0;
+	ssize_t read;
 	int numOfThreads = 0;
-	while (getline(&line, &len, file) != -1)
+	while (read = getline(&line, &len, file) != -1)
 	{
 		if (numOfThreads == 0)
 		{
@@ -304,7 +305,7 @@ void printThreads ()
 		{
 			printf(", %s", line);
 		}
-		printf("%i", len);
+		printf("%i", read);
 		numOfThreads++;
 	}
 
