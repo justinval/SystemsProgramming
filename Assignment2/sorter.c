@@ -304,7 +304,7 @@ void printThreads ()
 		{
 			printf(", %s", line);
 		}
-		printf("%i", &len);
+		printf("%i", len);
 		numOfThreads++;
 	}
 
