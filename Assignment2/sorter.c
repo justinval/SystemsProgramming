@@ -51,19 +51,6 @@ int main (int argc, char *argv[])
 		//Close file
 		fclose(file);
 
-		// FILE *file2 = fopen("threadsList.txt", "r");
-		// //List all the threads
-		// char line[50];
-		// int numOfThreads = 0;
-		// printf("PIDS of all child processes: ");
-		// while (fgets(line, 50, file2))
-		// {
-		// 	printf("%s", line);
-		// 	numOfThreads++;
-		// }		
-		// printf("\n");
-		// printf("Total number of processes: %i \n", numOfThreads);
-		// fclose(file2);
 		printThreads();
 		return 0;
     }
