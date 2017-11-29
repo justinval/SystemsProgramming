@@ -295,7 +295,7 @@ void printThreads ()
 	size_t len = 0;
 	ssize_t read;
 	int numOfThreads = 0;
-	while (read = getline(&line, &len, file) != -1)
+	while (getline(&line, &len, file) != -1)
 	{
 		if (numOfThreads == 0)
 		{
@@ -305,7 +305,8 @@ void printThreads ()
 		{
 			printf(", %s", line);
 		}
-		printf("%zu", read);
+		int bytes = strlen(line);
+		printf("%i", bytes);
 		numOfThreads++;
 	}
 
