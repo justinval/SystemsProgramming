@@ -287,10 +287,9 @@ void printAllCSVFile (Movie **movieList, char *fileDirPath, char *filePath, char
 }
 
 
-/* Read threads from a file and output them in a proper format*/
+// Read threads from a file and output them in a proper format
 void printThreads ()
 {
-
 	FILE *file = fopen("threadsList.txt", "r");
 	char *line = NULL;
 	size_t len = 0;
@@ -305,6 +304,7 @@ void printThreads ()
 		{
 			printf(", %s", line);
 		}
+		printf("%i", &len);
 		numOfThreads++;
 	}
 
