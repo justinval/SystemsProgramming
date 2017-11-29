@@ -70,4 +70,4 @@ void printAllCSV (Movie **movieList);
 void printAllCSVFile (Movie **movieList, char *fileDirPath, char *filePath, char *outputFileName, char *outputDir);
 void printThreads();
 char *strtokPlus (char *str, const char *delim);
-void sortDir (char *targetDir, char *sortBy, char *outputDir, FILE *file);
+void* sortDir (void* ptrIn);
