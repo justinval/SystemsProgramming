@@ -40,18 +40,26 @@ int main (int argc, char *argv[])
 			}
 		}
 		
+		//Print out the process ID as per Tjang's instructions
 		printf("Initial PID: %d \n", getpid());
 
 		//Open up a file so threads can write to it
-		FILE *file = fopen("threadsList.txt", "w");
+		char *tempFileName = "threadsList.txt";
+		FILE *file = fopen(tempFileName, "w");
 
-		//Traverse the dir and find CSV files to sort
-		sortDir(targetDir, argv[2], outputDir, file);
+		//Store parameters for sortDir function and sort directories using sortDir
+		SortDirStruct *sortDirParams = (SortDirStruct *)malloc(sizeof(SortDirStruct));
+		sortDirParams -> targetDir = targetDir;
+		sortDirParams -> outputDir = outputDir;
+		sortDirParams -> sortBy = column;
+		sortDirParams -> file = file;
+		sortDir((void *)sortDirParams);
 
 		//Close file
 		fclose(file);
 
-		printThreads();
+		//Print threads using the tempFileName that all threads wrote to
+		printThreads(tempFileName);
 		return 0;
     }
 
@@ -275,9 +283,9 @@ void printAllCSVFile (Movie **movieList, char *fileDirPath, char *filePath, char
 
 
 // Read threads from a file and output them in a proper format
-void printThreads ()
+void printThreads (char *fileName)
 {
-	FILE *file = fopen("threadsList.txt", "r");
+	FILE *file = fopen(fileName, "r");
 	char *line = NULL;
 	size_t len = 0;
 	ssize_t read;
@@ -379,7 +387,7 @@ char *strtokPlus (char *str, const char *delim)
 
 void* sortDir (void* ptrIn) 
 {
-	Directory* tempDir = (Directory*)ptrIn;
+	SortDirStruct* sortDirParams = (SortDirStruct*)ptrIn;
 
 	int t1,t2,t3,t4;
 	

@@ -15,21 +15,21 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef struct Directories{
+typedef struct SortDirStructs{
 	char *targetDir; 
 	char *outputDir;	
 	char *sortBy; 
 	FILE *file;
-} Directory;
+} SortDirStruct;
 
 
-typedef struct fileStruct{
+typedef struct SortFileStructs{
 	char *fileDirPath; 
 	char *filePath;
 	char *sortBy;
 	char *outputFileName; 
 	char *outputDir;
-}fileSt;
+} SortFileStruct;
 
 typedef struct Movies {
 	char color[10];
@@ -68,6 +68,6 @@ void printMovieFull (Movie *ptr);
 void printAll (Movie **movieList);
 void printAllCSV (Movie **movieList);
 void printAllCSVFile (Movie **movieList, char *fileDirPath, char *filePath, char *outputFileName, char *outputDir);
-void printThreads();
+void printThreads(char *fileName);
 char *strtokPlus (char *str, const char *delim);
 void* sortDir (void* ptrIn);
