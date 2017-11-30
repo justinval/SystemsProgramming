@@ -439,7 +439,7 @@ void *sortDir (void *ptrIn)
 			{
 				//printf("Found CSV file: %s \n", path);
 
-				char *outputFileName = (char *)malloc(256 * sizeof(char));
+				char *outputFileName = (char *)calloc(256 * sizeof(char));
 				strncpy(outputFileName, ent->d_name, strlen(ent->d_name)-4);
 				strcat(outputFileName, "-sorted-");
 				strcat(outputFileName, sortBy);
