@@ -72,10 +72,7 @@ int main (int argc, char *argv[])
 
 		//Output the masterMovieList to the output file
 		char *outputPath = (char *)malloc(256 * sizeof(char));
-		if (outputDir != NULL)
-		{
-			strcpy(outputPath, outputDir);
-		}
+		strcpy(outputPath, outputDir);
 		strcat(outputPath, "/AllFiles-sorted-");
 		strcat(outputPath, column);
 		strcat(outputPath, ".csv");
