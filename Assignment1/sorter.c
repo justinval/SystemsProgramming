@@ -246,6 +246,8 @@ void printAllCSVFile (Movie **movieList, char *fileDirPath, char *filePath, char
 	{
 		strcat(outputDir, "/");
 		strcat(outputDir, outputFileName);
+		print("OutputDir: %s", outputDir);
+		print("OutputFileName: %s", outputFileName);
 		outputFile = fopen(outputDir, "w");
 	}
 	
@@ -432,7 +434,6 @@ void sortDir (char *targetDir, char *sortBy, char *outputDir, FILE *file)
 				{ 
 					fprintf(file, "%d \n", getpid());
     				sortFile(targetDir, path, sortBy, outputFileName, outputDir);
-    				free(outputFileName);
 					exit(0);
 				}
 				else if (pid > 0)
