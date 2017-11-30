@@ -459,8 +459,7 @@ void *sortDir (void *ptrIn)
 
 	// Keep track of threadIDs
 	fprintf(file, "%d\n", syscall( __NR_gettid ));
-	printf("test\n");
-
+	
 	int t1,t2,t3,t4;
 	
 	pthread_t dtid, ftid;
@@ -542,8 +541,6 @@ void *sortDir (void *ptrIn)
 //Read format line of CSV file into str[100]
 void *sortFile(void *ptrIn)
 {	
-	printf("test \n");
-
 	// Parse out data from sortFileParams
 	SortFileStruct *sortFileParams = (SortFileStruct *)ptrIn;
 	char *fileDirPath = sortFileParams->fileDirPath;
