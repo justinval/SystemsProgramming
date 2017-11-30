@@ -421,7 +421,7 @@ void sortDir (char *targetDir, char *sortBy, char *outputDir, FILE *file)
 			else if (strstr(ent->d_name, ".csv") != NULL && (strstr(ent->d_name, "-sorted-") == NULL)) 
 			{
 				printf("Found CSV file: %s \n", ent->d_name);
-				char *outputFileName = (char *)malloc(256 * sizeof(char));
+				char *outputFileName = (char *)calloc(256 * sizeof(char));
 				strncpy(outputFileName, ent->d_name, strlen(ent->d_name)-4);
 				strcat(outputFileName, "-sorted-");
 				strcat(outputFileName, sortBy);
