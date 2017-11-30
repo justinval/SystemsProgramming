@@ -74,7 +74,11 @@ int main (int argc, char *argv[])
 
 		//Output the masterMovieList to the output file
 		char *outputPath = (char *)malloc(256 * sizeof(char));
-		strcpy(outputPath, outputDir);
+
+		if (outputDir != NULL)
+		{
+			strcpy(outputPath, outputDir);
+		}
 		strcat(outputPath, "/AllFiles-sorted-");
 		strcat(outputPath, column);
 		strcat(outputPath, ".csv");
@@ -369,7 +373,7 @@ void printThreads (char *fileName)
 		numOfThreads++;
 	}
 
-	printf("\n Total number of threads: %i \n", numOfThreads-1);
+	printf("\nTotal number of threads: %i \n", numOfThreads-1);
 
 	fclose(file);
 }
@@ -459,7 +463,7 @@ void *sortDir (void *ptrIn)
 
 	// Keep track of threadIDs
 	fprintf(file, "%d\n", syscall( __NR_gettid ));
-	
+
 	int t1,t2,t3,t4;
 	
 	pthread_t dtid, ftid;
