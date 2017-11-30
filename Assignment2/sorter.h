@@ -71,3 +71,4 @@ void printAllCSVFile (Movie **movieList, char *fileDirPath, char *filePath, char
 void printThreads(char *fileName);
 char *strtokPlus (char *str, const char *delim);
 void *sortDir (void *ptrIn);
+void *sortFile (void *ptrIn);

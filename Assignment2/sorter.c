@@ -524,8 +524,8 @@ void *sortFile(void *ptrIn)
 	int i = 0;
 	while (movieList[i] != NULL)
 	{
-		masterMovieList[index] = movieList[i];
-		index++;
+		masterMovieList[globalIndex] = movieList[i];
+		globalIndex++;
 		i++;
 	}
 	pthread_mutex_unlock(&mutex);
