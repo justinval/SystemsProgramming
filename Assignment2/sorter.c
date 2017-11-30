@@ -351,7 +351,7 @@ void printThreads (char *fileName)
 	int numOfThreads = 0;
 	while (getline(&line, &len, file) != -1)
 	{	
-		int bytes = strlen(line)-1;
+		int bytes = strlen(line);
 		char *temp = (char *)malloc(bytes * sizeof(char));
 		strncpy(temp, line, bytes);
 		if (numOfThreads == 1)
