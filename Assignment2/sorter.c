@@ -23,6 +23,7 @@
 
 int main (int argc, char *argv[]) 
 {
+	printf("%i \n", sizeof(Movie));
 	//Check to see if there is the proper number of params
 	if (argc == 5 || argc == 7) 
 	{	 		
@@ -390,7 +391,7 @@ char *strtokPlus (char *str, const char *delim)
 void *sortDir (void *ptrIn) 
 {
 	printf("ThreadID: %i \n", syscall( __NR_gettid ));
-	
+
 	// Parse out data from sortDirParams
 	SortDirStruct *sortDirParams = (SortDirStruct *)ptrIn;
 	char *targetDir = sortDirParams->targetDir;
