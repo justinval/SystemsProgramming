@@ -551,7 +551,7 @@ void *sortFile(void *ptrIn)
 	char *outputDir = sortFileParams->outputDir;
 	FILE *threadsFile = sortFileParams->threadsFile;
 	
-
+	FILE *file = fopen(filePath, "r");
     char line[1000];
 
     //reading the first row of column names
