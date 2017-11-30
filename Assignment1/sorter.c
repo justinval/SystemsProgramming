@@ -244,8 +244,6 @@ void printAllCSVFile (Movie **movieList, char *fileDirPath, char *filePath, char
 	}
 	else
 	{
-		printf("OutputDir: %s\n", outputDir);
-		printf("OutputFileName: %s\n", outputFileName);
 		strcat(outputDir, "/");
 		strcat(outputDir, outputFileName);
 		outputFile = fopen(outputDir, "w");
@@ -427,6 +425,7 @@ void sortDir (char *targetDir, char *sortBy, char *outputDir, FILE *file)
 				strcat(outputFileName, "-sorted-");
 				strcat(outputFileName, sortBy);
 				strcat(outputFileName, ".csv");
+				printf("OutputFileName: %s", outputFileName);
 
 				// Use the child process to sort the found CSV file
 				pid_t pid = fork();
@@ -438,15 +437,15 @@ void sortDir (char *targetDir, char *sortBy, char *outputDir, FILE *file)
 					exit(0);
 				}
 				else if (pid > 0)
-				{
+				{	
+
+					free(outputFileName);
 					wait();
 					//printf("Parent process: %i \n", pid);
 				}
 				else {
 					printf("couldn't fork \n");
 				}
-
-				free(outputFileName);
 			}
 			free(path);
 		}
