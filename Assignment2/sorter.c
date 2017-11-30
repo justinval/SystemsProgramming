@@ -70,6 +70,8 @@ int main (int argc, char *argv[])
 		//Print threads using the tempFileName that all threads wrote to
 		printThreads(tempFileName);
 
+		mergeSort(masterMovieList, 0, globalIndex-1, column);
+
 		//Output the masterMovieList to the output file
 		char *outputPath = (char *)malloc(256 * sizeof(char));
 		strcpy(outputPath, outputDir);
@@ -456,7 +458,7 @@ void *sortDir (void *ptrIn)
 	FILE *file = sortDirParams->file;
 
 	// Keep track of threadIDs
-	fprintf(file, "%d \n", syscall( __NR_gettid ));
+	fprintf(file, "%d\n", syscall( __NR_gettid ));
 	printf("test\n");
 
 	int t1,t2,t3,t4;
@@ -551,7 +553,7 @@ void *sortFile(void *ptrIn)
 	char *outputDir = sortFileParams->outputDir;
 	FILE *threadsFile = sortFileParams->threadsFile;
 	
-	fprintf(threadsFile, "%d \n", syscall( __NR_gettid ));
+	fprintf(threadsFile, "%d\n", syscall( __NR_gettid ));
 
 	FILE *file = fopen(filePath, "r");
     char line[1000];
