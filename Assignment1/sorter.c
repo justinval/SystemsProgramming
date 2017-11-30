@@ -246,8 +246,8 @@ void printAllCSVFile (Movie **movieList, char *fileDirPath, char *filePath, char
 	{
 		strcat(outputDir, "/");
 		strcat(outputDir, outputFileName);
-		print("OutputDir: %s", outputDir);
-		print("OutputFileName: %s", outputFileName);
+		printf("OutputDir: %s", outputDir);
+		printf("OutputFileName: %s", outputFileName);
 		outputFile = fopen(outputDir, "w");
 	}
 	
