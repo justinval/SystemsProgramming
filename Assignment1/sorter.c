@@ -435,13 +435,13 @@ void sortDir (char *targetDir, char *sortBy, char *outputDir, FILE *file)
 					fprintf(file, "%d \n", getpid());
     				sortFile(targetDir, path, sortBy, outputFileName, outputDir);
     				free(outputFileName);
-    				printf("freed");
 					exit(0);
 				}
 				else if (pid > 0)
 				{	
 
 					free(outputFileName);
+    				printf("Parent freed \n");
 					wait();
 					//printf("Parent process: %i \n", pid);
 				}
