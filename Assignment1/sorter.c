@@ -294,6 +294,7 @@ void printAllCSVFile (Movie **movieList, char *fileDirPath, char *filePath, char
 			i++;
 		}
 	}
+	return;
 }
 
 /*Created b/c regular strtok wouldn't take in to consideration 
