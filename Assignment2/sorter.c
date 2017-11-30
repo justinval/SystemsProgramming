@@ -543,6 +543,8 @@ void *sortDir (void *ptrIn)
 //Read format line of CSV file into str[100]
 void *sortFile(void *ptrIn)
 {	
+	printf("test \n");
+
 	// Parse out data from sortFileParams
 	SortFileStruct *sortFileParams = (SortFileStruct *)ptrIn;
 	char *fileDirPath = sortFileParams->fileDirPath;
