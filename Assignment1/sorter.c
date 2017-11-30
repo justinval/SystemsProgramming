@@ -433,14 +433,10 @@ void sortDir (char *targetDir, char *sortBy, char *outputDir, FILE *file)
 				{ 
 					fprintf(file, "%d \n", getpid());
     				sortFile(targetDir, path, sortBy, outputFileName, outputDir);
-    				free(outputFileName);
 					exit(0);
 				}
 				else if (pid > 0)
 				{	
-
-					free(outputFileName);
-					outputFileName = NULL;
 					printf("OutputFileName: %s \n", outputFileName);
 					wait();
 					//printf("Parent process: %i \n", pid);
@@ -448,6 +444,7 @@ void sortDir (char *targetDir, char *sortBy, char *outputDir, FILE *file)
 				else {
 					printf("couldn't fork \n");
 				}
+				free(outputFileName);
 			}
 			free(path);
 		}
