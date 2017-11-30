@@ -244,10 +244,10 @@ void printAllCSVFile (Movie **movieList, char *fileDirPath, char *filePath, char
 	}
 	else
 	{
+		printf("OutputDir: %s\n", outputDir);
+		printf("OutputFileName: %s\n", outputFileName);
 		strcat(outputDir, "/");
 		strcat(outputDir, outputFileName);
-		printf("OutputDir: %s", outputDir);
-		printf("OutputFileName: %s", outputFileName);
 		outputFile = fopen(outputDir, "w");
 	}
 	
