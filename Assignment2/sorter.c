@@ -463,7 +463,7 @@ void *sortDir (void *ptrIn)
 
 	int t1,t2,t3,t4;
 	
-	pthread_t dtid, ftid
+	pthread_t dtid, ftid;
 
 	// Try to open targetDir
 	DIR *dir, *subDir;
