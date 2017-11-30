@@ -72,9 +72,13 @@ int main (int argc, char *argv[])
 
 		//Output the masterMovieList to the output file
 		char *outputPath = (char *)malloc(256 * sizeof(char));
-		strcpy(outputPath, outputDir);
-		strcat(outputPath, "AllFiles-sorted-");
+		if (outputDir != NULL)
+		{
+			strcpy(outputPath, outputDir);
+		}
+		strcat(outputPath, "/AllFiles-sorted-");
 		strcat(outputPath, column);
+		strcat(outputPath, ".csv")
 		printAllCSVSingleFile(outputPath);
 
 		return 0;
@@ -351,9 +355,13 @@ void printThreads (char *fileName)
 		int bytes = strlen(line)-2;
 		char *temp = (char *)malloc(bytes * sizeof(char));
 		strncpy(temp, line, bytes);
-		if (numOfThreads == 0)
+		if (numOfThreads == 1)
 		{
 			printf("TIDS of all child threads: %s", temp);
+		}
+		else if (numOfThreads == 0) 
+		{
+			//Do nothing b/c the first ID is just the process ID
 		}
 		else 
 		{
@@ -362,7 +370,7 @@ void printThreads (char *fileName)
 		numOfThreads++;
 	}
 
-	printf("\n Total number of threads: %i \n", numOfThreads);
+	printf("\n Total number of threads: %i \n", numOfThreads-1);
 
 	fclose(file);
 }
@@ -443,8 +451,6 @@ char *strtokPlus (char *str, const char *delim)
 
 void *sortDir (void *ptrIn) 
 {
-	printf("ThreadID: %i \n", syscall( __NR_gettid ));
-
 	// Parse out data from sortDirParams
 	SortDirStruct *sortDirParams = (SortDirStruct *)ptrIn;
 	char *targetDir = sortDirParams->targetDir;
@@ -452,10 +458,12 @@ void *sortDir (void *ptrIn)
 	char *sortBy = sortDirParams->sortBy; 
 	FILE *file = sortDirParams->file;
 
+	// Keep track of threadIDs
+	fprintf(file, "%d \n", syscall( __NR_gettid ));
+
 	int t1,t2,t3,t4;
 	
-	pthread_t dtid, ftid;
-	int err;
+	pthread_t dtid, ftid
 
 	// Try to open targetDir
 	DIR *dir, *subDir;
@@ -501,7 +509,7 @@ void *sortDir (void *ptrIn)
 				strcat(outputFileName, sortBy);
 				strcat(outputFileName, ".csv");
 
-				// Initialize a fileStruct to pass into pthread_create
+				// Initialize a sortFileStruct to pass params into pthread_create
 				SortFileStruct *sortFileParams = (SortFileStruct *)malloc(sizeof(SortFileStruct));
 				sortFileParams->fileDirPath = targetDir;
 				sortFileParams->filePath = path;
@@ -509,7 +517,7 @@ void *sortDir (void *ptrIn)
 				sortFileParams->outputFileName = outputFileName;
 				sortFileParams->outputDir = outputDir;
 
-				// Use the child process to sort the found CSV file
+				// Create a thread to sort the found CSV file
 				t3 = pthread_create(&ftid, NULL, sortFile, (void *)sortFileParams);
 
 				// Waits for the newly created thread to terminate before continuing				
@@ -533,7 +541,7 @@ void *sortDir (void *ptrIn)
 //Read format line of CSV file into str[100]
 void *sortFile(void *ptrIn)
 {	
-	printf("ThreadID: %i \n", syscall( __NR_gettid ));
+	fprintf(file, "%d \n", syscall( __NR_gettid ));
 	
 	// Parse out data from sortFileParams
 	SortFileStruct *sortFileParams = (SortFileStruct *)ptrIn;
