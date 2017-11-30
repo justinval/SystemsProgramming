@@ -69,6 +69,14 @@ int main (int argc, char *argv[])
 
 		//Print threads using the tempFileName that all threads wrote to
 		printThreads(tempFileName);
+
+		//Output the masterMovieList to the output file
+		char *outputPath = (char *)malloc(256 * sizeof(char));
+		strcpy(outputPath, outputDir);
+		strcat(outputPath, "AllFiles-sorted-");
+		strcat(outputPath, column);
+		printAllCSVSingleFile(outputPath);
+
 		return 0;
     }
 
@@ -290,6 +298,45 @@ void printAllCSVFile (Movie **movieList, char *fileDirPath, char *filePath, char
 	}
 }
 
+void printAllCSVSingleFile (char *outputPath)
+{
+	FILE *outputFile;
+	outputFile = fopen(outputPath, "w");
+
+	int i = 0;
+	while (masterMovieList[i] != NULL)
+	{
+		if (strchr(movieList[i]->movie_title, ',') != NULL)
+		{
+			fprintf(outputFile, "%s,%s,%i,%i,%i,%i,%s,%i,%i,%s,%s,\"%s\",%i,%i,%s,%i,%s,%s,%i,%s,%s,%s,%i,%i,%i,%f,%f,%i\n",
+				movieList[i]->color, movieList[i]->director_name, movieList[i]->num_critic_for_reviews, movieList[i]->duration, 
+				movieList[i]->director_facebook_likes, movieList[i]->actor_3_facebook_likes, movieList[i]->actor_2_name,
+				movieList[i]->actor_1_facecbook_likes, movieList[i]->gross, movieList[i]->genres, movieList[i]->actor_1_name, 
+				movieList[i]->movie_title, movieList[i]->num_voted_users, movieList[i]->cast_total_facebook_likes, 
+				movieList[i]->actor_3_name, movieList[i]->facenumber_in_poster, movieList[i]->plot_keywords, 
+				movieList[i]->movie_imbd_link, movieList[i]->num_user_for_reviews, movieList[i]->language, 
+				movieList[i]->country, movieList[i]->content_rating, movieList[i]->budget, movieList[i]->title_year, 
+				movieList[i]->actor_2_facebook_likes, movieList[i]->imbd_score, movieList[i]->aspect_ratio, 
+				movieList[i]->movie_facebook_likes);
+		i++;
+		}
+
+		else {
+			fprintf(outputFile, "%s,%s,%i,%i,%i,%i,%s,%i,%i,%s,%s,%s,%i,%i,%s,%i,%s,%s,%i,%s,%s,%s,%i,%i,%i,%f,%f,%i\n",
+				movieList[i]->color, movieList[i]->director_name, movieList[i]->num_critic_for_reviews, movieList[i]->duration, 
+				movieList[i]->director_facebook_likes, movieList[i]->actor_3_facebook_likes, movieList[i]->actor_2_name,
+				movieList[i]->actor_1_facecbook_likes, movieList[i]->gross, movieList[i]->genres, movieList[i]->actor_1_name, 
+				movieList[i]->movie_title, movieList[i]->num_voted_users, movieList[i]->cast_total_facebook_likes, 
+				movieList[i]->actor_3_name, movieList[i]->facenumber_in_poster, movieList[i]->plot_keywords, 
+				movieList[i]->movie_imbd_link, movieList[i]->num_user_for_reviews, movieList[i]->language, 
+				movieList[i]->country, movieList[i]->content_rating, movieList[i]->budget, movieList[i]->title_year, 
+				movieList[i]->actor_2_facebook_likes, movieList[i]->imbd_score, movieList[i]->aspect_ratio, 
+				movieList[i]->movie_facebook_likes);
+			i++;
+		}
+	}
+
+}
 
 // Read threads from a file and output them in a proper format
 void printThreads (char *fileName)
