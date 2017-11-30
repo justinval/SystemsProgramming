@@ -460,6 +460,7 @@ void *sortDir (void *ptrIn)
 
 	// Keep track of threadIDs
 	fprintf(file, "%d \n", syscall( __NR_gettid ));
+	printf("test\n");
 
 	int t1,t2,t3,t4;
 	
