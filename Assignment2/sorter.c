@@ -21,7 +21,7 @@
 #define MAX 1000000
 
 //movieMasterList is the global data structure that will hold all the sorted movie files
-long long index = 0; 
+long long globalIndex = 0; 
 Movie **masterMovieList = (Movie **)malloc(MAX * sizeof(Movie *));
 
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
