@@ -78,7 +78,7 @@ int main (int argc, char *argv[])
 		}
 		strcat(outputPath, "/AllFiles-sorted-");
 		strcat(outputPath, column);
-		strcat(outputPath, ".csv")
+		strcat(outputPath, ".csv");
 		printAllCSVSingleFile(outputPath);
 
 		return 0;
@@ -516,6 +516,7 @@ void *sortDir (void *ptrIn)
 				sortFileParams->sortBy = sortBy;
 				sortFileParams->outputFileName = outputFileName;
 				sortFileParams->outputDir = outputDir;
+				sortFileParams->threadsFile = file;
 
 				// Create a thread to sort the found CSV file
 				t3 = pthread_create(&ftid, NULL, sortFile, (void *)sortFileParams);
@@ -541,8 +542,6 @@ void *sortDir (void *ptrIn)
 //Read format line of CSV file into str[100]
 void *sortFile(void *ptrIn)
 {	
-	fprintf(file, "%d \n", syscall( __NR_gettid ));
-	
 	// Parse out data from sortFileParams
 	SortFileStruct *sortFileParams = (SortFileStruct *)ptrIn;
 	char *fileDirPath = sortFileParams->fileDirPath;
@@ -550,8 +549,8 @@ void *sortFile(void *ptrIn)
 	char *sortBy = sortFileParams->sortBy;
 	char *outputFileName = sortFileParams->outputFileName;
 	char *outputDir = sortFileParams->outputDir;
-
-	FILE *file = fopen(filePath, "r");
+	FILE *threadsFile = sortFileParams->threadsFile;
+	
 
     char line[1000];
 

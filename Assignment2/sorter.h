@@ -29,6 +29,7 @@ typedef struct SortFileStructs{
 	char *sortBy;
 	char *outputFileName; 
 	char *outputDir;
+	FILE *threadsFile;
 } SortFileStruct;
 
 typedef struct Movies {
