@@ -19,11 +19,16 @@
 #include "sorter.h"
 #include "mergesort.c"
 #include "sortFile.c"
-#define MAX 10000
+#define MAX 1000000
+
+//movieMasterList is the global data structure that will hold all the sorted movie files
+long long index = 0; 
+Movie **masterMovieList = (Movie **)malloc(MAX * sizeof(Movie *));
+
+pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 
 int main (int argc, char *argv[]) 
 {
-	printf("%i \n", sizeof(Movie));
 	//Check to see if there is the proper number of params
 	if (argc == 5 || argc == 7) 
 	{	 		

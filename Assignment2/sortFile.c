@@ -42,10 +42,17 @@ void *sortFile(void *ptrIn)
 	//Mergesort list based off of field
 	mergeSort(movieList, 0, numOfMovies-1, sortBy);
 
-	// Print the movie list into a CSV file either at the specified outputDir, or in
-	// the fileDirPath where the original CSV file was found
-	printAllCSVFile (movieList, fileDirPath, filePath, outputFileName, outputDir);
-	
+	pthread_mutex_lock(&mutex);
+	int i = 0;
+	while (movieList[i] != NULL)
+	{
+		masterMovieList[index] = movieList[i];
+		index++;
+		i++;
+	}
+	pthread_mutex_unlock(&mutex);
+
+
 	return movieList;
 
 }
