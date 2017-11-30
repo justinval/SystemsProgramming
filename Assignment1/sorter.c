@@ -422,7 +422,6 @@ void sortDir (char *targetDir, char *sortBy, char *outputDir, FILE *file)
 			{
 				printf("Found CSV file: %s \n", ent->d_name);
 				char *outputFileName = (char *)malloc(256 * sizeof(char));
-				printf("OutputFileName: %s \n", outputFileName);
 				strncpy(outputFileName, ent->d_name, strlen(ent->d_name)-4);
 				strcat(outputFileName, "-sorted-");
 				strcat(outputFileName, sortBy);
@@ -442,6 +441,7 @@ void sortDir (char *targetDir, char *sortBy, char *outputDir, FILE *file)
 
 					free(outputFileName);
     				printf("Parent freed \n");
+    				printf("OutputFileName: %s \n", outputFileName);
 					wait();
 					//printf("Parent process: %i \n", pid);
 				}
