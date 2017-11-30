@@ -22,12 +22,14 @@
 
 //movieMasterList is the global data structure that will hold all the sorted movie files
 long long globalIndex = 0; 
-Movie **masterMovieList = (Movie **)malloc(MAX * sizeof(Movie *));
+Movie **masterMovieList;
 
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 
 int main (int argc, char *argv[]) 
 {
+	masterMovieList = (Movie **)malloc(MAX * sizeof(Movie *));
+
 	//Check to see if there is the proper number of params
 	if (argc == 5 || argc == 7) 
 	{	 		
