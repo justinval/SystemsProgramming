@@ -18,7 +18,6 @@
 #include <pthread.h>
 #include "sorter.h"
 #include "mergesort.c"
-#include "sortFile.c"
 #define MAX 1000000
 
 //movieMasterList is the global data structure that will hold all the sorted movie files
