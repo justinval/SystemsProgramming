@@ -440,6 +440,7 @@ void sortDir (char *targetDir, char *sortBy, char *outputDir, FILE *file)
 				{	
 
 					free(outputFileName);
+					outputFileName = NULL;
 					printf("OutputFileName: %s \n", outputFileName);
 					wait();
 					//printf("Parent process: %i \n", pid);
