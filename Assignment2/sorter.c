@@ -551,6 +551,8 @@ void *sortFile(void *ptrIn)
 	char *outputDir = sortFileParams->outputDir;
 	FILE *threadsFile = sortFileParams->threadsFile;
 	
+	fprintf(threadsFile, "%d \n", syscall( __NR_gettid ));
+
 	FILE *file = fopen(filePath, "r");
     char line[1000];
 
