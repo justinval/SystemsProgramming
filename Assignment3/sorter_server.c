@@ -8,10 +8,7 @@
 
 
 int main(int argc, char *argv[])
-{
-	int n = -1;																// utility variable - for monitoring reading/writing from/to the socket
-	char buffer[256];													// char array to store data going to and coming from the socket
-	 
+{	 
 	// Check to see if the user input the corret number of parameters
     if (argc < 3)
 	{
@@ -65,7 +62,7 @@ int main(int argc, char *argv[])
     int clientLen = sizeof(clientAddressInfo);
 	
 	// Create a client socket when accepting
-    int clientSockFD = accept(sockfd, (struct sockaddr *) &clientAddressInfo, &clientLen);
+    int clientSockFD = accept(sockFD, (struct sockaddr *) &clientAddressInfo, &clientLen);
 	 
 	// if the connection blew up for some reason, complain and exit
     if (clientSockFD < 0) 
@@ -79,6 +76,7 @@ int main(int argc, char *argv[])
     bzero(buffer, 256);
 	
 	// Read message from client socket into buffer
+	int n = -1;
     n = read(clientSockFD, buffer, 255);
 	
 	// if the read from the client blew up, complain and exit
