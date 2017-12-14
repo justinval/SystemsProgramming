@@ -10,6 +10,7 @@
 #include <pthread.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
+#include <errno.h>
 #include "sorter_server.h"
 #include "mergesort.c"
 #define MAX 1000000
@@ -132,8 +133,8 @@ void *handleClient (void *args)
 			off_t offset = 0;
 			while (bytesToSend > 0)
 			{	
-				printf("%i \n", &bytesToSend);
 				bytesSent = sendfile(clientSockFD, file, &offset, min(bytesToSend, BUFSIZ));
+				printf("%s \n", strerror(errno));
 				bytesToSend -= bytesSent;
 			}
 			return NULL;
