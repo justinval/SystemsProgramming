@@ -117,7 +117,6 @@ void *handleClient (void *args)
 		if (buffer[0] == '<')
 		{
 			// Sort the masterMovieList and print it out to masterTempFile.txt
-			printf("%i", masterIndex);
 			mergeSort(masterMovieList, 0, masterIndex-1, column);
 			printAllCSVSingleFile (masterMovieList, "masterTempFile.txt");
 				
@@ -136,9 +135,10 @@ void *handleClient (void *args)
 			while (bytesToSend > 0)
 			{	
 				bytesSent = sendfile(clientSockFD, file, &offset, min(bytesToSend, BUFSIZ));
-				printf("%i \n", bytesToSend);
+				printf("%i \n", BUFSIZ);
 				bytesToSend -= bytesSent;
 			}
+			printf("test \n");
 			return NULL;
 		}
 
