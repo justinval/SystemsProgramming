@@ -7,7 +7,7 @@
 #include <ctype.h>
 #include <dirent.h>
 #include <pthread.h>
-#include "server_orter.h"
+#include "server_sorter.h"
 #include "mergesort.c"
 #define MAX 1000000
 
