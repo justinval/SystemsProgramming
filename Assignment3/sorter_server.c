@@ -161,8 +161,7 @@ void *handleClient (void *args)
 			fclose(tempFile);
 
 			// Parse the data 
-			Movie **movieList = sortFile("tempFile.txt", column);
-			printf("test \n");	
+			Movie **movieList = sortFile("tempFile.txt", column);	
 			int i;
 			while (movieList[i] != NULL)
 			{
@@ -170,6 +169,7 @@ void *handleClient (void *args)
 				masterIndex++;
 				i++;
 			}		
+			printf("test \n");			
 		}
 	}
 	return NULL;
