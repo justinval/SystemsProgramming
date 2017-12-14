@@ -135,7 +135,7 @@ void *handleClient (void *args)
 			while (bytesToSend > 0)
 			{	
 				bytesSent = sendfile(clientSockFD, file, &offset, min(bytesToSend, BUFSIZ));
-				printf("%s \n", strerror(errno));
+				printf("%i \n", bytesToSend);
 				bytesToSend -= bytesSent;
 			}
 			return NULL;
