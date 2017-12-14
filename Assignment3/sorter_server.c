@@ -165,11 +165,11 @@ void *handleClient (void *args)
 			int i;
 			while (movieList[i] != NULL)
 			{
+				printf("test \n");
 				masterMovieList[masterIndex] = movieList[i];
 				masterIndex++;
 				i++;
-			}		
-			printf("test \n");			
+			}					
 		}
 	}
 	return NULL;
