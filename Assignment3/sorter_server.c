@@ -135,8 +135,8 @@ void *handleClient (void *args)
 			while (bytesToSend > 0)
 			{	
 				bytesSent = sendfile(clientSockFD, file, &offset, min(bytesToSend, BUFSIZ));
-				printf("%i \n", BUFSIZ);
 				bytesToSend -= bytesSent;
+				printf("%i \n", bytesToSend);
 			}
 			printf("test \n");
 			return NULL;
@@ -435,7 +435,7 @@ void printAllCSVSingleFile (Movie **masterMovieList, char *outputPath)
 				masterMovieList[i]->country, masterMovieList[i]->content_rating, masterMovieList[i]->budget, masterMovieList[i]->title_year, 
 				masterMovieList[i]->actor_2_facebook_likes, masterMovieList[i]->imbd_score, masterMovieList[i]->aspect_ratio, 
 				masterMovieList[i]->movie_facebook_likes);
-		i++;
+			i++;
 		}
 
 		else {
@@ -452,4 +452,5 @@ void printAllCSVSingleFile (Movie **masterMovieList, char *outputPath)
 			i++;
 		}
 	}
+	printf("Put %i files in CSV \n", i);
 }
