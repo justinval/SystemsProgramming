@@ -162,14 +162,14 @@ void *handleClient (void *args)
 
 			// Parse the data 
 			Movie **movieList = sortFile("tempFile.txt", column);
+			printf("test \n");	
 			int i;
 			while (movieList[i] != NULL)
 			{
 				masterMovieList[masterIndex] = movieList[i];
 				masterIndex++;
 				i++;
-			}
-			printf("test \n");			
+			}		
 		}
 	}
 	return NULL;
