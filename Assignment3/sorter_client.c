@@ -1,126 +1,392 @@
 #include <stdio.h>
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <netdb.h>
 #include <unistd.h>
-#include <stdlib.h>
 #include <string.h>
+#include <stdlib.h>
+#include <dirent.h>
+#include <sys/socket.h>
+#include <netdb.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <sys/sendfile.h>
+#include <fcntl.h>
+#include <signal.h>
+#include <errno.h>
+#include <semaphore.h>
+#include <pthread.h>
+#include <sys/time.h>
+
+void *sender(void *path);
+void *searchDirs(void *path);
+void merge();
+int newSocket();
+void getCol();
+void sendCol();
+
+#include "sorter_client.h"
+
+#define min(a, b) ((a) < (b) ? (a) : (b))
 
 
-void error(char *msg)
-{
-    perror(msg);
-    exit(0);
-}
+pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
 
-int main(int argc, char *argv[])
-{
-	// Declare initial vars
-    int sockfd = -1;																// file descriptor for our socket
-	int portno = -1;																// server port to connect to
-	int n = -1;																		// utility variable - for monitoring reading/writing from/to the socket
-	char buffer[256];															// char array to store data going to and coming from the server
-    struct sockaddr_in serverAddressInfo;						// Super-special secret C struct that holds address info for building our socket
-    struct hostent *serverIPAddress;									// Super-special secret C struct that holds info about a machine's address
-    
-	
-	
-	// If the user didn't enter enough arguments, complain and exit
-    if (argc < 3)
-	{
-       fprintf(stderr,"usage %s hostname port\n", argv[0]);
-       exit(0);
-    }
-	
-	
-	
-	/** If the user gave enough arguments, try to use them to get a port number and address **/
+char sortedCol[100];
+char outputFile[1000];
 
-	// convert the text representation of the port number given by the user to an int
-	portno = atoi(argv[2]);
-	
-	// look up the IP address that matches up with the name given - the name given might
-	//    BE an IP address, which is fine, and store it in the 'serverIPAddress' struct
-    serverIPAddress = gethostbyname(argv[1]);
-    if (serverIPAddress == NULL)
-	{
-        fprintf(stderr,"ERROR, no such host\n");
+char coltype;
+int sortCode;
+
+char dirPaths[1000][300];
+int numPaths = 0;
+
+char domain[100];
+int port;
+int maxSocket = 1;
+
+sem_t semaphore;
+int socket;
+int newSocket(){
+
+
+
+    struct sockaddr_in address;
+    struct hostent *server;
+
+
+    sem_wait(&semaphore);
+
+
+    server = gethostbyname(domain);
+
+    if (server == NULL) {
+        printf("ERROR! Host not found.\n");
         exit(0);
     }
-				
-	// try to build a socket .. if it doesn't work, complain and exit
-    sockfd = socket(AF_INET, SOCK_STREAM, 0);
-    if (sockfd < 0) 
-	{
-        error("ERROR creating socket");
-	}
 
+    memset(&address, 0, sizeof(address));
+    address.sin_family = AF_INET;
+    address.sin_port = htons(port);
 
-	
-	/** We now have the IP address and port to connect to on the server, we have to get    **/
-	/**   that information into C's special address struct for connecting sockets                     **/
+    bcopy((char *)server->h_addr, (char *)&address.sin_addr.s_addr, server->h_length);
 
-	// zero out the socket address info struct .. always initialize!
-    bzero((char *) &serverAddressInfo, sizeof(serverAddressInfo));
+    int sock;
+    sock = socket(AF_INET, SOCK_STREAM, 0);
 
-	// set a flag to indicate the type of network address we'll be using 
-    serverAddressInfo.sin_family = AF_INET;
-	
-	// set the remote port .. translate from a 'normal' int to a super-special 'network-port-int'
-	serverAddressInfo.sin_port = htons(portno);
+    if (sock < 0) {
+        printf("Socket error!\n");
 
-	// do a raw copy of the bytes that represent the server's IP address in 
-	//   the 'serverIPAddress' struct into our serverIPAddressInfo struct
-    bcopy((char *)serverIPAddress->h_addr, (char *)&serverAddressInfo.sin_addr.s_addr, serverIPAddress->h_length);
-
-
-
-	/** We now have a blank socket and a fully parameterized address info struct .. time to connect **/
-	
-	// try to connect to the server using our blank socket and the address info struct 
-	//   if it doesn't work, complain and exit
-    if (connect(sockfd,(struct sockaddr *)&serverAddressInfo,sizeof(serverAddressInfo)) < 0) 
-	{
-        error("ERROR connecting");
-	}	
-	
-	
-	
-	/** If we're here, we're connected to the server .. w00t!  **/
-	
-    printf("Please enter the message: ");
-	
-	// zero out the message buffer
-    bzero(buffer,256);
-
-	// get a message from the client
-    fgets(buffer,255,stdin);
-    
-	// try to write it out to the server
-	n = write(sockfd,buffer,strlen(buffer));
-	
-	// if we couldn't write to the server for some reason, complain and exit
-    if (n < 0)
-	{
-         error("ERROR writing to socket");
+        exit(EXIT_FAILURE);
     }
-	
-	// sent message to the server, zero the buffer back out to read the server's response
-	bzero(buffer,256);
 
-	// read a message from the server into the buffer
-    n = read(sockfd,buffer,255);
-	
-	// if we couldn't read from the server for some reason, complain and exit
-    if (n < 0)
-	{
-         error("ERROR reading from socket");
-	}
+    if (connect(sock, (struct sockaddr *)&address, sizeof(address)) < 0) {
+        printf("Connection error!\n");
+        close(sock);
+        sem_post(&semaphore);
 
-	// print out server's message
-    printf("%s\n",buffer);
+        exit(EXIT_FAILURE);
+    }
 
+    return sock;
+}
+
+void *sender(void *path){
+
+    char *filename = path;
+
+    FILE *fp = fopen(filename, "r");
+    char line[1000];
+
+    fgets(line, 1000, fp);
+    fclose(fp);
+    int numOfCommas = 0;
+
+    int i;
+    for (i = 0; i < strlen(line); i++)
+
+    	if (line[i] == ',')
+            numOfCommas++;
+
+    if (numOfCommas != 27)
+        return NULL;
+
+
+    int newFile = open(filename, O_RDONLY);
+    
+    struct stat stats;
+    fstat(newFile, &stats);
+
+    char fbuff[255];
+   
+    sprintf(fbuff, "%d",(int) stats.st_size);
+
+    send(socket, fbuff, sizeof(fbuff), 0);
+
+    int isSent;
+    off_t offset = 0;
+    int left = stats.st_size;
+    char buffer[255];
+
+    read(socket, buffer, sizeof(buffer));
+    printf("%s \n", buffer);
+
+    while (left > 0 && (isSent = sendfile(socket, newFile, &offset, min(left, BUFSIZ))) > 0) {
+        left = left - isSent;
+    }
+
+    close(socket);
+    sem_post(&semaphore);
+    
+    close(newFile);
+
+    return NULL;
+}
+
+void *searchDirs(void *path){
+
+    char *newPath = path;
+    DIR *newDir = opendir(newPath);
+
+    pthread_t currtid;
+    pthread_t waitpid[1000];
+
+    int threads = 0;
+    int count = 0;
+
+
+    struct dirent *newEntry;
+
+    if (newDir == NULL) {
+        printf("ERROR! Failed to read directory!\n");
+
+        return NULL;
+    }
+
+    int i;
+    while ((newEntry = readdir(newDir)) != NULL){
+
+    	if (strcmp(newEntry->d_name, ".") == 0 || strcmp(newEntry->d_name, "..") == 0)
+            continue;
+
+    	pthread_mutex_lock(&lock);
+
+    	count = numPaths++ % 1000;
+
+    	pthread_mutex_unlock(&lock);
+
+    	sprintf(dirPaths[count], "%s/%s", newPath, newEntry->d_name);
+
+        if (newEntry->d_type == DT_DIR) {
+            pthread_create(&currtid, NULL, (void *)&searchDirs, (void *)&dirPaths[count]);
+        } else {
+
+        	if (strlen(dirPaths[count]) < 4 || strcmp(dirPaths[count] + strlen(dirPaths[count]) - 4, ".csv") != 0 || strstr(dirPaths[count], "-sorted-"))
+                continue;
+
+        	pthread_create(&currtid, NULL, (void *)&sender, (void *)&dirPaths[count]);
+        }
+
+        waitpid[threads++] = currtid;
+
+        if (threads == 64) {
+
+        	for (i = 0; i < threads; i++) {
+                pthread_join(waitpid[i], NULL);
+            }
+
+        	threads = 0;
+        }
+    }
+
+    for (i = 0; i < threads; i++) {
+        pthread_join(waitpid[i], NULL);
+    }
+
+    closedir(newDir);
+
+    return NULL;
+}
+
+void sendCol(){
+
+    char protocol[4];
+
+    protocol[0] = '>';
+    protocol[1] = coltype;
+    protocol[2] = sortCode;
+    protocol[3] = '\0';
+
+    send(socket, protocol, sizeof(protocol), 0);
+
+    close(socket);
+    sem_post(&semaphore);
+}
+
+void merge(){
+
+    char protocol[2];
+
+    protocol[0] = '<';
+    protocol[1] = '\0';
+    send(socket, protocol, sizeof(protocol), 0);
+    char buffer[10000] = "";
+
+    recv(socket, buffer, sizeof(buffer), 0);
+    send(socket, protocol, sizeof(protocol), 0);
+
+    int left = atoi(buffer);
+    char *file = (char *)malloc(left);
+    *file = '\0';
+
+    ssize_t len;
+
+    while (left > 0 && (len = recv(socket, buffer, min(left, BUFSIZ), 0)) > 0) {
+    	strncat(file, buffer, min(left, len));
+    	left = left - len;
+    }
+
+    FILE *output = fopen(outputFile, "w");
+    fprintf(output, "color,director_name,num_critic_for_reviews,duration,director_facebook_likes,actor_3_facebook_likes,actor_2_name,actor_1_facebook_likes,gross,genres,actor_1_name,movie_title,num_voted_users,cast_total_facebook_likes,actor_3_name,facenumber_in_poster,plot_keywords,movie_imdb_link,num_user_for_reviews,language,country,content_rating,budget,title_year,actor_2_facebook_likes,imdb_score,aspect_ratio,movie_facebook_likes\n%s", file);
+    fclose(output);
+
+    close(socket);
+    sem_post(&semaphore);
+
+}
+int main(int argc, char **argv){
+
+	// default values
+    char path[500] = ".";
+    char outpath[500] = ".";
+    strcpy(sortedCol, "director_name");
+
+    // check input
+    if (argc < 7) {
+        printf("Incorrect number of arguments\n");
+        return 0;
+    }
+
+    int x = 1;
+    while (x < argc - 1) {
+        if (*(argv[x] + 1) == 'c')
+            strcpy(sortedCol, argv[x + 1]);
+        else if (*(argv[x] + 1) == 'd')
+            strcpy(path, argv[x + 1]);
+        else if (*(argv[x] + 1) == 'o')
+            strcpy(outpath, argv[x + 1]);
+        else if (*(argv[x] + 1) == 'h')
+            strcpy(domain, argv[x + 1]);
+        else if (*(argv[x] + 1) == 'p')
+            port = atoi(argv[x + 1]);
+        else if (*(argv[x] + 1) == 's')
+            maxSocket = atoi(argv[x + 1]);
+        x += 2;
+    }
+
+    sem_init(&semaphore, 0, maxSocket);
+
+    socket = newSocket();
+    getCol();
+    sendCol();
+
+    sprintf(outputFile, "%s/AllFiles-sorted-%s.csv", outpath, sortedCol);
+
+    searchDirs(path);
+    merge();
+
+    pthread_mutex_destroy(&lock);
 
     return 0;
+}
+
+void getCol(){
+
+	// 's' for string, 'n' for numerical
+    if (strcmp(sortedCol, "color") == 0) {
+        sortCode = 0;
+        coltype = 's';
+    } else if (strcmp(sortedCol, "director_name") == 0) {
+        sortCode = 1;
+        coltype = 's';
+    } else if (strcmp(sortedCol, "num_critic_for_reviews") == 0) {
+        sortCode = 2;
+        coltype = 'n';
+    } else if (strcmp(sortedCol, "duration") == 0) {
+        sortCode = 3;
+        coltype = 'n';
+    } else if (strcmp(sortedCol, "director_facebook_likes") == 0) {
+        sortCode = 4;
+        coltype = 'n';
+    } else if (strcmp(sortedCol, "actor_3_facebook_likes") == 0) {
+        sortCode = 5;
+        coltype = 'n';
+    } else if (strcmp(sortedCol, "actor_2_name") == 0) {
+        sortCode = 6;
+        coltype = 's';
+    } else if (strcmp(sortedCol, "actor_1_facebook_likes") == 0) {
+        sortCode = 7;
+        coltype = 'n';
+    } else if (strcmp(sortedCol, "gross") == 0) {
+        sortCode = 8;
+        coltype = 's';
+    } else if (strcmp(sortedCol, "genres") == 0) {
+        sortCode = 9;
+        coltype = 's';
+    } else if (strcmp(sortedCol, "actor_1_name") == 0) {
+        sortCode = 10;
+        coltype = 's';
+    } else if (strcmp(sortedCol, "movie_title") == 0) {
+        sortCode = 11;
+        coltype = 's';
+    } else if (strcmp(sortedCol, "num_voted_users") == 0) {
+        sortCode = 12;
+        coltype = 'n';
+    } else if (strcmp(sortedCol, "cast_total_facebook_likes") == 0) {
+        sortCode = 13;
+        coltype = 'n';
+    } else if (strcmp(sortedCol, "actor_3_name") == 0) {
+        sortCode = 14;
+        coltype = 's';
+    } else if (strcmp(sortedCol, "facenumber_in_poster") == 0) {
+        sortCode = 15;
+        coltype = 'n';
+    } else if (strcmp(sortedCol, "plot_keywords") == 0) {
+        sortCode = 16;
+        coltype = 's';
+    } else if (strcmp(sortedCol, "movie_imdb_link") == 0) {
+        sortCode = 17;
+        coltype = 's';
+    } else if (strcmp(sortedCol, "num_user_for_reviews") == 0) {
+        sortCode = 18;
+        coltype = 'n';
+    } else if (strcmp(sortedCol, "language") == 0) {
+        sortCode = 19;
+        coltype = 's';
+    } else if (strcmp(sortedCol, "country") == 0) {
+        sortCode = 20;
+        coltype = 's';
+    } else if (strcmp(sortedCol, "content_rating") == 0) {
+        sortCode = 21;
+        coltype = 's';
+    } else if (strcmp(sortedCol, "budget") == 0) {
+        sortCode = 22;
+        coltype = 'n';
+    } else if (strcmp(sortedCol, "title_year") == 0) {
+        sortCode = 23;
+        coltype = 'n';
+    } else if (strcmp(sortedCol, "actor_2_facebook_likes") == 0) {
+        sortCode = 24;
+        coltype = 'n';
+    } else if (strcmp(sortedCol, "imdb_score") == 0) {
+        sortCode = 25;
+        coltype = 'n';
+    } else if (strcmp(sortedCol, "aspect_ratio") == 0) {
+        sortCode = 26;
+        coltype = 'n';
+    } else if (strcmp(sortedCol, "movie_facebook_likes") == 0) {
+        sortCode = 27;
+        coltype = 'n';
+    } else {
+        exit(1);
+    }
 }
