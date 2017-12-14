@@ -120,7 +120,7 @@ void *handleClient (void *args)
 			printAllCSVSingleFile (masterMovieList, "masterTempFile.txt");
 				
 			// Send the masterTempFile's size
-			FILE *file = fopen("masterTempFile.txt", "r");
+			int file = open("masterTempFile.txt", O_RDONLY);
 			struct stat st;
 			stat("masterTempFile.txt", &st);
 			char fileLen[50];
