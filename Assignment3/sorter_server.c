@@ -117,7 +117,7 @@ void *handleClient (void *args)
 		if (buffer[0] == '<')
 		{
 			// Sort the masterMovieList and print it out to masterTempFile.txt
-			print("%i", masterIndex);
+			printf("%i", masterIndex);
 			mergeSort(masterMovieList, 0, masterIndex-1, column);
 			printAllCSVSingleFile (masterMovieList, "masterTempFile.txt");
 				
