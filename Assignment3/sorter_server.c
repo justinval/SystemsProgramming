@@ -147,7 +147,6 @@ void *handleClient (void *args)
 			int bytesToRead = atoi(buffer);
 			char *serverMessage = "Server received file length.";
 			write(clientSockFD, serverMessage, strlen(serverMessage));
-			printf("test \n");
 
 			// Read bytes sent in
 			int bytesReceived;
@@ -169,7 +168,8 @@ void *handleClient (void *args)
 				masterMovieList[masterIndex] = movieList[i];
 				masterIndex++;
 				i++;
-			}			
+			}
+			printf("test \n");			
 		}
 	}
 	return NULL;
