@@ -114,11 +114,10 @@ void *handleClient (void *args)
 		// Check to see if the client wants the result
 		if (buffer[0] == '<')
 		{
-			printf("test \n");
 			// Sort the masterMovieList and print it out to masterTempFile.txt
 			mergeSort(masterMovieList, 0, masterIndex-1, column);
 			printAllCSVSingleFile (masterMovieList, "masterTempFile.txt");
-			
+				
 			// Send the masterTempFile's size
 			FILE *file = fopen("masterTempFile.txt", "r");
 			struct stat st;
@@ -127,7 +126,7 @@ void *handleClient (void *args)
 			sprintf(fileLen, "%d", st.st_size);			
 			write(clientSockFD, fileLen, sizeof(fileLen));
 			read(clientSockFD, buffer, sizeof(buffer));
-
+			printf("test \n");
 			// Send the masterTempFile 
 			int bytesToSend = st.st_size, bytesSent;
 			off_t offset;
