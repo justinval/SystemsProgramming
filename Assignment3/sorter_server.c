@@ -114,6 +114,7 @@ void *handleClient (void *args)
 		// Check to see if the client wants the result
 		if (buffer[0] == '<')
 		{
+			printf("test \n");
 			// Sort the masterMovieList and print it out to masterTempFile.txt
 			mergeSort(masterMovieList, 0, masterIndex-1, column);
 			printAllCSVSingleFile (masterMovieList, "masterTempFile.txt");
@@ -134,7 +135,6 @@ void *handleClient (void *args)
 			{
 				bytesToSend -= bytesSent;
 			}
-
 			return NULL;
 		}
 
@@ -165,7 +165,6 @@ void *handleClient (void *args)
 			int i = 0;
 			while (movieList[i] != NULL)
 			{
-				printf("test \n");
 				masterMovieList[masterIndex] = movieList[i];
 				masterIndex++;
 				i++;
