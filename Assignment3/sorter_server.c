@@ -7,7 +7,7 @@
 #include <ctype.h>
 #include <dirent.h>
 #include <pthread.h>
-#include "server_sorter.h"
+#include "sorter_server.h"
 #include "mergesort.c"
 #define MAX 1000000
 #define min(a, b) ((a) < (b) ? (a) : (b))
