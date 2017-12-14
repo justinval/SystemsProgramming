@@ -237,8 +237,8 @@ void merge(){
     *file = '\0';
 
     ssize_t len;
-    printf("test \n");
-    while (left > 0 && (len = recv(sock, buffer, min(left, BUFSIZ), 0)) > 0) {
+    while (left > 0) {
+        len = recv(sock, buffer, min(left, BUFSIZ), 0);
         printf("Downloading file \n");
     	strncat(file, buffer, min(left, len));
     	left = left - len;

@@ -130,9 +130,10 @@ void *handleClient (void *args)
 			// Send the masterTempFile 
 			int bytesToSend = st.st_size, bytesSent;
 			off_t offset = 0;
-			while (bytesToSend > 0 && (bytesSent = sendfile(clientSockFD, file, &offset, min(bytesToSend, BUFSIZ))) > 0)
+			while (bytesToSend > 0)
 			{	
 				printf("%i \n", bytesToSend);
+				bytesSent = sendfile(clientSockFD, file, &offset, min(bytesToSend, BUFSIZ));
 				bytesToSend -= bytesSent;
 			}
 			return NULL;
