@@ -120,7 +120,7 @@ void *handleClient (void *args)
 			// Send the masterTempFile's size
 			FILE *file = fopen("masterTempFile.txt", "r");
 			struct stat st;
-			fstat(file, &st);
+			stat("masterTempFile.txt", &st);
 			char fileLen[50];
 			sprintf(fileLen, "%d", st.st_size);			
 			write(clientSockFD, fileLen, sizeof(fileLen));
