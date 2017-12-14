@@ -233,6 +233,7 @@ void merge(){
     send(sock, protocol, sizeof(protocol), 0);
 
     int left = atoi(buffer);
+    printf("Left: %i bytes", left);
     char *file = (char *)malloc(left);
     *file = '\0';
 
