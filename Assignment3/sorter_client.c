@@ -45,7 +45,7 @@ int port;
 int maxSocket = 1;
 
 sem_t semaphore;
-int socket;
+int sock;
 int newSocket(){
 
 
@@ -120,21 +120,20 @@ void *sender(void *path){
    
     sprintf(fbuff, "%d",(int) stats.st_size);
 
-    send(socket, fbuff, sizeof(fbuff), 0);
+    send(sock, fbuff, sizeof(fbuff), 0);
 
     int isSent;
     off_t offset = 0;
     int left = stats.st_size;
     char buffer[255];
 
-    read(socket, buffer, sizeof(buffer));
+    read(sock, buffer, sizeof(buffer));
     printf("%s \n", buffer);
 
-    while (left > 0 && (isSent = sendfile(socket, newFile, &offset, min(left, BUFSIZ))) > 0) {
+    while (left > 0 && (isSent = sendfile(sock, newFile, &offset, min(left, BUFSIZ))) > 0) {
         left = left - isSent;
     }
 
-    close(socket);
     sem_post(&semaphore);
     
     close(newFile);
@@ -216,9 +215,8 @@ void sendCol(){
     protocol[2] = sortCode;
     protocol[3] = '\0';
 
-    send(socket, protocol, sizeof(protocol), 0);
+    send(sock, protocol, sizeof(protocol), 0);
 
-    close(socket);
     sem_post(&semaphore);
 }
 
@@ -228,11 +226,11 @@ void merge(){
 
     protocol[0] = '<';
     protocol[1] = '\0';
-    send(socket, protocol, sizeof(protocol), 0);
+    send(sock, protocol, sizeof(protocol), 0);
     char buffer[10000] = "";
 
-    recv(socket, buffer, sizeof(buffer), 0);
-    send(socket, protocol, sizeof(protocol), 0);
+    recv(sock, buffer, sizeof(buffer), 0);
+    send(sock, protocol, sizeof(protocol), 0);
 
     int left = atoi(buffer);
     char *file = (char *)malloc(left);
@@ -240,7 +238,7 @@ void merge(){
 
     ssize_t len;
 
-    while (left > 0 && (len = recv(socket, buffer, min(left, BUFSIZ), 0)) > 0) {
+    while (left > 0 && (len = recv(sock, buffer, min(left, BUFSIZ), 0)) > 0) {
     	strncat(file, buffer, min(left, len));
     	left = left - len;
     }
@@ -249,7 +247,7 @@ void merge(){
     fprintf(output, "color,director_name,num_critic_for_reviews,duration,director_facebook_likes,actor_3_facebook_likes,actor_2_name,actor_1_facebook_likes,gross,genres,actor_1_name,movie_title,num_voted_users,cast_total_facebook_likes,actor_3_name,facenumber_in_poster,plot_keywords,movie_imdb_link,num_user_for_reviews,language,country,content_rating,budget,title_year,actor_2_facebook_likes,imdb_score,aspect_ratio,movie_facebook_likes\n%s", file);
     fclose(output);
 
-    close(socket);
+    close(sock);
     sem_post(&semaphore);
 
 }
@@ -285,7 +283,7 @@ int main(int argc, char **argv){
 
     sem_init(&semaphore, 0, maxSocket);
 
-    socket = newSocket();
+    sock = newSocket();
     getCol();
     sendCol();
 
