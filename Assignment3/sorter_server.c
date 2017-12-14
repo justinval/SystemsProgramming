@@ -10,6 +10,7 @@
 #include "server_sorter.h"
 #include "mergesort.c"
 #define MAX 1000000
+#define min(a, b) ((a) < (b) ? (a) : (b))
 
 int portNo;
 int main(int argc, char *argv[])
