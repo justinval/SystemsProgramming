@@ -141,13 +141,14 @@ void *handleClient (void *args)
 		// Else, grab data from client
 		else 
 		{
-			printf("test \n");
+			
 			// Get the incoming file length
 			read(clientSockFD, buffer, sizeof(buffer));
 			int bytesToRead = atoi(buffer);
 			char *serverMessage = "Server received file length.";
 			write(clientSockFD, serverMessage, strlen(serverMessage));
-
+			printf("test \n");
+			
 			// Read bytes sent in
 			int bytesReceived;
 			FILE *tempFile = fopen("tempFile.txt", "w");
