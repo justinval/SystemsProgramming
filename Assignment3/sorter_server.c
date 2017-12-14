@@ -80,7 +80,7 @@ int main(int argc, char *argv[])
 	        printf("Error accepting client socket. \n");
 	        exit(1);
 		}    	
-
+		printf("Connected w/ a client! \n");
     	// TODO: When a thread is accepted, spawn a thread
     	pthread_create(&dtid, NULL, handleClient, (void *)&clientSockFD);
     }
@@ -141,6 +141,7 @@ void *handleClient (void *args)
 		// Else, grab data from client
 		else 
 		{
+			printf("test \n");
 			// Get the incoming file length
 			read(clientSockFD, buffer, sizeof(buffer));
 			int bytesToRead = atoi(buffer);
