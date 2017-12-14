@@ -3,6 +3,7 @@
 #include <string.h>
 #include <sys/types.h>
 #include <sys/syscall.h>
+#include <sys/stat.h>
 #include <unistd.h>
 #include <ctype.h>
 #include <dirent.h>
@@ -71,6 +72,7 @@ int main(int argc, char *argv[])
 	
 	// Create a client socket when accepting
 	int clientSockFD;
+	pthread_t dtid;
     while(clientSockFD = accept(sockFD, (struct sockaddr *) &clientAddressInfo, &clientLen)){
 		// if the connection blew up for some reason, complain and exit
 	    if (clientSockFD < 0) 
