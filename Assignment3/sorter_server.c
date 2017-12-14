@@ -91,14 +91,15 @@ int main(int argc, char *argv[])
 // TODO: create a method that handles connections
 void *handleClient (void *args) 
 {
-	int clientSockFD = (int) *args;
+	int *clientSockPtr = (int *)args;
+	int clientSockFD = *clientSockPtr;
 
 	// Instantiate buffer and zero it out
 	char protocolBuffer[10];
 	bzero (protocolBuffer, 10);
 	
 	// Get the column name from client
-	read((int)clientSockFD, protocolBuffer[10], sizeof(protocolBuffer));
+	read((int)clientSockFD, protocolBuffer, sizeof(protocolBuffer));
 	char *column = getColString(protocolBuffer[2]);
 
 	// Instantiate buffer to read data
