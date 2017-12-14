@@ -132,7 +132,7 @@ void *handleClient (void *args)
 			off_t offset = 0;
 			while (bytesToSend > 0)
 			{	
-				printf("%i \n", bytesToSend);
+				printf("%i \n", &bytesToSend);
 				bytesSent = sendfile(clientSockFD, file, &offset, min(bytesToSend, BUFSIZ));
 				bytesToSend -= bytesSent;
 			}
