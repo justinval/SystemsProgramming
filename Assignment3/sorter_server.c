@@ -109,16 +109,17 @@ void *handleClient (void *args)
 	bzero(buffer, 10000);
 
 	// Read all of the files it sends over and parse it into the masterMovieList
-	Movie **masterMovieList = (Movie **)malloc(MAX * sizeof(Movie *));
-	int masterIndex = 0;
+	//Movie **masterMovieList = (Movie **)malloc(MAX * sizeof(Movie *));
+	//int masterIndex = 0;
+	FILE *tempFile = fopen("masterTempFile.txt", "w");
 	while (read(clientSockFD, buffer, sizeof(buffer)))
 	{	
 		// Check to see if the client wants the result
 		if (buffer[0] == '<')
 		{
 			// Sort the masterMovieList and print it out to masterTempFile.txt
-			mergeSort(masterMovieList, 0, masterIndex-1, column);
-			printAllCSVSingleFile (masterMovieList, "masterTempFile.txt");
+			//mergeSort(masterMovieList, 0, masterIndex-1, column);
+			printAllCSVSingleFile (sortFile("masterTempFile.txt", column), "masterTempFile.txt");
 				
 			// Send the masterTempFile's size
 			int file = open("masterTempFile.txt", O_RDONLY);
@@ -154,7 +155,7 @@ void *handleClient (void *args)
 
 			// Read bytes sent in
 			int bytesReceived;
-			FILE *tempFile = fopen("tempFile.txt", "w");
+			
 			while (bytesToRead > 0)
 			{
 				bzero(buffer, 10000);
@@ -165,14 +166,14 @@ void *handleClient (void *args)
 			fclose(tempFile);
 
 			// Parse the data 
-			Movie **movieList = sortFile("tempFile.txt", column);	
-			int i = 0;
-			while (movieList[i] != NULL)
-			{
-				masterMovieList[masterIndex] = movieList[i];
-				masterIndex++;
-				i++;
-			}					
+			// Movie **movieList = sortFile("tempFile.txt", column);	
+			// int i = 0;
+			// while (movieList[i] != NULL)
+			// {
+			// 	masterMovieList[masterIndex] = movieList[i];
+			// 	masterIndex++;
+			// 	i++;
+			// }					
 		}
 	}
 	return NULL;
@@ -452,5 +453,4 @@ void printAllCSVSingleFile (Movie **masterMovieList, char *outputPath)
 			i++;
 		}
 	}
-	printf("Put %i files in CSV \n", i);
 }
