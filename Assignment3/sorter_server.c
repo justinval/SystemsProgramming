@@ -82,7 +82,7 @@ int main(int argc, char *argv[])
 		}    	
 
     	// TODO: When a thread is accepted, spawn a thread
-    	pthread_create(&dtid, NULL, handleClient, (void *)clientSockFD);
+    	pthread_create(&dtid, NULL, handleClient, (void *)&clientSockFD);
     }
 	
 	return 0; 
@@ -91,7 +91,7 @@ int main(int argc, char *argv[])
 // TODO: create a method that handles connections
 void *handleClient (void *args) 
 {
-	int clientSockFD = (int) args;
+	int clientSockFD = (int) *args;
 
 	// Instantiate buffer and zero it out
 	char protocolBuffer[10];
