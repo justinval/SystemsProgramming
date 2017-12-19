@@ -342,7 +342,6 @@ void printAllCSVSingleFile (char *outputPath)
 			i++;
 		}
 	}
-
 }
 
 // Read threads from a file and output them in a proper format
@@ -377,6 +376,7 @@ void printThreads (char *fileName)
 
 	fclose(file);
 }
+
 
 
 /*Created b/c regular strtok wouldn't take in to consideration 
@@ -522,6 +522,7 @@ void *sortDir (void *ptrIn)
 				sortFileParams->threadsFile = file;
 
 				// Create a thread to sort the found CSV file
+				printf("%s \n", outputFileName);
 				t3 = pthread_create(&ftid, NULL, sortFile, (void *)sortFileParams);
 
 				// Waits for the newly created thread to terminate before continuing				
