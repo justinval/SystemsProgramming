@@ -239,7 +239,6 @@ void merge(){
     ssize_t len;
     while (left > 0) {
         len = recv(sock, buffer, min(left, BUFSIZ), 0);
-        printf("Downloading file \n");
     	strncat(file, buffer, min(left, len));
     	left = left - len;
     }

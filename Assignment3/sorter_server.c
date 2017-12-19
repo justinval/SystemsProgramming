@@ -1,3 +1,5 @@
+// Authors: Justin Valeroso, Umar Rabbani, Peter Lambe
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -82,7 +84,7 @@ int main(int argc, char *argv[])
 	        printf("Error accepting client socket. \n");
 	        exit(1);
 		}    	
-		printf("Connected w/ a client! \n");
+		printf("Received connections from: ");
     	// TODO: When a thread is accepted, spawn a thread
     	pthread_create(&dtid, NULL, handleClient, (void *)&clientSockFD);
     }
@@ -136,9 +138,7 @@ void *handleClient (void *args)
 			{	
 				bytesSent = sendfile(clientSockFD, file, &offset, min(bytesToSend, BUFSIZ));
 				bytesToSend -= bytesSent;
-				printf("%i \n", bytesToSend);
 			}
-			printf("test \n");
 			return NULL;
 		}
 
