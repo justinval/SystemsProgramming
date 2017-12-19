@@ -522,7 +522,7 @@ void *sortDir (void *ptrIn)
 				sortFileParams->threadsFile = file;
 
 				// Create a thread to sort the found CSV file
-				printf("%s \n", outputFileName);
+				printf("%s \n", path);
 				t3 = pthread_create(&ftid, NULL, sortFile, (void *)sortFileParams);
 
 				// Waits for the newly created thread to terminate before continuing				
