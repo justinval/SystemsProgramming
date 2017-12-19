@@ -494,6 +494,7 @@ void *sortDir (void *ptrIn)
 				}
 				//printf("found directory: %s \n", path);
 				
+				sortDirParams->targetDir = path;
 				// Create new thread to traverse the found directory
 				t1 = pthread_create(&dtid, NULL, sortDir, (void *)sortDirParams);
 
@@ -522,7 +523,7 @@ void *sortDir (void *ptrIn)
 				sortFileParams->threadsFile = file;
 
 				// Create a thread to sort the found CSV file
-				printf("%s \n", path);
+				printf("%s \n", outputFileName);
 				t3 = pthread_create(&ftid, NULL, sortFile, (void *)sortFileParams);
 
 				// Waits for the newly created thread to terminate before continuing				
