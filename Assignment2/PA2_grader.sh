@@ -10,6 +10,7 @@ cp sorter "./test2/test2.1"
 cp sorter "./test2/test2.2"
 cp sorter "./test3/test3.1"
 cp sorter "./test4/test4.1"
+cp sorter "./test5/test5.1"
 cp sorter "./test5/test5.2"
 cp sorter "./test6/test6.1"
 
